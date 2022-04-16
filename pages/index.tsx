@@ -17,7 +17,7 @@ const IndexPage = () => (
       </div>
 
       <div className="bg-white w-8/12 rounded-lg flex flex-row p-7">
-        <div>fdsfdf</div>
+        <div className="border-2 border-[#008E89] rounded-lg"></div>
       </div>
     </div>
   </div>
