@@ -7,14 +7,20 @@ export default function Dashboard() {
   return (
     <>
       <div className="bg-white  font-Montserrat ">
-        <div className="w-full  bg-[#008E89] px-36 ">
-          <div className="">
-            {/* <div className="flex flex-row justify-between py-5"> */}
-            <div className="flex flex-row justify-center items-center  space-x-2">
+        <div className="bg-[#008E89] px-36 ">
+          {/* <div className=" flex flex-row justify-between"> */}
+          <div className="flex flex-row justify-between py-5">
+            {/* <div className="flex flex-row justify-center items-center  space-x-2">
               <img src="/images/ghlalogo.png" className="w-14 " />
               <p className="text-white text-xl">GHLA</p>
+            </div> */}
+            <div className="flex flex-row justify-center items-center  space-x-2">
+              <img src="/images/ghlalogo.png" className="w-14 " />
+              <p className="text-white text-lg">GHLA</p>
             </div>
-            <p className="bg-white text-center text-[#008E89]">Register</p>
+            <p className="bg-white text-center rounded-full text-lg py-1 px-5 text-[#008E89]">
+              Log out
+            </p>
           </div>
 
           <div className="grid grid-cols-3 text-center gap-7 py-16">
