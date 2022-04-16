@@ -9,7 +9,7 @@ export default function Dashboard() {
               <p className="text-white text-xl">GHLA</p>
             </div>
 
-            <p className="cursor-pointer  text-center px-5 bg-white text-[#008E89]">
+            <p className="cursor-pointer items-center justify-center text-center px-5 bg-white text-[#008E89]">
               Register
             </p>
           </div>
