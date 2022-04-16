@@ -2,6 +2,8 @@ import React from "react";
 
 type Props = {};
 
-const adult = (props: Props) => {
+const Adult = (props: Props) => {
   return <div>adult</div>;
 };
+
+export default Adult;
