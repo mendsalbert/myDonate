@@ -51,7 +51,7 @@ export default function Dashboard() {
                     Users
                   </h2>
                 </div>
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-col md:flex-row justify-between items-center">
                   <div className="my-2 flex sm:flex-row flex-col">
                     <div className="flex flex-row mb-1 sm:mb-0">
                       <div className="relative">
