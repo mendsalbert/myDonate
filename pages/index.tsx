@@ -18,7 +18,7 @@ const IndexPage = () => (
 
       <div className="bg-white rounded-lg flex z-10 flex-row p-7">
         <div className="border-2 border-[#008E89] rounded-lg text-center p-4 ">
-          <img src="/images/children.svg" />
+          <img src="/images/children.svg" className="w-16" />
           <p>Children</p>
           <div>
             <p>Register</p>
