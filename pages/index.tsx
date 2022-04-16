@@ -3,8 +3,18 @@ import Layout from "../components/Layout";
 
 const IndexPage = () => (
   // <Layout title="Home | Next.js + TypeScript Example">
-  <div className="bg-[#008E89] w-full h-screen">
-    <img src="/images/ghlalogo.png" />
+  <div className="bg-[#008E89] w-full h-screen relative">
+    <div className="absolute left-0 bottom-0">
+      <img src="/images/undraw_books_re_8gea.svg" />
+    </div>
+    <div className="flex flex-col justify-center items-center w-full">
+      <div className="">
+        <img src="/images/ghlalogo.png" className="w-14" />
+        <p>Ghana Library Authority</p>
+        <p>Lending Services</p>
+      </div>
+      <div></div>
+    </div>
   </div>
   // </Layout>
 );
