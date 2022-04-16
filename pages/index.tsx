@@ -19,8 +19,8 @@ const IndexPage = () => (
       </div>
 
       {/* <div> */}
-      <div className=" z-10 bg-white mx-6 md:mx-0 rounded-2xl shadow-2xl ">
-        <div className="flex flex-col md:flex-row md:space-x-9 space-x-0 space-y-5 md:space-y-5  p-8 md:p-16 ">
+      <div className=" z-10 bg-white w-max mx-6 md:mx-0 rounded-2xl shadow-2xl ">
+        <div className="flex flex-col md:flex-row md:space-x-9 space-x-0 space-y-5 md:space-y-0  p-8 md:p-16 ">
           <div className="border-2 border-[#008E89] rounded-2xl text-center flex flex-col items-center space-y-4  p-4  py-5">
             <img src="/images/children.svg" className="w-24" />
             <p className="text-3xl text-[#008E89] ">Children</p>
@@ -31,12 +31,12 @@ const IndexPage = () => (
           <div className="border-2 border-[#008E89] rounded-2xl text-center flex flex-col items-center space-y-4  p-4  py-5">
             <img src="/images/adult.svg" className="w-24" />
             <p className="text-3xl text-[#008E89] ">Adult</p>
-            <div className=" cursor-pointer rounded-full px-16 w-full text-white py-2 bg-[#008E89]">
+            <div className=" cursor-pointer rounded-full  px-16 w-full text-white py-2 bg-[#008E89]">
               <p>Register</p>
             </div>
           </div>
         </div>
-        <p className="text-center text-gray-700 text-xl mb-10">
+        <p className="text-center text-gray-700 text-lg md:text-xl mb-10">
           Already have an account ? Log In
         </p>
       </div>
