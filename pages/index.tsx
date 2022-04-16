@@ -11,9 +11,9 @@ const IndexPage = () => (
       <div>
         <img src="/images/ghlalogo.png" className="w-14" />
       </div>
-      <div className="text-center">
+      <div className="text-center py-4">
         <p className="text-white text-2xl font-bold">Ghana Library Authority</p>
-        <p className="text-white text-lg">Lending Services</p>
+        <p className="text-white text-2xl">Lending Services</p>
       </div>
 
       {/* <div> */}
