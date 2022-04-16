@@ -18,10 +18,8 @@ const Children = (props: Props) => {
           </p>
           <p className="text-white text-lg md:text-2xl">Lending Services</p>
         </div>
-        <div className=" z-10 bg-white mx-6 md:mx-0 rounded-2xl shadow-2xl ">
-          <p className="text-center text-gray-700 p-4 md:p-0 text-lg md:text-xl mb-10">
-            Children Registration Form
-          </p>
+        <div className=" z-10 bg-white mx-6 md:mx-0 rounded-2xl shadow-2xl p-6 ">
+          <p className="text-gray-700 text-xl "> Children Registration Form</p>
         </div>
       </div>
     </div>
