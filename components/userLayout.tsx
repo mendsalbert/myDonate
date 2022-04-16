@@ -4,6 +4,8 @@ import {
   BookOpenIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
+import Link from "next/link";
+
 type Props = {
   children;
 };
