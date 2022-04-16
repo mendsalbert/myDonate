@@ -22,16 +22,20 @@ const IndexPage = () => (
           <div className="border-2 border-[#008E89] rounded-2xl text-center flex flex-col items-center space-y-4  p-4  py-5">
             <img src="/images/children.svg" className="w-24" />
             <p className="text-3xl text-[#008E89] ">Children</p>
-            <div className=" cursor-pointer rounded-full px-16 w-full text-white py-2 bg-[#008E89]">
-              <p>Register</p>
-            </div>
+            <Link href="/register/children">
+              <div className=" cursor-pointer rounded-full px-16 w-full text-white py-2 bg-[#008E89]">
+                <p>Register</p>
+              </div>
+            </Link>
           </div>
           <div className="border-2 border-[#008E89] rounded-2xl text-center flex flex-col items-center space-y-4  p-4  py-5">
             <img src="/images/adult.svg" className="w-24" />
             <p className="text-3xl text-[#008E89] ">Adult</p>
-            <div className=" cursor-pointer rounded-full  px-16 w-full text-white py-2 bg-[#008E89]">
-              <p>Register</p>
-            </div>
+            <Link href="/register/adult">
+              <div className=" cursor-pointer rounded-full  px-16 w-full text-white py-2 bg-[#008E89]">
+                <p>Register</p>
+              </div>
+            </Link>
           </div>
         </div>
         <p className="text-center text-gray-700 p-4 md:p-0 text-lg md:text-xl mb-10">
