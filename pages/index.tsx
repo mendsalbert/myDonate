@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 
 const IndexPage = () => (
   // <Layout title="Home | Next.js + TypeScript Example">
-  <div className="bg-[#008E89] w-full h-screen relative">
+  <div className="bg-[#008E89] w-full h-screen relative font-Montserrat">
     <div className="absolute left-0 bottom-0 -z-5">
       <img src="/images/undraw_books_re_8gea.svg" />
     </div>
