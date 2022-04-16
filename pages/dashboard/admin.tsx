@@ -100,7 +100,7 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="bg-blue-600 text-lg text-center px-6 py-1 rounded-md text-white">
+                  <div className="bg-blue-600 text-lg text-center px-6 py-1 rounded-md cursor-pointer text-white">
                     Add User
                   </div>
                 </div>
