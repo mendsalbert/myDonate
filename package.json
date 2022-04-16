@@ -7,7 +7,10 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@material-tailwind/react": "^0.3.4",
+    "@react-google-maps/api": "^2.8.1",
     "autoprefixer": "^10.4.4",
+    "chart.js": "^3.7.1",
     "next": "latest",
     "postcss": "^8.4.12",
     "react": "^17.0.2",
