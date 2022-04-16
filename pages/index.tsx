@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 const IndexPage = () => (
   // <Layout title="Home | Next.js + TypeScript Example">
   <div className="bg-[#008E89] w-full h-screen relative">
-    <div className="absolute left-0 bottom-0">
+    <div className="absolute left-0 bottom-0 -z-5">
       <img src="/images/undraw_books_re_8gea.svg" />
     </div>
     <div className="flex flex-col justify-center items-center w-full">
@@ -16,8 +16,14 @@ const IndexPage = () => (
         <p>Lending Services</p>
       </div>
 
-      <div className="bg-white w-8/12 rounded-lg flex flex-row p-7">
-        <div className="border-2 border-[#008E89] rounded-lg"></div>
+      <div className="bg-white rounded-lg flex z-10 flex-row p-7">
+        <div className="border-2 border-[#008E89] rounded-lg text-center p-4 ">
+          <span>icons</span>
+          <p>Children</p>
+          <div>
+            <p>Register</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
