@@ -8,9 +8,10 @@ export default function Dashboard() {
               <img src="/images/ghlalogo.png" className="w-14 " />
               <p className="text-white text-xl">GHLA</p>
             </div>
-            <div className=" cursor-pointer rounded-full px-16 w-full bg-white  text-[#008E89]">
-              <p>Register</p>
-            </div>
+
+            <p className="cursor-pointer  text-center px-5 bg-white text-[#008E89]">
+              Register
+            </p>
           </div>
         </div>
         <div></div>
