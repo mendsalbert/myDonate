@@ -113,7 +113,7 @@ const Children = (props: Props) => {
               </div>
             </div>
             <button
-              className="flex-shrink-0 bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-3 px-2 rounded"
+              className="flex-shrink-0 bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-2 mt-4 px-2 rounded"
               type="button"
             >
               Sign Up
