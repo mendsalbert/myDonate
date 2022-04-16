@@ -16,8 +16,9 @@ const IndexPage = () => (
         <p>Lending Services</p>
       </div>
 
-      <div>
-        <div className="bg-white rounded-2xl z-10 grid grid-cols-2 gap-10 p-16 ">
+      {/* <div> */}
+      <div className=" z-10 bg-white rounded-2xl shadow-2xl ">
+        <div className="flex flex-row space-x-9 p-16 ">
           <div className="border-2 border-[#008E89] rounded-2xl text-center flex flex-col items-center space-y-4  p-4  py-5">
             <img src="/images/children.svg" className="w-24" />
             <p className="text-3xl text-[#008E89] ">Children</p>
@@ -33,10 +34,11 @@ const IndexPage = () => (
             </div>
           </div>
         </div>
-        <p className="text-center text-gray-700 text-xl">
+        <p className="text-center text-gray-700 text-xl mb-10">
           Already have an account ? Log In
         </p>
       </div>
+      {/* </div> */}
     </div>
   </div>
   // </Layout>
