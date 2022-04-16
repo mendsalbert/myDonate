@@ -1,8 +1,3 @@
-import {
-  UserIcon,
-  BookOpenIcon,
-  UserGroupIcon,
-} from "@heroicons/react/outline";
 import Layout from "../../../components/adminLayout";
 export default function Dashboard() {
   return (
