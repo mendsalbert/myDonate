@@ -4,7 +4,7 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/outline";
 import Layout from "../../../components/adminLayout";
-export default function Book() {
+export default function Overdue() {
   return (
     <>
       <Layout>
@@ -14,7 +14,7 @@ export default function Book() {
               <div className="py-8">
                 <div>
                   <h2 className="text-3xl text-gray-600  leading-tight">
-                    Books
+                    Overdue Books
                   </h2>
                 </div>
                 <div className="flex flex-col md:flex-row md:justify-between  md:items-center">
@@ -67,9 +67,6 @@ export default function Book() {
                         className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                       />
                     </div>
-                  </div>
-                  <div className="bg-blue-600 text-lg text-center px-6 py-1 rounded-md cursor-pointer text-white">
-                    Add Book
                   </div>
                 </div>
                 <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
