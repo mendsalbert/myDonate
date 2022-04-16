@@ -38,9 +38,11 @@ const IndexPage = () => (
             </Link>
           </div>
         </div>
-        <p className="text-center text-gray-700 p-4 md:p-0 text-lg md:text-xl mb-10">
-          Already have an account ? Log In
-        </p>
+        <Link href="/register/login">
+          <p className="text-center text-gray-700 p-4 md:p-0 text-lg md:text-xl mb-10">
+            Already have an account ? Log In
+          </p>
+        </Link>
       </div>
     </div>
   </div>
