@@ -18,9 +18,9 @@ const IndexPage = () => (
 
       <div className="bg-white rounded-lg flex z-10 flex-row p-7">
         <div className="border-2 border-[#008E89] rounded-lg text-center p-4 ">
-          <img src="/images/children.svg" className="w-16" />
-          <p>Children</p>
-          <div>
+          <img src="/images/children.svg" className="w-24" />
+          <p className="text-2xl text-[#008E89] ">Children</p>
+          <div className="rounded-full w-8/12 text-white py-2 bg-[#008E89]">
             <p>Register</p>
           </div>
         </div>
