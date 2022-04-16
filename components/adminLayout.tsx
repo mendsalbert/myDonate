@@ -31,7 +31,7 @@ const Layout = (props: Props) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-7 py-16">
-          <Link href="/dashboard/admin">
+          <Link href="/dashboard/admin" scroll={false}>
             <div
               onClick={() => scrollDown(tablesection)}
               className="
@@ -45,7 +45,7 @@ const Layout = (props: Props) => {
               <p className=" text-2xl text-gray-600">5 Users added</p>
             </div>
           </Link>
-          <Link href="/dashboard/admin/books">
+          <Link href="/dashboard/admin/books" scroll={false}>
             <div
               onClick={() => scrollDown(tablesection)}
               className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
@@ -57,7 +57,7 @@ const Layout = (props: Props) => {
               <p className=" text-2xl text-gray-600">10 Books added</p>
             </div>
           </Link>
-          <Link href="/dashboard/admin/overdue">
+          <Link href="/dashboard/admin/overdue" scroll={false}>
             <div
               onClick={() => scrollDown(tablesection)}
               className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
