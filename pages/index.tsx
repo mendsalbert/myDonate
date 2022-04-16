@@ -8,12 +8,13 @@ const IndexPage = () => (
       <img src="/images/undraw_books_re_8gea.svg" />
     </div>
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="">
+      <div className="text-center">
         <img src="/images/ghlalogo.png" className="w-14" />
+      </div>
+      <div>
         <p>Ghana Library Authority</p>
         <p>Lending Services</p>
       </div>
-      <div></div>
     </div>
   </div>
   // </Layout>
