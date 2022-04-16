@@ -5,7 +5,7 @@ const IndexPage = () => (
   // <Layout title="Home | Next.js + TypeScript Example">
   <div className="bg-[#008E89] w-full h-screen relative font-Montserrat">
     <div className="absolute left-0 bottom-0 -z-5">
-      <img src="/images/undraw_books_re_8gea.svg" />
+      <img src="/images/undraw_books_re_8gea.svg" className="w-44" />
     </div>
     <div className="flex flex-col justify-center items-center w-full">
       <div>
