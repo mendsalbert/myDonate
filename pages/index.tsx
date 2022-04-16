@@ -16,7 +16,7 @@ const IndexPage = () => (
         <p>Lending Services</p>
       </div>
 
-      <div className="bg-white rounded-lg flex z-10 flex-row p-7">
+      <div className="bg-white rounded-lg flex z-10 flex-row p-16">
         <div className="border-2 border-[#008E89] rounded-lg text-center flex flex-col items-center space-y-4  p-4  py-5">
           <img src="/images/children.svg" className="w-24" />
           <p className="text-3xl text-[#008E89] ">Children</p>
