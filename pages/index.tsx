@@ -5,15 +5,15 @@ const IndexPage = () => (
   // <Layout title="Home | Next.js + TypeScript Example">
   <div className="bg-[#008E89] w-full h-screen relative font-Montserrat">
     <div className="absolute left-0 bottom-0 -z-5">
-      <img src="/images/undraw_books_re_8gea.svg" className="w-44" />
+      <img src="/images/undraw_books_re_8gea.svg" className="w-96" />
     </div>
     <div className="flex flex-col justify-center items-center w-full">
       <div>
         <img src="/images/ghlalogo.png" className="w-14" />
       </div>
       <div className="text-center">
-        <p>Ghana Library Authority</p>
-        <p>Lending Services</p>
+        <p className="text-white text-2xl font-bold">Ghana Library Authority</p>
+        <p className="text-white text-lg">Lending Services</p>
       </div>
 
       {/* <div> */}
