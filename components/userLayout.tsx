@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   UserIcon,
   BookOpenIcon,
@@ -6,11 +6,14 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/link";
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 type Props = {
   children;
 };
 
 const UserLayout = (props: Props) => {
+  const myRef = useRef(null);
+  const executeScroll = () => scrollToRef(myRef);
   return (
     <div className="bg-white  font-Montserrat ">
       <div className="bg-[#008E89] px-10 md:px-36 ">
@@ -27,6 +30,9 @@ const UserLayout = (props: Props) => {
         <div className="grid grid-cols-1 md:grid-cols-2 text-center gap-7 py-16">
           <Link href="/dashboard/user/" scroll={true}>
             <div
+              onClick={() => {
+                executeScroll;
+              }}
               id="books"
               className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
             >
@@ -53,7 +59,7 @@ const UserLayout = (props: Props) => {
           </Link>
         </div>
       </div>
-      {props.children}
+      <div ref={myRef}>{props.children}</div>
     </div>
   );
 };
