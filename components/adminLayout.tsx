@@ -32,7 +32,12 @@ const Layout = (props: Props) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-7 py-16">
           <Link href="/dashboard/admin">
-            <div className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10">
+            <div
+              onClick={() => scrollDown(tablesection)}
+              className="
+            
+            bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
+            >
               <div className="bg-yellow-600 rounded-full p-3 ">
                 <UserGroupIcon className="w-10 text-white" />
               </div>
@@ -41,7 +46,10 @@ const Layout = (props: Props) => {
             </div>
           </Link>
           <Link href="/dashboard/admin/books">
-            <div className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10">
+            <div
+              onClick={() => scrollDown(tablesection)}
+              className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
+            >
               <div className="bg-green-600 rounded-full p-3 ">
                 <BookOpenIcon className="w-10 text-white" />
               </div>
@@ -50,7 +58,10 @@ const Layout = (props: Props) => {
             </div>
           </Link>
           <Link href="/dashboard/admin/overdue">
-            <div className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10">
+            <div
+              onClick={() => scrollDown(tablesection)}
+              className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
+            >
               <div className="bg-red-600 rounded-full p-3 ">
                 <BookOpenIcon className="w-10 text-white" />
               </div>
@@ -60,7 +71,7 @@ const Layout = (props: Props) => {
           </Link>
         </div>
       </div>
-      {props.children}
+      <div ref={tablesection}>{props.children}</div>
     </div>
   );
 };
