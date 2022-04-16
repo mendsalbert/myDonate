@@ -16,7 +16,7 @@ export default function Dashboard() {
             {/* <p className="bg-white text-[#008E89]">Register</p> */}
           </div>
 
-          <div className="grid grid-cols-3 text-center gap-7 py-10">
+          <div className="grid grid-cols-3 text-center gap-7 py-16">
             <div className="bg-white shadow-2xl flex flex-col items-center justify-center space-y-2 py-10">
               <div className="bg-yellow-600 rounded-full p-3 ">
                 <UserGroupIcon className="w-10 text-white" />
@@ -40,7 +40,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div></div>
+        <div className="w-full  bg-white px-36">fsdf</div>
       </div>
     </>
   );
