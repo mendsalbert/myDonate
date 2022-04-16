@@ -6,14 +6,19 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/link";
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 type Props = {
   children;
 };
 
 const UserLayout = (props: Props) => {
-  const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
+  const tablesection = useRef(null);
+  const scrollDown = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="bg-white  font-Montserrat ">
       <div className="bg-[#008E89] px-10 md:px-36 ">
@@ -28,11 +33,9 @@ const UserLayout = (props: Props) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 text-center gap-7 py-16">
-          <Link href="/dashboard/user/" scroll={true}>
+          <Link href="/dashboard/user/" scroll={false}>
             <div
-              onClick={() => {
-                executeScroll;
-              }}
+              onClick={() => scrollDown(tablesection)}
               id="books"
               className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
             >
@@ -43,8 +46,9 @@ const UserLayout = (props: Props) => {
               <p className=" text-2xl text-gray-600">10 Books Lended</p>
             </div>
           </Link>
-          <Link href="/dashboard/user/overdue" scroll={true}>
+          <Link href="/dashboard/user/overdue" scroll={false}>
             <div
+              onClick={() => scrollDown(tablesection)}
               id="overdue"
               className="bg-white cursor-pointer shadow-2xl flex flex-col items-center justify-center space-y-2 py-10"
             >
@@ -59,7 +63,7 @@ const UserLayout = (props: Props) => {
           </Link>
         </div>
       </div>
-      <div ref={myRef}>{props.children}</div>
+      <div ref={tablesection}>{props.children}</div>
     </div>
   );
 };

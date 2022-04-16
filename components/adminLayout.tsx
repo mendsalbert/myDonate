@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import {
   UserIcon,
@@ -10,6 +10,13 @@ type Props = {
 };
 
 const Layout = (props: Props) => {
+  const tablesection = useRef(null);
+  const scrollDown = (ref) => {
+    window.scrollTo({
+      top: ref.current.offsetTop,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="bg-white  font-Montserrat ">
       <div className="bg-[#008E89] px-10 md:px-36 ">
