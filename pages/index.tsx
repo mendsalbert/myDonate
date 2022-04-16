@@ -36,7 +36,7 @@ const IndexPage = () => (
             </div>
           </div>
         </div>
-        <p className="text-center text-gray-700 text-lg md:text-xl mb-10">
+        <p className="text-center text-gray-700 p-4 text-lg md:text-xl mb-10">
           Already have an account ? Log In
         </p>
       </div>
