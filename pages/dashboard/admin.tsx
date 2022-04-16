@@ -7,15 +7,10 @@ export default function Dashboard() {
   return (
     <>
       <div className="bg-white  font-Montserrat ">
-        <div className="bg-[#008E89] px-36 ">
-          {/* <div className=" flex flex-row justify-between"> */}
+        <div className="bg-[#008E89] px-10 md:px-36 ">
           <div className="flex flex-row justify-between py-5">
-            {/* <div className="flex flex-row justify-center items-center  space-x-2">
-              <img src="/images/ghlalogo.png" className="w-14 " />
-              <p className="text-white text-xl">GHLA</p>
-            </div> */}
             <div className="flex flex-row justify-center items-center  space-x-2">
-              <img src="/images/ghlalogo.png" className="w-14 " />
+              <img src="/images/ghlalogo.png" className="w-10 " />
               <p className="text-white text-lg">GHLA</p>
             </div>
             <p className="bg-white text-center rounded-full text-lg py-1 px-5 text-[#008E89]">
@@ -23,7 +18,7 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 text-center gap-7 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 text-center gap-7 py-16">
             <div className="bg-white shadow-2xl flex flex-col items-center justify-center space-y-2 py-10">
               <div className="bg-yellow-600 rounded-full p-3 ">
                 <UserGroupIcon className="w-10 text-white" />
@@ -47,7 +42,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="w-full  bg-white px-36">
+        <div className="w-full  bg-white px-10 md:px-36 ">
           <body className="antialiased font-sans ">
             <div className="container mx-auto  ">
               <div className="py-8">
