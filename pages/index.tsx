@@ -9,7 +9,7 @@ const IndexPage = () => (
     </div>
     <div className="flex flex-col justify-center items-center w-full">
       <div>
-        <img src="/images/ghlalogo.png" className="w-14" />
+        <img src="/images/ghlalogo.png" className="w-14 mt-5" />
       </div>
       <div className="text-center py-4">
         <p className="text-white text-2xl font-bold">Ghana Library Authority</p>
