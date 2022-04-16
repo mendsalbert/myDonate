@@ -18,7 +18,7 @@ const Children = (props: Props) => {
           </p>
           <p className="text-white text-lg md:text-2xl">Lending Services</p>
         </div>
-        <div className=" z-10 bg-white mx-2 md:mx-0 rounded-2xl shadow-2xl p-6 overflow-scroll ">
+        <div className=" z-10 bg-white mx-2 md:mx-0 rounded-2xl shadow-2xl p-6 mb-10 ">
           <form className="w-full max-w-lg">
             <p className="text-gray-700 text-xl text-center pb-6 ">
               Adult Registration Form
