@@ -35,9 +35,6 @@ const Children = (props: Props) => {
                   type="text"
                   placeholder="Jane"
                 />
-                <p className="text-red-500 text-xs italic">
-                  Please fill out this field.
-                </p>
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -62,9 +59,6 @@ const Children = (props: Props) => {
                   type="text"
                   placeholder="Jane"
                 />
-                <p className="text-red-500 text-xs italic">
-                  Please fill out this field.
-                </p>
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
