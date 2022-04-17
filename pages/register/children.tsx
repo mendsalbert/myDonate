@@ -54,22 +54,24 @@ const Children = (props: Props) => {
           <img src="/images/ghlalogo.png" className="w-14 mt-5" />
         </div>
         <div className="text-center py-4">
-          <p className="text-white text-lg md:text-2xl font-bold">
+          <p className="text-white text-lg md:text-3xl font-bold">
             Ghana Library Authority
           </p>
           <p className="text-white text-lg md:text-2xl">Lending Services</p>
         </div>
         <div className=" z-10 bg-white mx-2 md:mx-0 mb-10 rounded-2xl shadow-2xl p-6  overflow-hidden w-full md:w-8/12 ">
-          <form className="w-full  ">
-            <p className="text-gray-700 text-xl text-center pb-6 ">
+          <div className="w-full  ">
+            <p className="font-bold text-gray-700 text-xl text-center pb-6 ">
               Children Registration Form
             </p>
 
             <div>
-              <img src={file.file} className="w-36" />
-              <button onClick={() => fileRef.current.click()}>
-                Custom File Input Button
-              </button>
+              <img src={file.file} className="w-36 mt-6" />
+
+              <CameraIcon
+                onClick={() => fileRef.current.click()}
+                className="h-14 text-gray-700 cursor-pointer"
+              />
               <div className="relative">
                 <input
                   ref={fileRef}
@@ -77,7 +79,7 @@ const Children = (props: Props) => {
                   onChange={(e) => {
                     handleChange(e);
                   }}
-                  className="opacity z-50"
+                  className="opacity-0 z-50"
                 />
               </div>
             </div>
@@ -285,7 +287,7 @@ const Children = (props: Props) => {
             >
               Sign Up
             </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
