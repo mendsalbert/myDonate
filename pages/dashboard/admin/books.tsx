@@ -8,7 +8,7 @@ export default function Book() {
   return (
     <>
       <Layout>
-        <div className="w-full  bg-white px-10 md:px-36 ">
+        <div className="w-full  bg-white px-4 md:px-36 ">
           <body className="antialiased font-sans ">
             <div className="container mx-auto  ">
               <div className="py-8">

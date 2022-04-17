@@ -19,7 +19,7 @@ const Layout = (props: Props) => {
   };
   return (
     <div className="bg-white  font-Montserrat ">
-      <div className="bg-[#008E89] px-10 md:px-36 ">
+      <div className="bg-[#008E89] px-4 md:px-36 ">
         <div className="flex flex-row justify-between py-5">
           <div className="flex flex-row justify-center items-center  space-x-2">
             <img src="/images/ghlalogo.png" className="w-10 " />
