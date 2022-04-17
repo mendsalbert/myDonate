@@ -1,3 +1,4 @@
+import { CameraIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 
 type Props = {};
@@ -9,6 +10,8 @@ const Children = (props: Props) => {
       file: URL.createObjectURL(event.target.files[0]),
     });
   };
+
+  console.log(file);
   return (
     <div className="bg-[#008E89] w-full min-h-screen relative  font-Montserrat">
       <div className="absolute left-0 bottom-0 -z-5">
@@ -32,13 +35,17 @@ const Children = (props: Props) => {
             </p>
 
             <div>
-              <input
-                type="file"
-                onChange={(e) => {
-                  handleChange(e);
-                }}
-              />
-              <img src={file} />
+              <img src={file.file} className="w-24 h-24" />
+              <div className="relative">
+                <input
+                  type="file"
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                  className="opacity-0 z-50 "
+                />
+                <CameraIcon className="h-12 z-10 absolute top-0" />
+              </div>
             </div>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
