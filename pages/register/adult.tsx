@@ -9,6 +9,9 @@ const Adult = (props: Props) => {
   const [firstname, setfirstname] = useState("Mends");
   const [lastname, setlastname] = useState("Albert");
   const [gpsaddress, setgpsaddress] = useState("ba");
+  const [contact, setcontact] = useState("0249107812");
+  const [email, setemail] = useState("mendsalbert@gmail.com");
+  const [ghanacard, setghanacard] = useState("GHA-XXXX");
   const [housenumber, sethousenumber] = useState("sp90");
   const [password, setpassword] = useState("1234567");
   const [confirmpassword, setconfirmpassword] = useState("1234567");
@@ -106,6 +109,38 @@ const Adult = (props: Props) => {
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Contact
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-city"
+                  type="text"
+                  placeholder="0249107812"
+                  name={contact}
+                  onChange={(e) => {
+                    setcontact(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Email
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-city"
+                  type="text"
+                  placeholder="example@gmial.com"
+                  name={email}
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   GPS Address
                 </label>
                 <input
@@ -135,6 +170,25 @@ const Adult = (props: Props) => {
                 />
               </div>
             </div>
+
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Ghana Card Number
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-password"
+                  type="text"
+                  placeholder="GHA-XXXX"
+                  name={ghanacard}
+                  onChange={(e) => {
+                    setghanacard(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
