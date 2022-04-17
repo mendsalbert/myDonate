@@ -114,12 +114,27 @@ export default function Dashboard() {
                             </span>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                            <p className="text-gray-600 text-md py-1">Book 1</p>
+                            <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
                               <span
                                 aria-hidden
                                 className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                               ></span>
-                              <span className="relative">Activo</span>
+                              <span className="relative">Returned</span>
+                            </span>
+                            <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                              <span
+                                aria-hidden
+                                className="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"
+                              ></span>
+                              <span className="relative">Renewed</span>
+                            </span>
+                            <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                              <span
+                                aria-hidden
+                                className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                              ></span>
+                              <span className="relative">Lost</span>
                             </span>
                           </td>
                         </tr>
