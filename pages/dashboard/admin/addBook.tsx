@@ -209,7 +209,7 @@ export default function AddBook() {
                   onSubmitHandler();
                 }}
               >
-                {spinner ? <Spinner /> : "Sign Up"}
+                {spinner ? <Spinner /> : "Add Book"}
               </button>
             </div>
           </div>

@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-
+import axois from 'axios'
 type Props = {
   children?: ReactNode
   title?: string

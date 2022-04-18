@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import axios from "axios";
 import {
   UserIcon,
   BookOpenIcon,
@@ -10,6 +11,56 @@ type Props = {
 };
 
 const Layout = (props: Props) => {
+  const [users, setusers] = useState([]);
+  const [books, setbooks] = useState([]);
+  const [overduebooks, setoverduebooks] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1000/api/user/all-users`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        setusers(success.data);
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+
+    axios
+      .get(`http://localhost:1000/api/book/all-books`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        setbooks(success.data);
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+
+    axios
+      .get(`http://localhost:1000/api/book/all-books-overdue`, {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setoverduebooks(success.data);
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+  }, []);
+
   const tablesection = useRef(null);
   const scrollDown = (ref) => {
     window.scrollTo({
@@ -42,7 +93,9 @@ const Layout = (props: Props) => {
                 <UserGroupIcon className="w-10 text-white" />
               </div>
               <p className="text-2xl">USERS</p>
-              <p className=" text-2xl text-gray-600">5 Users added</p>
+              <p className=" text-2xl text-gray-600">
+                {users.length} Users added
+              </p>
             </div>
           </Link>
           <Link href="/dashboard/admin/books" scroll={false}>
