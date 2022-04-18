@@ -31,7 +31,7 @@ export default function Dashboard() {
                 </div>
                 <div className="modal-body relative p-4">
                   <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-full px-3 mb-7 md:mb-0">
+                    {/* <div className="w-full md:w-full px-3 mb-7 md:mb-0">
                       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         Type
                       </label>
@@ -40,7 +40,6 @@ export default function Dashboard() {
                           className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-state"
                         >
-                          {/* <option></option> */}
                           <option>Book 1</option>
                           <option>Adult</option>
                         </select>
@@ -54,7 +53,7 @@ export default function Dashboard() {
                           </svg>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="w-full md:w-full px-3">
                       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         Date to be returned
@@ -162,9 +161,6 @@ export default function Dashboard() {
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Books owned
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Actions
-                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -232,10 +228,6 @@ export default function Dashboard() {
                                 ></span>
                                 <span className="relative">expired</span>
                               </span>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex flex-row space-x-2">
                               <span
                                 onClick={() => {
                                   settoggle(!toggle);
