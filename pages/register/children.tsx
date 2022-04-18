@@ -76,6 +76,7 @@ const Children = (props: Props) => {
         console.log(success.data);
         setspinner(false);
         localStorage.setItem("user_token", success.data.token);
+        alert("Registration successfull");
         //redirect to dashboard
         // alert("project uploaded successfully");
         // console.log("project upload successfully");

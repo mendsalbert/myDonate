@@ -1,30 +1,69 @@
 import { CameraIcon } from "@heroicons/react/outline";
 import React, { useState, useRef } from "react";
-
+import axios from "axios";
 import Layout from "../../../components/adminLayout";
+import Spinner from "../../../components/spinner";
 export default function AddBook() {
   const fileRef = useRef() as any;
   const [file, setfile] = useState("") as any;
-  // title
-  // number
-  // copynumber
-  // author
-  // assertionnumber
-  // type
-
   const [title, settitle] = useState("title");
+  const [spinner, setspinner] = useState(false);
   const [number, setnumber] = useState("JFIC 428/FA");
   const [copynumber, setcopynumber] = useState("C.85");
   const [author, setauthor] = useState("Mends Albert");
   const [assertionnumber, setassertionnumber] = useState("656889");
   const [booktype, setbooktype] = useState("");
-  const handleChange = (event) => {
-    setfile({
-      file: URL.createObjectURL(event.target.files[0]),
-    });
-  };
+  const [uImage, setUImage] = useState("");
 
-  const onSubmitHandler = () => {};
+  const handleCapture = (e) => {
+    setfile({
+      file: URL.createObjectURL(e.target.files[0]),
+    });
+    const fileReader = new FileReader();
+    //Displaying image in the UI if it is one
+    if (e.target.files.length === 1) {
+      setUImage(e.target.files[0]);
+      fileReader.onload = (e) => {
+        // setImage(e.target.result);
+      };
+      fileReader.readAsDataURL(e.target.files[0]);
+    }
+  };
+  const onSubmitHandler = () => {
+    console.log("submitting");
+
+    setspinner(true);
+    let data = new FormData();
+
+    data.append("image", uImage);
+    data.append("title", title);
+    data.append("number", number);
+    data.append("copynumber", copynumber);
+    data.append("author", author);
+    data.append("assertion", assertionnumber);
+    data.append("type", booktype);
+
+    axios
+      .post("http://localhost:1000/api/book/add-book", data, {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+        localStorage.setItem("user_token", success.data.token);
+        //redirect to dashboard
+        alert("Registration successfull");
+        // console.log("project upload successfully");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+        alert(e.response.data.msg);
+      });
+  };
   return (
     <>
       <Layout>
@@ -47,7 +86,7 @@ export default function AddBook() {
                     ref={fileRef}
                     type="file"
                     onChange={(e) => {
-                      handleChange(e);
+                      handleCapture(e);
                     }}
                     className="opacity-0 z-50"
                   />
@@ -140,6 +179,9 @@ export default function AddBook() {
                   </label>
                   <div className="relative">
                     <select
+                      onChange={(e) => {
+                        setbooktype(e.target.value);
+                      }}
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-state"
                     >
@@ -161,13 +203,13 @@ export default function AddBook() {
               </div>
 
               <button
-                className="flex-shrink-0 bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-2 mt-4 px-2 rounded"
+                className="flex-shrink-0 flex flex-col justify-center items-center bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-2 mt-4 px-2 rounded"
                 type="button"
                 onClick={() => {
                   onSubmitHandler();
                 }}
               >
-                Add Book
+                {spinner ? <Spinner /> : "Sign Up"}
               </button>
             </div>
           </div>

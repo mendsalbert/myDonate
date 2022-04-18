@@ -72,7 +72,7 @@ const Adult = (props: Props) => {
         setspinner(false);
         localStorage.setItem("user_token", success.data.token);
         //redirect to dashboard
-        // alert("project uploaded successfully");
+        alert("Registration successfull");
         // console.log("project upload successfully");
       })
       .catch((e) => {
