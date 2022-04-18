@@ -53,7 +53,6 @@ const Layout = (props: Props) => {
         },
       })
       .then((success) => {
-        console.log(success.data);
         setoverduebooks(success.data);
       })
       .catch((e) => {
@@ -107,7 +106,9 @@ const Layout = (props: Props) => {
                 <BookOpenIcon className="w-10 text-white" />
               </div>
               <p className="text-2xl">BOOKS</p>
-              <p className=" text-2xl text-gray-600">10 Books added</p>
+              <p className=" text-2xl text-gray-600">
+                {books.length} Books added
+              </p>
             </div>
           </Link>
           <Link href="/dashboard/admin/overdue" scroll={false}>
@@ -119,7 +120,9 @@ const Layout = (props: Props) => {
                 <BookOpenIcon className="w-10 text-white" />
               </div>
               <p className="text-2xl">OVERDUE</p>
-              <p className=" text-2xl text-gray-600">20 Books overdue</p>
+              <p className=" text-2xl text-gray-600">
+                {overduebooks.length} Books overdue
+              </p>
             </div>
           </Link>
         </div>

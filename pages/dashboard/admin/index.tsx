@@ -1,8 +1,28 @@
 import react, { useState, useEffect } from "react";
 import Layout from "../../../components/adminLayout";
 import Link from "next/link";
+import axios from "axios";
 export default function Dashboard() {
   const [toggle, settoggle] = useState(false);
+
+  const [users, setusers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1000/api/user/all-users`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        setusers(success.data);
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+  }, []);
   return (
     <>
       <Layout>
@@ -164,85 +184,87 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-10 h-10">
-                                <img
-                                  className="w-full h-full rounded-full"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
+                        {users.map((user) => (
+                          <tr>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex items-center">
+                                <div className="flex-shrink-0 w-10 h-10">
+                                  <img
+                                    className="w-full h-full rounded-full"
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
+                                    alt=""
+                                  />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="text-gray-900 whitespace-no-wrap">
+                                    Vera Carpenter
+                                  </p>
+                                </div>
                               </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Vera Carpenter
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Admin
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Jan 21, 2020
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                              ></span>
-                              <span className="relative">Activo</span>
-                            </span>
-                          </td>
-                          <td className="px-5 py-5 border-b space-y-2 border-gray-200 bg-white text-sm">
-                            <div className="flex flex-row items-center  space-x-2">
-                              <p className="text-gray-600 text-md py-1">
-                                Book 1
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Admin
                               </p>
-                              <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                Jan 21, 2020
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                 <span
                                   aria-hidden
                                   className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                                 ></span>
-                                <span className="relative">Returned</span>
+                                <span className="relative">Activo</span>
                               </span>
-                            </div>
+                            </td>
+                            <td className="px-5 py-5 border-b space-y-2 border-gray-200 bg-white text-sm">
+                              <div className="flex flex-row items-center  space-x-2">
+                                <p className="text-gray-600 text-md py-1">
+                                  Book 1
+                                </p>
+                                <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
+                                  <span
+                                    aria-hidden
+                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                                  ></span>
+                                  <span className="relative">Returned</span>
+                                </span>
+                              </div>
 
-                            <div className="flex flex-row items-center space-x-2">
-                              {/* <p className="text-gray-600 text-md py-1"> */}
-                              <a href="#" className="text-blue-600 underline">
-                                Book 1
-                              </a>
-                              {/* </p> */}
+                              <div className="flex flex-row items-center space-x-2">
+                                {/* <p className="text-gray-600 text-md py-1"> */}
+                                <a href="#" className="text-blue-600 underline">
+                                  Book 1
+                                </a>
+                                {/* </p> */}
 
-                              <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                                <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                                  <span
+                                    aria-hidden
+                                    className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                  ></span>
+                                  <span className="relative">expired</span>
+                                </span>
                                 <span
-                                  aria-hidden
-                                  className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                                ></span>
-                                <span className="relative">expired</span>
-                              </span>
-                              <span
-                                onClick={() => {
-                                  settoggle(!toggle);
-                                }}
-                                className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
-                              >
-                                <span
-                                  aria-hidden
-                                  className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
-                                ></span>
-                                <span className="relative">Renew</span>
-                              </span>
-                            </div>
-                          </td>
-                        </tr>
+                                  onClick={() => {
+                                    settoggle(!toggle);
+                                  }}
+                                  className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                >
+                                  <span
+                                    aria-hidden
+                                    className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                  ></span>
+                                  <span className="relative">Renew</span>
+                                </span>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                     <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
