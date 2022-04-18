@@ -1,10 +1,11 @@
 import { CameraIcon } from "@heroicons/react/outline";
 import React, { useState, useRef } from "react";
-
+import axios from "axios";
 type Props = {};
 
 const Children = (props: Props) => {
   const fileRef = useRef() as any;
+  const [spinner, setspinner] = useState(false);
   const [file, setfile] = useState("") as any;
   const [firstname, setfirstname] = useState("Mends");
   const [lastname, setlastname] = useState("Albert");
@@ -28,22 +29,50 @@ const Children = (props: Props) => {
   };
 
   const onSubmitHandler = () => {
+    console.log("submitting");
     if (password !== confirmpassword) {
       alert("password do not match");
     }
-    console.log(firstname);
-    console.log(lastname);
-    console.log(firstguardian);
-    console.log(secondguardian);
-    console.log(firstguardiancontact);
-    console.log(secondguardiancontact);
-    console.log(schoolname);
-    console.log(classname);
-    console.log(gpsaddress);
-    console.log(housenumber);
-    console.log(password);
-    console.log(confirmpassword);
+    setspinner(true);
+    let data = new FormData();
+
+    data.append("image", file.file);
+    data.append("firstname", firstname);
+    data.append("username", username);
+    data.append("lastname", lastname);
+    data.append("firstguardian", firstguardian);
+    data.append("firstguardiancontact", firstguardiancontact);
+    data.append("secondguardian", secondguardian);
+    data.append("secondguardiancontact", secondguardiancontact);
+    data.append("nameofschool", schoolname);
+    data.append("gpsaddress", gpsaddress);
+    data.append("housenumber", housenumber);
+    data.append("contact", "");
+    data.append("email", "");
+    data.append("ghanacard", "");
+    data.append("password", "");
+    data.append("usertype", "children");
+
+    axios
+      .post("http://localhost:1000/api/user/", data, {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+
+        // alert("project uploaded successfully");
+        // console.log("project upload successfully");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+      });
   };
+
   return (
     <div className="bg-[#008E89] w-full min-h-screen relative  font-Montserrat">
       <div className="absolute left-0 bottom-0 -z-5">
