@@ -1,9 +1,84 @@
+import react, { useState, useEffect } from "react";
 import Layout from "../../../components/adminLayout";
 import Link from "next/link";
 export default function Dashboard() {
+  const [toggle, settoggle] = useState(false);
   return (
     <>
       <Layout>
+        {toggle ? (
+          <div
+            className="modal fade fixed  z-40 w-full px-4  md:px-0 md:w-4/12 grid place-items-center h-screen top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  outline-none overflow-x-hidden overflow-y-auto"
+            id="exampleModalScrollable"
+            aria-labelledby="exampleModalScrollableLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
+              <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                  <h5
+                    className="text-xl font-medium leading-normal text-gray-800"
+                    id="exampleModalScrollableLabel"
+                  >
+                    Renew Book
+                  </h5>
+                  <button
+                    type="button"
+                    className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body relative p-4">
+                  <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        Book title
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-first-name"
+                        type="text"
+                        placeholder="Book title"
+                      />
+                    </div>
+                    <div className="w-full md:w-full px-3">
+                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        Date to be returned
+                      </label>
+                      <input
+                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-last-name"
+                        type="date"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                  <button
+                    onClick={() => {
+                      settoggle(!toggle);
+                    }}
+                    type="button"
+                    className="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="w-full  bg-white px-4 md:px-36 ">
           <body className="antialiased font-sans ">
             <div className="container mx-auto  ">
@@ -74,6 +149,9 @@ export default function Dashboard() {
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Books owned
                           </th>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Actions
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -139,9 +217,23 @@ export default function Dashboard() {
                                   aria-hidden
                                   className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
                                 ></span>
-                                <span className="relative">
-                                  expired (24/05/22)
-                                </span>
+                                <span className="relative">expired</span>
+                              </span>
+                            </div>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <div className="flex flex-row space-x-2">
+                              <span
+                                onClick={() => {
+                                  settoggle(!toggle);
+                                }}
+                                className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                              >
+                                <span
+                                  aria-hidden
+                                  className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                ></span>
+                                <span className="relative">Renew</span>
                               </span>
                             </div>
                           </td>
