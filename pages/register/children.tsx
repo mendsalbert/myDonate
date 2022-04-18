@@ -20,7 +20,7 @@ const Children = (props: Props) => {
   const [housenumber, sethousenumber] = useState("sp90");
   const [password, setpassword] = useState("1234567");
   const [confirmpassword, setconfirmpassword] = useState("1234567");
-
+  const [username, setusername] = useState("mendsalbert");
   const handleChange = (event) => {
     setfile({
       file: URL.createObjectURL(event.target.files[0]),
@@ -80,6 +80,23 @@ const Children = (props: Props) => {
                     handleChange(e);
                   }}
                   className="opacity-0 z-50"
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  User name
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name"
+                  name={username}
+                  onChange={(e) => {
+                    setusername(e.target.value);
+                  }}
+                  type="text"
+                  placeholder="janedoe"
                 />
               </div>
             </div>
