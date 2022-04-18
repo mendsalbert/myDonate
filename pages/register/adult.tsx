@@ -1,10 +1,13 @@
 import { CameraIcon } from "@heroicons/react/outline";
 import React, { useState, useRef } from "react";
+import axios from "axios";
+import Spinner from "../../components/spinner";
 
 type Props = {};
 
 const Adult = (props: Props) => {
   const fileRef = useRef() as any;
+  const [spinner, setspinner] = useState(false);
   const [file, setfile] = useState("") as any;
   const [firstname, setfirstname] = useState("Mends");
   const [username, setusername] = useState("mendsalbert");
@@ -16,24 +19,67 @@ const Adult = (props: Props) => {
   const [housenumber, sethousenumber] = useState("sp90");
   const [password, setpassword] = useState("1234567");
   const [confirmpassword, setconfirmpassword] = useState("1234567");
-
-  const handleChange = (event) => {
+  const [uImage, setUImage] = useState("");
+  const handleCapture = (e) => {
     setfile({
-      file: URL.createObjectURL(event.target.files[0]),
+      file: URL.createObjectURL(e.target.files[0]),
     });
+    const fileReader = new FileReader();
+    //Displaying image in the UI if it is one
+    if (e.target.files.length === 1) {
+      setUImage(e.target.files[0]);
+      fileReader.onload = (e) => {
+        // setImage(e.target.result);
+      };
+      fileReader.readAsDataURL(e.target.files[0]);
+    }
   };
-
   const onSubmitHandler = () => {
+    console.log("submitting");
     if (password !== confirmpassword) {
       alert("password do not match");
     }
-    console.log(firstname);
-    console.log(lastname);
+    setspinner(true);
+    let data = new FormData();
 
-    console.log(gpsaddress);
-    console.log(housenumber);
-    console.log(password);
-    console.log(confirmpassword);
+    data.append("image", uImage);
+    data.append("firstname", firstname);
+    data.append("username", username);
+    data.append("lastname", lastname);
+    data.append("firstguardian", "");
+    data.append("firstguardiancontact", "");
+    data.append("secondguardian", "");
+    data.append("secondguardiancontact", "");
+    data.append("nameofschool", "");
+    data.append("gpsaddress", gpsaddress);
+    data.append("classname", "");
+    data.append("housenumber", housenumber);
+    data.append("contact", contact);
+    data.append("email", email);
+    data.append("ghanacard", ghanacard);
+    data.append("password", password);
+    data.append("usertype", "adult");
+
+    axios
+      .post("http://localhost:1000/api/user/", data, {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+        localStorage.setItem("user_token", success.data.token);
+        //redirect to dashboard
+        // alert("project uploaded successfully");
+        // console.log("project upload successfully");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+        alert(e.response.data.msg);
+      });
   };
   return (
     <div className="bg-[#008E89] w-full min-h-screen relative  font-Montserrat">
@@ -68,7 +114,7 @@ const Adult = (props: Props) => {
                   ref={fileRef}
                   type="file"
                   onChange={(e) => {
-                    handleChange(e);
+                    handleCapture(e);
                   }}
                   className="opacity-0 z-50"
                 />
@@ -243,13 +289,13 @@ const Adult = (props: Props) => {
             </div>
 
             <button
-              className="flex-shrink-0 bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-2 mt-4 px-2 rounded"
+              className="flex-shrink-0 flex flex-col justify-center items-center bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-2 mt-4 px-2 rounded"
               type="button"
               onClick={() => {
                 onSubmitHandler();
               }}
             >
-              Sign Up
+              {spinner ? <Spinner /> : "Sign Up"}
             </button>
           </div>
         </div>
