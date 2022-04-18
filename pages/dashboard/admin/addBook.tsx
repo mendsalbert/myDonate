@@ -1,113 +1,151 @@
-import {
-  UserIcon,
-  BookOpenIcon,
-  UserGroupIcon,
-} from "@heroicons/react/outline";
+import { CameraIcon } from "@heroicons/react/outline";
+import React, { useState, useRef } from "react";
+
 import Layout from "../../../components/adminLayout";
 export default function AddBook() {
+  const fileRef = useRef() as any;
+  const [file, setfile] = useState("") as any;
+  // title
+  // number
+  // copynumber
+  // author
+  // assertionnumber
+  // type
+
+  const [title, settitle] = useState("title");
+  const [number, setnumber] = useState("JFIC 428/FA");
+  const [copynumber, setcopynumber] = useState("C.85");
+  const [author, setauthor] = useState("Mends Albert");
+  const [assertionnumber, setassertionnumber] = useState("656889");
+  const [booktype, setbooktype] = useState("");
+  const handleChange = (event) => {
+    setfile({
+      file: URL.createObjectURL(event.target.files[0]),
+    });
+  };
+
+  const onSubmitHandler = () => {};
   return (
     <>
       <Layout>
-        <div className="flex flex-col justify-center items-center w-full">
-          <div className=" z-10 bg-white my-10 mx-2 md:mx-0 rounded-2xl shadow-2xl p-6 mb-10 ">
-            <form className="w-full max-w-lg">
-              <p className="text-gray-700  py-5 text-2xl font-bold text-center pb-6 ">
+        <div className="flex my-10 flex-col justify-center items-center w-full">
+          <div className=" z-10 bg-white mx-2 md:mx-0 mb-10 rounded-2xl shadow-2xl p-6  overflow-hidden w-full md:w-8/12 ">
+            <div className="w-full  ">
+              <p className="font-bold text-gray-700 text-xl py-10 text-center pb-6 ">
                 Add Book
               </p>
-              <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    First Name
-                  </label>
+
+              <div>
+                <img src={file.file} className="w-36 mt-6" />
+
+                <CameraIcon
+                  onClick={() => fileRef.current.click()}
+                  className="h-14 text-gray-700 cursor-pointer"
+                />
+                <div className="relative">
                   <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    id="grid-first-name"
-                    type="text"
-                    placeholder="Jane"
-                  />
-                  <p className="text-red-500 text-xs italic">
-                    Please fill out this field.
-                  </p>
-                </div>
-                <div className="w-full md:w-1/2 px-3">
-                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    Last Name
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-last-name"
-                    type="text"
-                    placeholder="Doe"
+                    ref={fileRef}
+                    type="file"
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    className="opacity-0 z-50"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-6">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    First Name
+                    Title
                   </label>
                   <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     id="grid-first-name"
+                    name={title}
+                    onChange={(e) => {
+                      settitle(e.target.value);
+                    }}
                     type="text"
                     placeholder="Jane"
                   />
-                  <p className="text-red-500 text-xs italic">
-                    Please fill out this field.
-                  </p>
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    Last Name
+                    Number
                   </label>
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-last-name"
                     type="text"
+                    name={number}
+                    onChange={(e) => {
+                      setnumber(e.target.value);
+                    }}
                     placeholder="Doe"
                   />
                 </div>
               </div>
+
               <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+                <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    Password
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-password"
-                    type="password"
-                    placeholder="******************"
-                  />
-                  <p className="text-gray-600 text-xs italic">
-                    Make it as long and as crazy as you'd like
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-2">
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    City
+                    Copy number
                   </label>
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-city"
                     type="text"
+                    placeholder="0249107812"
+                    name={copynumber}
+                    onChange={(e) => {
+                      setcopynumber(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                    Author
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-city"
+                    type="text"
+                    placeholder="example@gmial.com"
+                    name={author}
+                    onChange={(e) => {
+                      setauthor(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap -mx-3 mb-2">
+                <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                    Assertion Number
+                  </label>
+                  <input
+                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="grid-city"
+                    type="text"
+                    value={assertionnumber}
+                    onChange={(e) => {
+                      setassertionnumber(e.target.value);
+                    }}
                     placeholder="Albuquerque"
                   />
                 </div>
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    State
+                    Type
                   </label>
                   <div className="relative">
                     <select
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-state"
                     >
-                      <option>New Mexico</option>
-                      <option>Missouri</option>
-                      <option>Texas</option>
+                      <option></option>
+                      <option>Children</option>
+                      <option>Adult</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg
@@ -120,25 +158,18 @@ export default function AddBook() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    Zip
-                  </label>
-                  <input
-                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-zip"
-                    type="text"
-                    placeholder="90210"
-                  />
-                </div>
               </div>
+
               <button
                 className="flex-shrink-0 bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-2 mt-4 px-2 rounded"
                 type="button"
+                onClick={() => {
+                  onSubmitHandler();
+                }}
               >
-                Sign Up
+                Add Book
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </Layout>

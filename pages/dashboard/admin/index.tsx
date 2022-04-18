@@ -113,7 +113,7 @@ export default function Dashboard() {
                               <span className="relative">Activo</span>
                             </span>
                           </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <td className="px-5 py-5 border-b space-y-2 border-gray-200 bg-white text-sm">
                             <div className="flex flex-row items-center  space-x-2">
                               <p className="text-gray-600 text-md py-1">
                                 Book 1
