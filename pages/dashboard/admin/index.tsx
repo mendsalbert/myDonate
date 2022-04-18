@@ -5,7 +5,27 @@ import axios from "axios";
 export default function Dashboard() {
   const [toggle, settoggle] = useState(false);
 
-  const [users, setusers] = useState([]);
+  let _users = [];
+  useEffect(() => {
+    _users = JSON.parse(localStorage.getItem("users") || "[]");
+  }, []);
+  const [users, setusers] = useState(_users);
+
+  const filter = (e) => {
+    const keyword = e.target.value;
+    if (keyword !== "") {
+      const results = users.filter((user) => {
+        return (
+          user.firstname.toLowerCase().startsWith(keyword.toLowerCase()) ||
+          user.lastname.toLowerCase().startsWith(keyword.toLowerCase()) ||
+          user.username.toLowerCase().startsWith(keyword.toLowerCase())
+        );
+      });
+      setusers(results);
+    } else {
+      setusers(JSON.parse(localStorage.getItem("users") || "[]"));
+    }
+  };
 
   useEffect(() => {
     axios
@@ -17,12 +37,15 @@ export default function Dashboard() {
         },
       })
       .then((success) => {
+        console.log(success.data);
         setusers(success.data);
+        localStorage.setItem("users", JSON.stringify(success.data));
       })
       .catch((e) => {
         console.log(e.response.data);
       });
   }, []);
+
   return (
     <>
       <Layout>
@@ -122,24 +145,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex flex-col md:flex-row md:justify-between  md:items-center">
                   <div className="my-2 flex sm:flex-row flex-col">
-                    <div className="flex flex-row mb-1 sm:mb-0">
-                      <div className="relative">
-                        <select className=" h-full rounded-l border block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                          <option>5</option>
-                          <option>10</option>
-                          <option>20</option>
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-                      </div>
-                      <div className="relative">
-                        <select className=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                          <option>All</option>
-                          <option>Adults</option>
-                          <option>Children</option>
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-                      </div>
-                    </div>
+                    <div className="flex flex-row mb-1 sm:mb-0"></div>
                     <div className="block relative">
                       <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg
@@ -151,6 +157,10 @@ export default function Dashboard() {
                       </span>
                       <input
                         placeholder="Search"
+                        onChange={(e) => {
+                          filter(e);
+                        }}
+                        type="search"
                         className=" rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                       />
                     </div>
@@ -170,7 +180,7 @@ export default function Dashboard() {
                             User
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Name
+                            username
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Contact
@@ -188,38 +198,45 @@ export default function Dashboard() {
                           <tr>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <div className="flex items-center">
-                                <div className="flex-shrink-0 w-10 h-10">
+                                <div className="flex-shrink-0 w-16 h-16">
                                   <img
                                     className="w-full h-full rounded-full"
-                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                    alt=""
+                                    src={`data:image/png;base64,${user.image.toString(
+                                      "base64"
+                                    )}`}
+                                    alt={user.username}
                                   />
                                 </div>
                                 <div className="ml-3">
                                   <p className="text-gray-900 whitespace-no-wrap">
-                                    Vera Carpenter
+                                    {user.firstname + " " + user.lastname}
                                   </p>
                                 </div>
                               </div>
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                Admin
+                                {user.username}
                               </p>
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                Jan 21, 2020
+                                {user.usertype === "children"
+                                  ? user.firstguardiancontact
+                                  : user.contact}
                               </p>
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                              <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {user.gpsaddress}
+                              </p>
+                              {/* <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                 <span
                                   aria-hidden
                                   className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                                 ></span>
                                 <span className="relative">Activo</span>
-                              </span>
+                              </span> */}
                             </td>
                             <td className="px-5 py-5 border-b space-y-2 border-gray-200 bg-white text-sm">
                               <div className="flex flex-row items-center  space-x-2">
