@@ -138,9 +138,9 @@ export default function Overdue() {
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             status
                           </th>
-                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Actions
-                          </th>
+                          </th> */}
                         </tr>
                       </thead>
                       <tbody>
@@ -190,7 +190,7 @@ export default function Overdue() {
                               <span className="relative">Overdue</span>
                             </span>
                           </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <div className="flex flex-row space-x-2">
                               <span
                                 onClick={() => {
@@ -205,7 +205,7 @@ export default function Overdue() {
                                 <span className="relative">Renew</span>
                               </span>
                             </div>
-                          </td>
+                          </td> */}
                         </tr>
                         <tr>
                           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -241,7 +241,7 @@ export default function Overdue() {
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p className="text-gray-900 whitespace-no-wrap">
-                              Mavis
+                              Mends
                             </p>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
