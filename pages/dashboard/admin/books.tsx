@@ -32,11 +32,7 @@ export default function Book() {
   };
 
   const dispatchHandler = () => {
-    // setspinner(true);
-    console.log(bookid);
-    console.log(userid);
-    console.log(renewdate);
-
+    setspinner(true);
     axios
       .post(
         `http://localhost:1000/api/book/dispatch-book/${bookid}/${userid}`,
@@ -122,7 +118,7 @@ export default function Book() {
       .catch((e) => {
         console.log(e.response.data);
       });
-  }, []);
+  }, [spinner]);
 
   return (
     <>
@@ -386,7 +382,7 @@ export default function Book() {
                                     <span className="relative">Dispatch</span>
                                   </span>
                                 )}
-                                {book.dispatched ? (
+                                {!book.dispatched ? (
                                   ""
                                 ) : (
                                   <span
