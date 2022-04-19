@@ -10,7 +10,9 @@ export default function Dashboard() {
     _users = JSON.parse(localStorage.getItem("users") || "[]");
   }, []);
   const [users, setusers] = useState(_users);
-
+  const [spinner, setspinner] = useState(false);
+  const [renewdate, setrenewdate] = useState("");
+  const [bookid, setbookid] = useState("");
   const filter = (e) => {
     const keyword = e.target.value;
     if (keyword !== "") {
@@ -25,6 +27,34 @@ export default function Dashboard() {
     } else {
       setusers(JSON.parse(localStorage.getItem("users")));
     }
+  };
+
+  const renewHanlder = () => {
+    console.log(bookid);
+    // setspinner(true);
+    // axios
+    //   .post(
+    //     `http://localhost:1000/api/book/dispatch-book/${bookid}`,
+    //     { renewDate: renewdate },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   )
+    //   .then((success) => {
+    //     console.log(success.data);
+    //     setspinner(false);
+    //     settoggle(false);
+    //     //redirect to dashboard
+    //     alert("Book dispatched  successfull");
+    //     // console.log("project upload successfully");
+    //   })
+    //   .catch((e) => {
+    //     setspinner(false);
+    //     console.log(e.response.data);
+    //     alert(e.response.data.msg);
+    //   });
   };
 
   useEffect(() => {
@@ -44,7 +74,7 @@ export default function Dashboard() {
       .catch((e) => {
         console.log(e.response.data);
       });
-  }, []);
+  }, [spinner]);
 
   return (
     <>
@@ -74,29 +104,6 @@ export default function Dashboard() {
                 </div>
                 <div className="modal-body relative p-4">
                   <div className="flex flex-wrap -mx-3 mb-6">
-                    {/* <div className="w-full md:w-full px-3 mb-7 md:mb-0">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Type
-                      </label>
-                      <div className="relative">
-                        <select
-                          className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                          id="grid-state"
-                        >
-                          <option>Book 1</option>
-                          <option>Adult</option>
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                          <svg
-                            className="fill-current h-4 w-4"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div> */}
                     <div className="w-full md:w-full px-3">
                       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                         Date to be returned
@@ -106,6 +113,10 @@ export default function Dashboard() {
                         id="grid-last-name"
                         type="date"
                         placeholder="Doe"
+                        value={renewdate}
+                        onChange={(e) => {
+                          setrenewdate(e.target.value);
+                        }}
                       />
                     </div>
                   </div>
@@ -122,6 +133,9 @@ export default function Dashboard() {
                     Close
                   </button>
                   <button
+                    onClick={() => {
+                      renewHanlder();
+                    }}
                     type="button"
                     className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
                   >
@@ -253,59 +267,33 @@ export default function Dashboard() {
                                       <span className="relative">Returned</span>
                                     </span>
                                   ) : (
-                                    ""
-                                    // <div className="flex flex-row items-center space-x-2">
-                                    //   <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
-                                    //     <span
-                                    //       aria-hidden
-                                    //       className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                                    //     ></span>
-                                    //     <span className="relative">
-                                    //       expired
-                                    //     </span>
-                                    //   </span>
-                                    //   <span
-                                    //     onClick={() => {
-                                    //       settoggle(!toggle);
-                                    //     }}
-                                    //     className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
-                                    //   >
-                                    //     <span
-                                    //       aria-hidden
-                                    //       className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
-                                    //     ></span>
-                                    //     <span className="relative">Renew</span>
-                                    //   </span>
-                                    // </div>
+                                    <div className="flex flex-row items-center space-x-2">
+                                      <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                                        <span
+                                          aria-hidden
+                                          className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                        ></span>
+                                        <span className="relative">
+                                          expired
+                                        </span>
+                                      </span>
+                                      <span
+                                        onClick={() => {
+                                          setbookid(book._id);
+                                          settoggle(!toggle);
+                                        }}
+                                        className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                      >
+                                        <span
+                                          aria-hidden
+                                          className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                        ></span>
+                                        <span className="relative">Renew</span>
+                                      </span>
+                                    </div>
                                   )}
                                 </div>
                               ))}
-
-                              {/* <div className="flex flex-row items-center space-x-2">
-                                <p className="text-gray-600 text-md py-1">
-                                  Book 1kjkhh
-                                </p>
-
-                                <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
-                                  <span
-                                    aria-hidden
-                                    className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                                  ></span>
-                                  <span className="relative">expired</span>
-                                </span>
-                                <span
-                                  onClick={() => {
-                                    settoggle(!toggle);
-                                  }}
-                                  className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
-                                >
-                                  <span
-                                    aria-hidden
-                                    className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
-                                  ></span>
-                                  <span className="relative">Renew</span>
-                                </span>
-                              </div> */}
                             </td>
                           </tr>
                         ))}
