@@ -29,7 +29,7 @@ export default function AddBook() {
       fileReader.readAsDataURL(e.target.files[0]);
     }
   };
-  const onSubmitHandler = () => {
+  const onSubmitBookHandler = () => {
     console.log("submitting");
 
     setspinner(true);
@@ -206,7 +206,7 @@ export default function AddBook() {
                 className="flex-shrink-0 flex flex-col justify-center items-center bg-teal-500 w-full hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-2 mt-4 px-2 rounded"
                 type="button"
                 onClick={() => {
-                  onSubmitHandler();
+                  onSubmitBookHandler();
                 }}
               >
                 {spinner ? <Spinner /> : "Add Book"}

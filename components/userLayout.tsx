@@ -1,17 +1,58 @@
-import React, { useRef } from "react";
+import react, { useState, useRef, useEffect } from "react";
 import {
   UserIcon,
   BookOpenIcon,
   UserGroupIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
-
+import axios from "axios";
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 type Props = {
   children;
 };
 
 const UserLayout = (props: Props) => {
+  const [books, setbooks] = useState([]);
+  const [overduebooks, setoverduebooks] = useState([]);
+  let token;
+  useEffect(() => {
+    token = localStorage.getItem("user_token");
+  }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1000/api/user/all-mybooks`, {
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((success) => {
+        // console.log(success.data[0].books);
+        setbooks(success.data[0].books);
+        localStorage.setItem(
+          "user_books",
+          JSON.stringify(success.data[0].books)
+        );
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+
+    axios
+      .get(`http://localhost:1000/api/user/all-overdue`, {
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((success) => {
+        setoverduebooks(success.data);
+      })
+      .catch((e) => {
+        console.log(e.response.data[0].books);
+      });
+  }, []);
+
   const tablesection = useRef(null);
   const scrollDown = (ref) => {
     window.scrollTo({
@@ -43,7 +84,9 @@ const UserLayout = (props: Props) => {
                 <BookOpenIcon className="w-10 text-white" />
               </div>
               <p className="text-2xl">BOOKS</p>
-              <p className=" text-2xl text-gray-600">10 Books Lended</p>
+              <p className=" text-2xl text-gray-600">
+                {books.length} Books Lended
+              </p>
             </div>
           </Link>
           <Link href="/dashboard/user/overdue" scroll={false}>
@@ -57,7 +100,7 @@ const UserLayout = (props: Props) => {
               </div>
               <p className="text-2xl">OVERDUE</p>
               <p className=" text-2xl text-gray-600">
-                20 Books overdue(to be returned)
+                {overduebooks.length} Books overdue
               </p>
             </div>
           </Link>

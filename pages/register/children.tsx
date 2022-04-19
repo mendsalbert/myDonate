@@ -109,6 +109,18 @@ const Children = (props: Props) => {
               Children Registration Form
             </p>
 
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+                <p className="block  text-gray-700 text-md  mb-2">
+                  When I write my name on this form, I promise to obey the rules
+                  of the Library
+                </p>
+                <ol className="list-decimal">
+                  <li>head</li>
+                  <li>head</li>
+                </ol>
+              </div>
+            </div>
             <div>
               <img src={file.file} className="w-36 mt-6" />
 
@@ -120,9 +132,6 @@ const Children = (props: Props) => {
                 <input
                   ref={fileRef}
                   type="file"
-                  // onChange={(e) => {
-                  //   handleChange(e);
-                  // }}
                   onChange={(e) => {
                     handleCapture(e);
                   }}

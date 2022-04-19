@@ -46,20 +46,20 @@ const Layout = (props: Props) => {
         console.log(e.response.data);
       });
 
-    axios
-      .get(`http://localhost:1000/api/book/check-overdue`, {
-        headers: {
-          // "x-auth-token": token,
-          accept: "application/json",
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((success) => {
-        setbooks(success.data);
-      })
-      .catch((e) => {
-        console.log(e.response.data);
-      });
+    // axios
+    //   .get(`http://localhost:1000/api/book/check-overdue`, {
+    //     headers: {
+    //       // "x-auth-token": token,
+    //       accept: "application/json",
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   })
+    //   .then((success) => {
+    //     setbooks(success.data);
+    //   })
+    //   .catch((e) => {
+    //     console.log(e.response.data);
+    //   });
     // /check-overdue
     axios
       .get(`http://localhost:1000/api/book/all-books-overdue`, {

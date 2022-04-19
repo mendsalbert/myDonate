@@ -75,6 +75,23 @@ export default function Dashboard() {
       .catch((e) => {
         console.log(e.response.data);
       });
+
+    axios
+      .get(`http://localhost:1000/api/book/check-overdue`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        // setusers(success.data);
+        // localStorage.setItem("users", JSON.stringify(success.data));
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
   }, [spinner]);
 
   return (

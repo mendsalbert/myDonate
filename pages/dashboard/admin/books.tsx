@@ -10,6 +10,7 @@ export default function Book() {
   useEffect(() => {
     _books = JSON.parse(localStorage.getItem("books") || "[]");
   }, []);
+
   const [books, setbooks] = useState(_books);
   const [users, setusers] = useState([]);
   const [spinner, setspinner] = useState(false);
@@ -97,7 +98,7 @@ export default function Book() {
       .then((success) => {
         console.log(success.data);
         setbooks(success.data);
-        localStorage.setItem("books", JSON.stringify(success.data));
+        // localStorage.setItem("books", JSON.stringify(success.data));
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -310,7 +311,7 @@ export default function Book() {
                               <div className="flex items-center">
                                 <div className="flex-shrink-0 w-14 h-14">
                                   <img
-                                    // className="w-full h-full rounded-full"
+                                    className="w-full h-full rounded-full"
                                     src={`data:image/png;base64,${book.image.toString(
                                       "base64"
                                     )}`}
