@@ -2,6 +2,7 @@ import react, { useState, useEffect } from "react";
 import Layout from "../../../components/adminLayout";
 import Link from "next/link";
 import axios from "axios";
+import Spinner from "../../../components/spinner";
 export default function Book() {
   const [toggle, settoggle] = useState(false);
 
@@ -10,7 +11,11 @@ export default function Book() {
     _books = JSON.parse(localStorage.getItem("books") || "[]");
   }, []);
   const [books, setbooks] = useState(_books);
-
+  const [users, setusers] = useState([]);
+  const [spinner, setspinner] = useState(false);
+  const [bookid, setBookId] = useState("");
+  const [userid, setuserfordispatched] = useState("");
+  const [renewdate, setrenewdate] = useState("");
   const filter = (e) => {
     const keyword = e.target.value;
     if (keyword !== "") {
@@ -22,8 +27,65 @@ export default function Book() {
       });
       setbooks(results);
     } else {
-      setbooks(JSON.parse(localStorage.getItem("users") || "[]"));
+      setbooks(JSON.parse(localStorage.getItem("books")));
     }
+  };
+
+  const dispatchHandler = () => {
+    // setspinner(true);
+    console.log(bookid);
+    console.log(userid);
+    console.log(renewdate);
+
+    axios
+      .post(
+        `http://localhost:1000/api/book/dispatch-book/${bookid}/${userid}`,
+        { renewDate: renewdate },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+
+        //redirect to dashboard
+        alert("Book dispatched  successfull");
+        // console.log("project upload successfully");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+        alert(e.response.data.msg);
+      });
+    // "/dispatch-book/:id/:userid",
+  };
+
+  const onReceiveBookHandler = (bookid) => {
+    axios
+      .post(
+        `http://localhost:1000/api/book/recieved-book/${bookid}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+
+        //redirect to dashboard
+        alert("Book recieved  successfull");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+        alert(e.response.data.msg);
+      });
   };
 
   useEffect(() => {
@@ -39,6 +101,23 @@ export default function Book() {
         console.log(success.data);
         setbooks(success.data);
         localStorage.setItem("books", JSON.stringify(success.data));
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+
+    axios
+      .get(`http://localhost:1000/api/user/all-users`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setusers(success.data);
+        localStorage.setItem("users", JSON.stringify(success.data));
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -81,10 +160,15 @@ export default function Book() {
                         <select
                           className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                           id="grid-state"
+                          onChange={(e) => {
+                            setuserfordispatched(e.target.value);
+                          }}
                         >
-                          <option></option>
-                          <option>Mends Albert</option>
-                          <option>Mavis Mawusi</option>
+                          {users.map((user) => (
+                            <option value={user._id}>
+                              {user.lastname + " " + user.firstname}
+                            </option>
+                          ))}
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                           <svg
@@ -105,6 +189,10 @@ export default function Book() {
                         className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-last-name"
                         type="date"
+                        value={renewdate}
+                        onChange={(e) => {
+                          setrenewdate(e.target.value);
+                        }}
                         placeholder="Doe"
                       />
                     </div>
@@ -122,10 +210,13 @@ export default function Book() {
                     Close
                   </button>
                   <button
+                    onClick={() => {
+                      dispatchHandler();
+                    }}
                     type="button"
                     className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
                   >
-                    Save changes
+                    {spinner ? <Spinner /> : " Save changes"}
                   </button>
                 </div>
               </div>
@@ -164,6 +255,7 @@ export default function Book() {
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
                       </div>
                     </div>
+        */}
                     <div className="block relative">
                       <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg
@@ -175,9 +267,13 @@ export default function Book() {
                       </span>
                       <input
                         placeholder="Search"
+                        type="search"
+                        onChange={(e) => {
+                          filter(e);
+                        }}
                         className=" rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                       />
-                    </div> */}
+                    </div>
                   </div>
                   <Link href="/dashboard/admin/addBook">
                     <div className="bg-blue-600 text-lg text-center px-6 py-1 rounded-md cursor-pointer text-white">
@@ -197,7 +293,7 @@ export default function Book() {
                             Copy Number
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Aurthur
+                            author
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Assertion Number
@@ -211,133 +307,102 @@ export default function Book() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
+                        {books.map((book) => (
+                          <tr>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex items-center">
+                                <div className="flex-shrink-0 w-14 h-14">
+                                  <img
+                                    // className="w-full h-full rounded-full"
+                                    src={`data:image/png;base64,${book.image.toString(
+                                      "base64"
+                                    )}`}
+                                    alt={book.title}
+                                  />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="text-gray-900 whitespace-no-wrap">
+                                    {book.title}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.copynumber}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.author}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.assertion}
+                              </p>
+                            </td>
+                            <td
+                              className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}
+                            >
                               <span
-                                aria-hidden
-                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                              ></span>
-                              <span className="relative">Available</span>
-                            </span>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex flex-row space-x-2">
-                              <span
-                                onClick={() => {
-                                  settoggle(!toggle);
-                                }}
-                                className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                className={`relative inline-block px-3 py-1 font-semibold ${
+                                  book.dispatched === false
+                                    ? "text-green-900"
+                                    : "text-red-900"
+                                } leading-tight`}
                               >
                                 <span
                                   aria-hidden
-                                  className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                  className={`absolute inset-0 ${
+                                    book.dispatched === false
+                                      ? "bg-green-200"
+                                      : "bg-red-200"
+                                  } opacity-50 rounded-full`}
                                 ></span>
-                                <span className="relative">Dispatch</span>
-                              </span>
-                              <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
-                                <span
-                                  aria-hidden
-                                  className="absolute inset-0 bg-green-200 opacity-50 rounded-lg py-2"
-                                ></span>
-                                <span className="relative">Recieve</span>
-                              </span>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
-                              </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                              ></span>
-                              <span className="relative">Dispatched</span>
-                            </span>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex flex-row space-x-2">
-                              <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
-                                <span
-                                  aria-hidden
-                                  className="absolute inset-0 bg-green-200 opacity-50 rounded-lg py-2"
-                                ></span>
-                                <span
-                                  className="relative"
-                                  onClick={() => {
-                                    alert(
-                                      "are you sure you want to recieve this book"
-                                    );
-                                  }}
-                                >
-                                  Recieve
+                                <span className="relative">
+                                  {book.dispatched === false
+                                    ? "Available"
+                                    : "Dispatched"}
                                 </span>
                               </span>
-                            </div>
-                          </td>
-                        </tr>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex flex-row space-x-2">
+                                {book.dispatched ? (
+                                  ""
+                                ) : (
+                                  <span
+                                    onClick={() => {
+                                      settoggle(!toggle);
+                                      setBookId(book._id);
+                                    }}
+                                    className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                  >
+                                    <span
+                                      aria-hidden
+                                      className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                    ></span>
+                                    <span className="relative">Dispatch</span>
+                                  </span>
+                                )}
+
+                                <span
+                                  onClick={() => {
+                                    onReceiveBookHandler(book._id);
+                                  }}
+                                  className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight"
+                                >
+                                  <span
+                                    aria-hidden
+                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-lg py-2"
+                                  ></span>
+                                  <span className="relative">Recieve</span>
+                                </span>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                     <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

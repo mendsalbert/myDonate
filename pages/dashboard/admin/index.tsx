@@ -23,7 +23,7 @@ export default function Dashboard() {
       });
       setusers(results);
     } else {
-      setusers(JSON.parse(localStorage.getItem("users") || "[]"));
+      setusers(JSON.parse(localStorage.getItem("users")));
     }
   };
 
