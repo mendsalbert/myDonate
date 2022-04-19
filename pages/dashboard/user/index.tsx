@@ -1,9 +1,62 @@
+import react, { useState, useEffect } from "react";
 import Layout from "../../../components/userLayout";
+import Link from "next/link";
+import axios from "axios";
+import Spinner from "../../../components/spinner";
 export default function Index() {
+  const [toggle, settoggle] = useState(false);
+
+  let _books = [];
+  let token;
+  useEffect(() => {
+    _books = JSON.parse(localStorage.getItem("user_books") || "[]");
+    token = localStorage.getItem("user_token");
+  }, []);
+
+  const [books, setbooks] = useState(_books);
+
+  const filter = (e) => {
+    const keyword = e.target.value;
+    if (keyword !== "") {
+      const results = books.filter((book) => {
+        return (
+          book.title.toLowerCase().startsWith(keyword.toLowerCase()) ||
+          book.author.toLowerCase().startsWith(keyword.toLowerCase())
+        );
+      });
+      setbooks(results);
+    } else {
+      setbooks(JSON.parse(localStorage.getItem("user_books")));
+    }
+  };
+
+  console.log(token);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1000/api/user/all-mybooks`, {
+        headers: {
+          "x-auth-token": token,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((success) => {
+        // console.log(success.data[0].books);
+        setbooks(success.data[0].books);
+        localStorage.setItem(
+          "user_books",
+          JSON.stringify(success.data[0].books)
+        );
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+  }, []);
+
   return (
     <>
       <Layout>
-        <div className="w-full  bg-white px-4 md:px-36 ">
+        <div className="w-full relative bg-white px-4 md:px-36 ">
           <body className="antialiased font-sans ">
             <div className="container mx-auto  ">
               <div className="py-8">
@@ -14,15 +67,6 @@ export default function Index() {
                 </div>
                 <div className="flex flex-col md:flex-row md:justify-between  md:items-center">
                   <div className="my-2 flex sm:flex-row flex-col">
-                    <div className="flex flex-row mb-1 sm:mb-0">
-                      <div className="relative">
-                        <select className=" h-full rounded-l border block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                          <option>5</option>
-                          <option>10</option>
-                          <option>20</option>
-                        </select>
-                      </div>
-                    </div>
                     <div className="block relative">
                       <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg
@@ -34,6 +78,10 @@ export default function Index() {
                       </span>
                       <input
                         placeholder="Search"
+                        type="search"
+                        onChange={(e) => {
+                          filter(e);
+                        }}
                         className=" rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                       />
                     </div>
@@ -51,80 +99,54 @@ export default function Index() {
                             Copy Number
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                            Aurthur
+                            author
                           </th>
                           <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                             Assertion Number
                           </th>
+                          {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            status
+                          </th> */}
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
+                        {books.map((book) => (
+                          <tr>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex items-center">
+                                <div className="flex-shrink-0 w-14 h-14">
+                                  <img
+                                    // className="w-full h-full rounded-full"
+                                    src={`data:image/png;base64,${book.image.toString(
+                                      "base64"
+                                    )}`}
+                                    alt={book.title}
+                                  />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="text-gray-900 whitespace-no-wrap">
+                                    {book.title}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
-                              </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                        </tr>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.copynumber}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.author}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.assertion}
+                              </p>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                     <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

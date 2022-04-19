@@ -46,79 +46,6 @@ export default function Overdue() {
   return (
     <>
       <Layout>
-        {toggle ? (
-          <div
-            className="modal fade fixed  z-40 w-full px-4  md:px-0 md:w-4/12 grid place-items-center h-screen top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  outline-none overflow-x-hidden overflow-y-auto"
-            id="exampleModalScrollable"
-            aria-labelledby="exampleModalScrollableLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-scrollable relative w-auto pointer-events-none">
-              <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-                <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                  <h5
-                    className="text-xl font-medium leading-normal text-gray-800"
-                    id="exampleModalScrollableLabel"
-                  >
-                    Renew Book
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body relative p-4">
-                  <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full md:w-full px-3 mb-6 md:mb-0">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Book title
-                      </label>
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="grid-first-name"
-                        type="text"
-                        placeholder="Book title"
-                      />
-                    </div>
-                    <div className="w-full md:w-full px-3">
-                      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Date to be returned
-                      </label>
-                      <input
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                        id="grid-last-name"
-                        type="date"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                  <button
-                    onClick={() => {
-                      settoggle(!toggle);
-                    }}
-                    type="button"
-                    className="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-                  >
-                    Save changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : (
-          ""
-        )}
         <div className="w-full  bg-white px-4 md:px-36 ">
           <body className="antialiased font-sans ">
             <div className="container mx-auto  ">
@@ -130,7 +57,7 @@ export default function Overdue() {
                 </div>
                 <div className="flex flex-col md:flex-row md:justify-between  md:items-center">
                   <div className="my-2 flex sm:flex-row flex-col">
-                    <div className="flex flex-row mb-1 sm:mb-0">
+                    {/* <div className="flex flex-row mb-1 sm:mb-0">
                       <div className="relative">
                         <select className=" h-full rounded-l border block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                           <option>5</option>
@@ -139,7 +66,7 @@ export default function Overdue() {
                         </select>
                         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="block relative">
                       <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg
@@ -151,6 +78,10 @@ export default function Overdue() {
                       </span>
                       <input
                         placeholder="Search"
+                        type="search"
+                        onChange={(e) => {
+                          filter(e);
+                        }}
                         className=" rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                       />
                     </div>
@@ -222,7 +153,9 @@ export default function Overdue() {
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                {book.assertion}
+                                {book.user[0].firstname +
+                                  " " +
+                                  book.user[0].lastname}
                               </p>
                             </td>
                             <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
