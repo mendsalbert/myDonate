@@ -31,30 +31,30 @@ export default function Dashboard() {
 
   const renewHanlder = () => {
     console.log(bookid);
-    // setspinner(true);
-    // axios
-    //   .post(
-    //     `http://localhost:1000/api/book/dispatch-book/${bookid}`,
-    //     { renewDate: renewdate },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   )
-    //   .then((success) => {
-    //     console.log(success.data);
-    //     setspinner(false);
-    //     settoggle(false);
-    //     //redirect to dashboard
-    //     alert("Book dispatched  successfull");
-    //     // console.log("project upload successfully");
-    //   })
-    //   .catch((e) => {
-    //     setspinner(false);
-    //     console.log(e.response.data);
-    //     alert(e.response.data.msg);
-    //   });
+    setspinner(true);
+    axios
+      .post(
+        `http://localhost:1000/api/book/renew-book/${bookid}`,
+        { renewDate: renewdate },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((success) => {
+        console.log(success.data);
+        setspinner(false);
+        settoggle(false);
+        //redirect to dashboard
+        alert("Book renewed  successfull");
+        // console.log("project upload successfully");
+      })
+      .catch((e) => {
+        setspinner(false);
+        console.log(e.response.data);
+        alert(e.response.data.msg);
+      });
   };
 
   useEffect(() => {
@@ -279,7 +279,7 @@ export default function Dashboard() {
                                       </span>
                                       <span
                                         onClick={() => {
-                                          console.log(book._id);
+                                          // console.log(book._id);
                                           setbookid(bookid);
                                           settoggle(!toggle);
                                         }}
