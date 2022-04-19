@@ -386,19 +386,22 @@ export default function Book() {
                                     <span className="relative">Dispatch</span>
                                   </span>
                                 )}
-
-                                <span
-                                  onClick={() => {
-                                    onReceiveBookHandler(book._id);
-                                  }}
-                                  className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight"
-                                >
+                                {book.dispatched ? (
+                                  ""
+                                ) : (
                                   <span
-                                    aria-hidden
-                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-lg py-2"
-                                  ></span>
-                                  <span className="relative">Recieve</span>
-                                </span>
+                                    onClick={() => {
+                                      onReceiveBookHandler(book._id);
+                                    }}
+                                    className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight"
+                                  >
+                                    <span
+                                      aria-hidden
+                                      className="absolute inset-0 bg-green-200 opacity-50 rounded-lg py-2"
+                                    ></span>
+                                    <span className="relative">Recieve</span>
+                                  </span>
+                                )}
                               </div>
                             </td>
                           </tr>
