@@ -60,6 +60,7 @@ export default function Book() {
   };
 
   const onReceiveBookHandler = (bookid) => {
+    setspinner(true);
     axios
       .post(
         `http://localhost:1000/api/book/recieved-book/${bookid}`,
@@ -371,6 +372,7 @@ export default function Book() {
                                   <span
                                     onClick={() => {
                                       settoggle(!toggle);
+                                      console.log(book._id);
                                       setBookId(book._id);
                                     }}
                                     className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"

@@ -279,7 +279,8 @@ export default function Dashboard() {
                                       </span>
                                       <span
                                         onClick={() => {
-                                          setbookid(book._id);
+                                          console.log(book._id);
+                                          setbookid(bookid);
                                           settoggle(!toggle);
                                         }}
                                         className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
