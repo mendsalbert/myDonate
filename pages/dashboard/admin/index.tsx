@@ -239,25 +239,52 @@ export default function Dashboard() {
                               </span> */}
                             </td>
                             <td className="px-5 py-5 border-b space-y-2 border-gray-200 bg-white text-sm">
-                              <div className="flex flex-row items-center  space-x-2">
-                                <p className="text-gray-600 text-md py-1">
-                                  Book 1
-                                </p>
-                                <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
-                                  <span
-                                    aria-hidden
-                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                                  ></span>
-                                  <span className="relative">Returned</span>
-                                </span>
-                              </div>
+                              {user.books.map((book) => (
+                                <div className="flex flex-row items-center  space-x-2">
+                                  <p className="text-gray-600 text-md py-1">
+                                    {book.title}
+                                  </p>
+                                  {book.receive ? (
+                                    <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
+                                      <span
+                                        aria-hidden
+                                        className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                                      ></span>
+                                      <span className="relative">Returned</span>
+                                    </span>
+                                  ) : (
+                                    ""
+                                    // <div className="flex flex-row items-center space-x-2">
+                                    //   <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                                    //     <span
+                                    //       aria-hidden
+                                    //       className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                    //     ></span>
+                                    //     <span className="relative">
+                                    //       expired
+                                    //     </span>
+                                    //   </span>
+                                    //   <span
+                                    //     onClick={() => {
+                                    //       settoggle(!toggle);
+                                    //     }}
+                                    //     className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                    //   >
+                                    //     <span
+                                    //       aria-hidden
+                                    //       className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                    //     ></span>
+                                    //     <span className="relative">Renew</span>
+                                    //   </span>
+                                    // </div>
+                                  )}
+                                </div>
+                              ))}
 
-                              <div className="flex flex-row items-center space-x-2">
-                                {/* <p className="text-gray-600 text-md py-1"> */}
-                                <a href="#" className="text-blue-600 underline">
-                                  Book 1
-                                </a>
-                                {/* </p> */}
+                              {/* <div className="flex flex-row items-center space-x-2">
+                                <p className="text-gray-600 text-md py-1">
+                                  Book 1kjkhh
+                                </p>
 
                                 <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
                                   <span
@@ -278,7 +305,7 @@ export default function Dashboard() {
                                   ></span>
                                   <span className="relative">Renew</span>
                                 </span>
-                              </div>
+                              </div> */}
                             </td>
                           </tr>
                         ))}

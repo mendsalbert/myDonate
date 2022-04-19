@@ -46,7 +46,7 @@ export default function Book() {
       .then((success) => {
         console.log(success.data);
         setspinner(false);
-
+        settoggle(false);
         //redirect to dashboard
         alert("Book dispatched  successfull");
         // console.log("project upload successfully");
