@@ -2,6 +2,7 @@ import react, { useState, useEffect } from "react";
 import Layout from "../../../components/adminLayout";
 import Link from "next/link";
 import axios from "axios";
+import { BookOpenIcon } from "@heroicons/react/outline";
 export default function Dashboard() {
   const [toggle, settoggle] = useState(false);
 
@@ -258,6 +259,17 @@ export default function Dashboard() {
                                   <p className="text-gray-600 text-md py-1">
                                     {book.title}
                                   </p>
+                                  {book.renewed ? (
+                                    <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                                      <span
+                                        aria-hidden
+                                        className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                      ></span>
+                                      <span className="relative">Renewed</span>
+                                    </span>
+                                  ) : (
+                                    ""
+                                  )}
                                   {book.receive ? (
                                     <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-green-900 leading-tight">
                                       <span
@@ -268,29 +280,37 @@ export default function Dashboard() {
                                     </span>
                                   ) : (
                                     <div className="flex flex-row items-center space-x-2">
-                                      <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
-                                        <span
-                                          aria-hidden
-                                          className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                                        ></span>
-                                        <span className="relative">
-                                          expired
-                                        </span>
-                                      </span>
-                                      <span
-                                        onClick={() => {
-                                          // console.log(book._id);
-                                          setbookid(bookid);
-                                          settoggle(!toggle);
-                                        }}
-                                        className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
-                                      >
-                                        <span
-                                          aria-hidden
-                                          className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
-                                        ></span>
-                                        <span className="relative">Renew</span>
-                                      </span>
+                                      {book.renewed ? (
+                                        " "
+                                      ) : (
+                                        <>
+                                          <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
+                                            <span
+                                              aria-hidden
+                                              className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+                                            ></span>
+                                            <span className="relative">
+                                              expired
+                                            </span>
+                                          </span>
+                                          <span
+                                            onClick={() => {
+                                              // console.log(book._id);
+                                              setbookid(book._id);
+                                              settoggle(!toggle);
+                                            }}
+                                            className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
+                                          >
+                                            <span
+                                              aria-hidden
+                                              className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                            ></span>
+                                            <span className="relative">
+                                              Renew
+                                            </span>
+                                          </span>
+                                        </>
+                                      )}
                                     </div>
                                   )}
                                 </div>

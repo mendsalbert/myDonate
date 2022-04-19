@@ -1,7 +1,48 @@
+import axios from "axios";
 import react, { useState, useEffect } from "react";
 import Layout from "../../../components/adminLayout";
 export default function Overdue() {
   const [toggle, settoggle] = useState(false);
+
+  let _books = [];
+  useEffect(() => {
+    _books = JSON.parse(localStorage.getItem("books") || "[]");
+  }, []);
+  const [books, setbooks] = useState(_books);
+
+  const filter = (e) => {
+    const keyword = e.target.value;
+    if (keyword !== "") {
+      const results = books.filter((book) => {
+        return (
+          book.title.toLowerCase().startsWith(keyword.toLowerCase()) ||
+          book.author.toLowerCase().startsWith(keyword.toLowerCase())
+        );
+      });
+      setbooks(results);
+    } else {
+      setbooks(JSON.parse(localStorage.getItem("books")));
+    }
+  };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1000/api/book/all-books-overdue`, {
+        headers: {
+          // "x-auth-token": token,
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((success) => {
+        console.log(success.data);
+        setbooks(success.data);
+        // localStorage.setItem("books", JSON.stringify(success.data));
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+      });
+  }, []);
+
   return (
     <>
       <Layout>
