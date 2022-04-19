@@ -105,17 +105,17 @@ const Children = (props: Props) => {
         </div>
         <div className=" z-10 bg-white mx-2 md:mx-0 mb-10 rounded-2xl shadow-2xl p-6  overflow-hidden w-full md:w-8/12 ">
           <div className="w-full  ">
-            <p className="font-bold text-gray-700 text-xl text-center pb-6 ">
+            <p className=" text-gray-700 text-2xl text-center pb-6 ">
               Children Registration Form
             </p>
 
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-full px-3 mb-6 md:mb-0">
-                <p className="block  text-gray-700 text-md  mb-2">
+                <p className="block font-bold text-gray-700 text-md  mb-2">
                   When I write my name on this form, I promise to obey the rules
                   of the Library
                 </p>
-                <ol className="list-decimal">
+                <ol className="ml-6 list-decimal">
                   <li>head</li>
                   <li>head</li>
                 </ol>
