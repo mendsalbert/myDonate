@@ -36,7 +36,7 @@ export default function Overdue() {
       .then((success) => {
         console.log(success.data);
         setbooks(success.data);
-        // localStorage.setItem("books", JSON.stringify(success.data));
+        localStorage.setItem("books", JSON.stringify(success.data));
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -185,116 +185,57 @@ export default function Overdue() {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
+                        {books.map((book) => (
+                          <tr>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className="flex items-center">
+                                <div className="flex-shrink-0 w-14 h-14">
+                                  <img
+                                    // className="w-full h-full rounded-full"
+                                    src={`data:image/png;base64,${book.image.toString(
+                                      "base64"
+                                    )}`}
+                                    alt={book.title}
+                                  />
+                                </div>
+                                <div className="ml-3">
+                                  <p className="text-gray-900 whitespace-no-wrap">
+                                    {book.title}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                              ></span>
-                              <span className="relative">Overdue</span>
-                            </span>
-                          </td>
-                          {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex flex-row space-x-2">
-                              <span
-                                onClick={() => {
-                                  settoggle(!toggle);
-                                }}
-                                className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight"
-                              >
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.copynumber}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.author}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.assertion}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <p className="text-gray-900 whitespace-no-wrap">
+                                {book.assertion}
+                              </p>
+                            </td>
+                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                              <span className="relative inline-block cursor-pointer px-3 py-1 font-semibold text-red-900 leading-tight">
                                 <span
                                   aria-hidden
-                                  className="absolute inset-0 bg-blue-200 opacity-50 rounded-lg"
+                                  className="absolute inset-0 bg-red-200 opacity-50 rounded-lg py-2"
                                 ></span>
-                                <span className="relative">Renew</span>
+                                <span className="relative">Overdue</span>
                               </span>
-                            </div>
-                          </td> */}
-                        </tr>
-                        <tr>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 w-14 h-14">
-                                <img
-                                  className="w-full h-full rounded-md"
-                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                  alt=""
-                                />
-                              </div>
-                              <div className="ml-3">
-                                <p className="text-gray-900 whitespace-no-wrap">
-                                  Book 1
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              C.5
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends Albert
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              65565556
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                              Mends
-                            </p>
-                          </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-                              ></span>
-                              <span className="relative">Overdue</span>
-                            </span>
-                          </td>
-                        </tr>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                     <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
