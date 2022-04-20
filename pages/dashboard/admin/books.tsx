@@ -17,6 +17,7 @@ export default function Book() {
   const [bookid, setBookId] = useState("");
   const [userid, setuserfordispatched] = useState("");
   const [renewdate, setrenewdate] = useState("");
+
   const filter = (e) => {
     const keyword = e.target.value;
     if (keyword !== "") {
@@ -90,7 +91,6 @@ export default function Book() {
     axios
       .get(`http://localhost:1000/api/book/all-books`, {
         headers: {
-          // "x-auth-token": token,
           accept: "application/json",
           "Content-Type": "multipart/form-data",
         },
@@ -98,7 +98,7 @@ export default function Book() {
       .then((success) => {
         console.log(success.data);
         setbooks(success.data);
-        // localStorage.setItem("books", JSON.stringify(success.data));
+        localStorage.setItem("books", JSON.stringify(success.data));
       })
       .catch((e) => {
         console.log(e.response.data);
@@ -312,9 +312,9 @@ export default function Book() {
                                 <div className="flex-shrink-0 w-14 h-14">
                                   <img
                                     className="w-full h-full rounded-full"
-                                    src={`data:image/png;base64,${book.image.toString(
-                                      "base64"
-                                    )}`}
+                                    // src={`data:image/png;base64,${book.image.toString(
+                                    //   "base64"
+                                    // )}`}
                                     alt={book.title}
                                   />
                                 </div>

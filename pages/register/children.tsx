@@ -25,6 +25,20 @@ const Children = (props: Props) => {
   const [username, setusername] = useState("mendsalbert");
   const [uImage, setUImage] = useState("");
 
+  const [date, setdate] = useState(new Date()) as any;
+  const [age, setage] = useState("10");
+  const [rname, setrname] = useState("yaw dabo");
+  const [rschool, setrschool] = useState("example school");
+  const [rbox, setrbox] = useState("p.o box 85");
+  const [rlocation, setrlocation] = useState("nkawbeng");
+  const [recommendmessage, setrecommendmessage] = useState("recommendation");
+  const [rsign, setrsign] = useState(true) as any;
+
+  const handleChange = () => {
+    console.log(rsign);
+    setrsign(!rsign);
+  };
+
   const handleCapture = (e) => {
     setfile({
       file: URL.createObjectURL(e.target.files[0]),
@@ -65,6 +79,16 @@ const Children = (props: Props) => {
     data.append("password", password);
     data.append("usertype", "children");
 
+    //new data
+    data.append("date", date);
+    data.append("age", age);
+    data.append("rname", rname);
+    data.append("rschool", rschool);
+    data.append("rbox", rbox);
+    data.append("rlocation", rlocation);
+    data.append("recommendmessage", recommendmessage);
+    data.append("rsign", rsign);
+
     axios
       .post("http://localhost:1000/api/user/", data, {
         headers: {
@@ -77,6 +101,7 @@ const Children = (props: Props) => {
         setspinner(false);
         localStorage.setItem("user_token", success.data.token);
         alert("Registration successfull");
+        window.location.href = "/register/login";
         //redirect to dashboard
         // alert("project uploaded successfully");
         // console.log("project upload successfully");
@@ -116,8 +141,10 @@ const Children = (props: Props) => {
                   of the Library
                 </p>
                 <ol className="ml-6 list-decimal">
-                  <li>head</li>
-                  <li>head</li>
+                  <li>To take care of the books and return them on time.</li>
+                  <li>
+                    To be quiet and not to disturb the people who are reading.
+                  </li>
                 </ol>
               </div>
             </div>
@@ -185,6 +212,37 @@ const Children = (props: Props) => {
                     setlastname(e.target.value);
                   }}
                   placeholder="Doe"
+                />
+              </div>
+            </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Date
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name"
+                  name={date}
+                  onChange={(e) => {
+                    setdate(e.target.value);
+                  }}
+                  type="date"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Age
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  type="text"
+                  name={age}
+                  onChange={(e) => {
+                    setage(e.target.value);
+                  }}
+                  placeholder="eg. 10"
                 />
               </div>
             </div>
@@ -316,6 +374,120 @@ const Children = (props: Props) => {
                 />
               </div>
             </div>
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <p className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  TEACHER'S/PARENT RECOMMENDATION{" "}
+                </p>
+              </div>
+            </div>
+
+            {/* --- */}
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Name
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name"
+                  name={rname}
+                  onChange={(e) => {
+                    setrname(e.target.value);
+                  }}
+                  placeholder="yaw Dabo"
+                  type="text"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  School
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  type="text"
+                  name={rschool}
+                  onChange={(e) => {
+                    setrschool(e.target.value);
+                  }}
+                  placeholder="eg. 10"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  P.O box
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-first-name"
+                  name={rbox}
+                  onChange={(e) => {
+                    setrbox(e.target.value);
+                  }}
+                  placeholder="p.o box 41"
+                  type="text"
+                />
+              </div>
+              <div className="w-full md:w-1/2 px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Location or street
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-last-name"
+                  type="text"
+                  name={rlocation}
+                  onChange={(e) => {
+                    setrlocation(e.target.value);
+                  }}
+                  placeholder="eg. 10"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="w-full px-3">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                  Recommend
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-password"
+                  type="text"
+                  placeholder="recommendation"
+                  name={recommendmessage}
+                  onChange={(e) => {
+                    setrecommendmessage(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="w-full md:w-full px-3 mb-6 md:mb-0">
+              <p className="block  text-gray-700 text-md  mb-2">
+                To be a member of the Children's Library and promise to see it
+                that he/she returns the books on time
+              </p>
+              <div className="flex mb-3">
+                <div className="space-x-2 form-check form-check-inline">
+                  <input
+                    className=""
+                    type="checkbox"
+                    id="inlineCheckbox1"
+                    value="option1"
+                    onChange={() => handleChange()}
+                  />
+                  <label className="  form-check-label inline-block text-gray-800">
+                    Tick to sign
+                  </label>
+                </div>
+              </div>
+            </div>
+            {/* --- */}
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

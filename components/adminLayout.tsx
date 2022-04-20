@@ -83,6 +83,14 @@ const Layout = (props: Props) => {
       behavior: "smooth",
     });
   };
+
+  const onLogOutHandler = () => {
+    localStorage.removeItem("user_token");
+    localStorage.removeItem("books");
+    localStorage.removeItem("users");
+    localStorage.removeItem("user_books");
+    window.location.href = "/register/login";
+  };
   return (
     <div className="bg-white relative font-Montserrat ">
       <div className="bg-[#008E89] px-4 md:px-36 ">
@@ -91,7 +99,12 @@ const Layout = (props: Props) => {
             <img src="/images/ghlalogo.png" className="w-10 " />
             <p className="text-white text-lg">GHLA</p>
           </div>
-          <p className="bg-white text-center rounded-full text-lg py-1 px-5 text-[#008E89]">
+          <p
+            onClick={() => {
+              onLogOutHandler();
+            }}
+            className="bg-white cursor-pointer text-center rounded-full text-lg py-1 px-5 text-[#008E89]"
+          >
             Log out
           </p>
         </div>
