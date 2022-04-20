@@ -162,6 +162,7 @@ export default function Book() {
                             setuserfordispatched(e.target.value);
                           }}
                         >
+                          <option value=""></option>
                           {users.map((user) => (
                             <option value={user._id}>
                               {user.lastname + " " + user.firstname}
@@ -312,9 +313,9 @@ export default function Book() {
                                 <div className="flex-shrink-0 w-14 h-14">
                                   <img
                                     className="w-full h-full rounded-full"
-                                    // src={`data:image/png;base64,${book.image.toString(
-                                    //   "base64"
-                                    // )}`}
+                                    src={`data:image/png;base64,${book.image.toString(
+                                      "base64"
+                                    )}`}
                                     alt={book.title}
                                   />
                                 </div>
