@@ -105,12 +105,11 @@ export default function AddBook() {
                       settitle(e.target.value);
                     }}
                     type="text"
-                    placeholder="Jane"
                   />
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                   <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                    Number
+                    Class Number
                   </label>
                   <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -120,7 +119,6 @@ export default function AddBook() {
                     onChange={(e) => {
                       setnumber(e.target.value);
                     }}
-                    placeholder="Doe"
                   />
                 </div>
               </div>
@@ -134,7 +132,6 @@ export default function AddBook() {
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-city"
                     type="text"
-                    placeholder="0249107812"
                     name={copynumber}
                     onChange={(e) => {
                       setcopynumber(e.target.value);
@@ -149,7 +146,6 @@ export default function AddBook() {
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-city"
                     type="text"
-                    placeholder="example@gmial.com"
                     name={author}
                     onChange={(e) => {
                       setauthor(e.target.value);
@@ -170,7 +166,6 @@ export default function AddBook() {
                     onChange={(e) => {
                       setassertionnumber(e.target.value);
                     }}
-                    placeholder="Albuquerque"
                   />
                 </div>
                 <div className="w-full md:w-6/12 px-3 mb-6 md:mb-0">
