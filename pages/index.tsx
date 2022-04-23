@@ -22,7 +22,7 @@ const IndexPage = () => (
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
-      <div></div>
+      <div className="bg-gradient-to-r p-8 from-cyan-500 rounded-md to-blue-500"></div>
     </div>
   </div>
 );
