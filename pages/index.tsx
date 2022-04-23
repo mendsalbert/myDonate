@@ -10,7 +10,7 @@ const IndexPage = () => (
         <SearchIcon className="h-7" />
         <input
           type="text"
-          className="border-2 grow py-2 bg-[#E7DDDD]  outline-none focus:outline-none rounded-full px-4"
+          className="border-2 grow py-2 bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
         />
       </div>
       <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-md cursor-pointer text-white">
