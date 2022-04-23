@@ -7,7 +7,7 @@ const IndexPage = () => (
     <div className="flex flex-row justify-between items-center space-x-32">
       <img src="/images/logo.png" className="w-28 " />
       <div className="flex grow flex-row items-center bg-[#E7DDDD] px-4 rounded-full">
-        <SearchIcon className="h-7" />
+        <SearchIcon className="h-7 text-gray-500" />
         <input
           type="text"
           className=" py-2 bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
