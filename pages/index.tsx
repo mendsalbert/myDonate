@@ -6,7 +6,7 @@ const IndexPage = () => (
     <div className="flex flex-row justify-between items-center space-x-32">
       <img src="/images/logo.png" className="w-28 " />
       <input type="text" className="border-2 rounded-lg grow" />
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6">
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-5">
         Connet Wallet
       </div>
     </div>
