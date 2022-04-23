@@ -6,7 +6,7 @@ const IndexPage = () => (
   <div className="mx-40 my-6 font-Montserrat">
     <div className="flex flex-row justify-between items-center space-x-32">
       <img src="/images/logo.png" className="w-28 " />
-      <div>
+      <div className="flex flex-row items-center bg-[#E7DDDD]">
         <SearchIcon className="h-7" />
         <input
           type="text"
