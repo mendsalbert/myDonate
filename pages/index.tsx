@@ -42,33 +42,26 @@ const IndexPage = () => (
           <p className="pt-2 text-xl">School</p>
         </div>
         <div className="text-center">
-          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
-            <img src="/images/education.svg" className="w-24" />
+          <div className="rounded-lg bg-[#FFD93D] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/hurrican.svg" className="w-24" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
-          <p className="pt-2 text-xl">School</p>
+          <p className="pt-2 text-xl">Disaster</p>
         </div>
 
         <div className="text-center">
-          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
-            <img src="/images/education.svg" className="w-24" />
+          <div className="rounded-lg bg-[#6BCB77] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/health.svg" className="w-24" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
-          <p className="pt-2 text-xl">School</p>
+          <p className="pt-2 text-xl">Health</p>
         </div>
 
         <div className="text-center">
-          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
-            {/* <img src="/images/education.svg" className="w-24" /> */}
-            <svg>
-              <use
-                href="/images/education.svg"
-                className="--color_fill: #000;"
-              ></use>
-            </svg>
-            {/* <svg path="/images/education.svg" /> */}
+          <div className="rounded-lg bg-[#4D96FF] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/education.svg" className="w-24" />
           </div>
-          <p className="pt-2 text-xl">School</p>
+          <p className="pt-2 text-xl">Famine</p>
         </div>
       </div>
     </div>
