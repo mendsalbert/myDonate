@@ -70,11 +70,29 @@ const Donation = () => (
             <p className="text-gray-600 text-lg">45%</p>
           </div>
 
-          <div>
-            <div className="w-full rounded-lg">
+          <div className="flex flex-row items-center">
+            <div className=" rounded-lg">
               <img
                 src="/images/war.jpg"
-                className=" h-14 w-14 rounded-full object-cover"
+                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+              />
+            </div>
+            <div className=" -ml-3 rounded-lg">
+              <img
+                src="/images/war.jpg"
+                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+              />
+            </div>
+            <div className=" -ml-3 rounded-lg">
+              <img
+                src="/images/war.jpg"
+                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+              />
+            </div>
+            <div className=" -ml-3 rounded-lg">
+              <img
+                src="/images/war.jpg"
+                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
               />
             </div>
           </div>
