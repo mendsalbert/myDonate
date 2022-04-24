@@ -36,9 +36,9 @@ const IndexPage = () => (
       <div className="grid grid-cols-4 gap-7">
         <div className="text-center">
           <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
-            <img src="/images/education.svg" className="w-24" />
+            <img src="/images/education.svg" className="w-24 text-white" />
           </div>
-          <p>Name</p>
+          <p className="pt-2 text-xl">School</p>
         </div>
       </div>
     </div>
