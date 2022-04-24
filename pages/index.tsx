@@ -10,7 +10,7 @@ const IndexPage = () => (
         <SearchIcon className="h-6 text-gray-500" />
         <input
           type="text"
-          className=" py-2 bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
+          className=" py-2 w-full bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
         />
       </div>
       <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-md cursor-pointer text-white">
@@ -18,7 +18,7 @@ const IndexPage = () => (
       </div>
     </div>
     <div className="flex mt-16 flex-row justify-between">
-      <p className="text-2xl leading-[3.2rem] w-6/12">
+      <p className="text-3xl text-gray-600 leading-[3.2rem] w-6/12">
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
@@ -30,6 +30,9 @@ const IndexPage = () => (
           Start Now
         </div>
       </div>
+    </div>
+    <div className=" mt-16">
+      <p className="font-bold text-xl text-gray-500">Category</p>
     </div>
   </div>
 );
