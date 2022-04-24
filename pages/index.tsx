@@ -78,7 +78,7 @@ const IndexPage = () => (
             <img src="/images/war.jpg" className=" rounded-lg object-cover" />
           </div>
         </div>
-        <div>
+        <div className="space-y-4">
           <p>Ukrain vs Russia War</p>
           <p>Description</p>
           <div className="flex flex-row items-center space-x-3">
@@ -88,6 +88,9 @@ const IndexPage = () => (
           <div className="flex flex-row items-center space-x-3">
             <CashIcon className="h-7" />
             <p>$1,000,000.00</p>
+          </div>
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+            Donate Now
           </div>
         </div>
       </div>
