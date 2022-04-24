@@ -70,6 +70,15 @@ const Donation = () => (
             <p className="text-gray-600 text-lg">45%</p>
           </div>
 
+          <div>
+            <div className="w-full rounded-lg">
+              <img
+                src="/images/war.jpg"
+                className=" h-14 w-14 rounded-full object-cover"
+              />
+            </div>
+          </div>
+
           <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
             Donate Now
           </div>
