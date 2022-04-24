@@ -96,9 +96,11 @@ const Donation = () => (
                   className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
                 />
               </div>
-              <p>fads</p>
+              <p className="text-gray-600 text-lg font-bold">+65 Donated</p>
             </div>
-            <div>fdsf</div>
+            <div className="bg-green-200 text-green-800 px-4 py-2 rounded-full text-center">
+              fdsf
+            </div>
           </div>
 
           <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
