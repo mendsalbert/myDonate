@@ -108,9 +108,9 @@ const IndexPage = () => (
           <img src="/images/war.jpg" className=" rounded-lg object-cover" />
         </div>
 
-        <div className="grow bg-red-200">
-          <p className="text-3xl">Ukrain vs Russia War</p>
-          <p className="text-xl">
+        <div className="grow ">
+          <p className="text-2xl">Ukrain vs Russia War</p>
+          <p className="text-lg">
             The most transparent donation platform on the internet. Donate in
             cryptos
           </p>
