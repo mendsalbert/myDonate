@@ -81,13 +81,13 @@ const IndexPage = () => (
         <div className="space-y-4">
           <p className="text-3xl">Ukrain vs Russia War</p>
           <p className="text-2xl">Description</p>
-          <div className="flex flex-row items-center space-x-3">
+          <div className="flex text-gray-600 flex-row items-center space-x-3">
             <ClockIcon className="h-7" />
-            <p>3 Days Left</p>
+            <p className="text-lg">3 Days Left</p>
           </div>
-          <div className="flex flex-row items-center space-x-3">
+          <div className="flex text-gray-600 flex-row items-center space-x-3">
             <CashIcon className="h-7" />
-            <p>$1,000,000.00</p>
+            <p className="text-lg">$1,000,000.00</p>
           </div>
           <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
             Donate Now
