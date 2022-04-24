@@ -4,7 +4,7 @@ type Props = {};
 
 const DonateModal = (props: Props) => {
   return (
-    <div className="p-5 font-Montserrat overflow-scroll">
+    <div className="p-5 font-Montserrat overflow-auto">
       <p className="text-center text-gray-500 text-lg">
         How much you wanna donate?
       </p>
@@ -23,7 +23,7 @@ const DonateModal = (props: Props) => {
           className="w-full py-3 outline-none ring-2 rounded-lg p-3"
           placeholder="Enter amount manually"
         />
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-lg cursor-pointer text-white">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
           Continue
         </div>
       </div>
