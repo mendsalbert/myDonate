@@ -57,7 +57,7 @@ const Donation = () => (
           </div>
         </div>
         <div className="w-6/12 space-y-3">
-          <p className="text-3xl font-bold text-gray-600">
+          <p className="text-2xl font-bold text-gray-600">
             Ukrain vs Russia War
           </p>
           <p className="text-xl font-bold text-gray-600">Charity Target</p>
