@@ -75,7 +75,9 @@ const Category = () => (
     </div>
 
     <div className=" mt-16">
-      <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
+      <p className="font-bold text-xl text-gray-500 my-10">
+        All Donations in Education
+      </p>
       <div
         className="mb-9 w-full flex flex-row items-center space-x-4
          justify-between "
