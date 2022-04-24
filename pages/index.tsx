@@ -36,7 +36,7 @@ const IndexPage = () => (
         </div>
       </div> */}
       <div>
-        <img src="jumbotron.svg" className="w-28" />
+        <img src="/images/jumbotron.svg" className="w-5/12" />
       </div>
     </div>
     <div className=" mt-16">
