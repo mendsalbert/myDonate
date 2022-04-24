@@ -182,6 +182,12 @@ const IndexPage = () => (
         </div>
       </div>
     </div>
+    <div className="mt-16 text-center w-full flex flex-row justify-center items-center">
+      <p>Connet with us</p>
+      <div>
+        <img src="/images/twitter.svg" className="w-6" />
+      </div>
+    </div>
   </div>
 );
 
