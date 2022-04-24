@@ -22,8 +22,8 @@ const IndexPage = () => (
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
-      <div className="w-7/12  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-md to-blue-500">
-        <p>Start New Fundraising</p>
+      <div className="w-6/12  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-md to-blue-500">
+        <p className="text-white font-bold">Start New Fundraising</p>
         <div className="bg-white px-6 py-2 rounded-md cursor-pointer text-blue">
           Connet Wallet
         </div>
