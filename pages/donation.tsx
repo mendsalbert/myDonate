@@ -49,8 +49,10 @@ const Donation = () => (
           </div>
         </div>
         <div className="space-y-4">
-          <p className="text-3xl">Ukrain vs Russia War</p>
-          <p className="text-xl">
+          <p className="text-3xl font-bold text-gray-600">
+            Ukrain vs Russia War
+          </p>
+          <p className="text-xl text-gray-600">
             The most transparent donation platform on the internet. Donate in
             cryptos
           </p>
