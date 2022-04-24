@@ -22,16 +22,14 @@ const IndexPage = () => (
         Connet Wallet
       </div>
     </div>
-    <div className="flex mt-16 flex-row justify-between">
-      <p className="text-3xl text-gray-600 leading-[3.2rem] w-6/12">
+    <div className="flex mt-16 flex-row space-x-4 justify-between">
+      <p className="text-2xl text-gray-600 leading-[3rem] w-6/12">
         The most transparent donation platform on the internet. Donate in
-        cryptos
+        cryptos let us build a better world
       </p>
-      <div className="w-5/12 py-14  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-xl to-blue-500">
-        <p className="text-white font-bold py-3 text-xl">
-          Start New Fundraising
-        </p>
-        <div className="bg-white px-6 py-2   rounded-md cursor-pointer text-blue">
+      <div className=" grow py-14  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-xl to-blue-500">
+        <p className="text-white py-3 text-xl">Start New Fundraising</p>
+        <div className="bg-white  py-2   rounded-md cursor-pointer text-blue">
           Start Now
         </div>
       </div>
