@@ -122,12 +122,12 @@ const IndexPage = () => (
             The most transparent donation platform on the internet. Donate in
             cryptos
           </p>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <ClockIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <ClockIcon className="h-5" />
             <p className="text-lg">3 Days Left</p>
           </div>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <CashIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <CashIcon className="h-5" />
             <p className="text-lg">$1,000,000.00</p>
           </div>
         </div>
@@ -149,12 +149,12 @@ const IndexPage = () => (
             The most transparent donation platform on the internet. Donate in
             cryptos
           </p>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <ClockIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <ClockIcon className="h-5" />
             <p className="text-lg">3 Days Left</p>
           </div>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <CashIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <CashIcon className="h-5" />
             <p className="text-lg">$1,000,000.00</p>
           </div>
         </div>
@@ -176,12 +176,12 @@ const IndexPage = () => (
             The most transparent donation platform on the internet. Donate in
             cryptos
           </p>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <ClockIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <ClockIcon className="h-5" />
             <p className="text-lg">3 Days Left</p>
           </div>
-          <div className="flex text-gray-600 flex-row items-center space-x-3">
-            <CashIcon className="h-7" />
+          <div className="flex text-gray-600 flex-row items-center space-x-2">
+            <CashIcon className="h-5" />
             <p className="text-lg">$1,000,000.00</p>
           </div>
         </div>
