@@ -53,6 +53,7 @@ const Donation = () => (
             Ukrain vs Russia War
           </p>
           <p className="text-xl font-bold text-gray-600">Charity Target</p>
+          <p className="text-xl text-gray-600">$1,000 / $1,000,000 .00</p>
           <div className="flex text-gray-600 flex-row items-center space-x-3">
             <ClockIcon className="h-7" />
             <p className="text-lg">3 Days Left</p>
