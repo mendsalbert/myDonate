@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "../components/Layout";
 
 const IndexPage = () => (
-  <div className="mx-40 my-6 font-Montserrat">
+  <div className="mx-40 my-6  font-Montserrat">
     <div className="flex flex-row justify-between items-center space-x-32">
       <img src="/images/logo.png" className="w-28 " />
       <div className="flex grow flex-row items-center bg-[#E7DDDD] px-4 rounded-full">
@@ -17,15 +17,17 @@ const IndexPage = () => (
         Connet Wallet
       </div>
     </div>
-    <div className="flex flex-row justify-between">
+    <div className="flex mt-12 flex-row justify-between">
       <p>
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
       <div className="w-6/12  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-md to-blue-500">
-        <p className="text-white font-bold">Start New Fundraising</p>
+        <p className="text-white font-bold py-3 text-xl">
+          Start New Fundraising
+        </p>
         <div className="bg-white px-6 py-2 rounded-md cursor-pointer text-blue">
-          Connet Wallet
+          Start Now
         </div>
       </div>
     </div>
