@@ -18,7 +18,7 @@ const IndexPage = () => (
       </div>
     </div>
     <div className="flex mt-16 flex-row justify-between">
-      <p className="text-2xl  w-5/12">
+      <p className="text-3xl leading-10 w-5/12">
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
