@@ -79,8 +79,8 @@ const IndexPage = () => (
           </div>
         </div>
         <div className="space-y-4">
-          <p>Ukrain vs Russia War</p>
-          <p>Description</p>
+          <p className="text-3xl">Ukrain vs Russia War</p>
+          <p className="text-2xl">Description</p>
           <div className="flex flex-row items-center space-x-3">
             <ClockIcon className="h-7" />
             <p>3 Days Left</p>
