@@ -52,10 +52,7 @@ const Donation = () => (
           <p className="text-3xl font-bold text-gray-600">
             Ukrain vs Russia War
           </p>
-          <p className="text-xl text-gray-600">
-            The most transparent donation platform on the internet. Donate in
-            cryptos
-          </p>
+          <p className="text-xl font-bold text-gray-600">Charity Target</p>
           <div className="flex text-gray-600 flex-row items-center space-x-3">
             <ClockIcon className="h-7" />
             <p className="text-lg">3 Days Left</p>
