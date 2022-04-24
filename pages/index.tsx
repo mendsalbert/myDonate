@@ -6,11 +6,12 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/Link";
 import React, { useState } from "react";
+import DonateModal from "../components/DonateModal";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 const IndexPage = () => {
   const [open, setOpen] = useState(false);
-  const [comp, setComp] = useState("");
+  const [comp, setComp] = useState("") as any;
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -109,7 +110,7 @@ const IndexPage = () => {
             <div
               onClick={() => {
                 setOpen(!open);
-                setComp();
+                setComp(<DonateModal />);
               }}
               className="bg-gradient-to-r text-center text-lg from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
             >
