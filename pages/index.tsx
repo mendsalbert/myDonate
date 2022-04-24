@@ -33,6 +33,14 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500">Category</p>
+      <div>
+        <div>
+          <div>
+            <span>Icon</span>
+          </div>
+          <p>Name</p>
+        </div>
+      </div>
     </div>
   </div>
 );
