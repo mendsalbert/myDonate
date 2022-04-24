@@ -10,10 +10,10 @@ const IndexPage = () => (
         <SearchIcon className="h-6 text-gray-500" />
         <input
           type="text"
-          className=" py-2 w-full bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
+          className=" py-3  w-full bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
         />
       </div>
-      <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-md cursor-pointer text-white">
+      <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
         Connet Wallet
       </div>
     </div>
@@ -33,7 +33,7 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Category</p>
-      <div className="grid grid-cols-4 gap-7">
+      <div className="grid grid-cols-4 gap-16">
         <div className="text-center">
           <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/education.svg" className="w-24" />
