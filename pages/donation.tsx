@@ -48,7 +48,7 @@ const Donation = () => (
             />
           </div>
         </div>
-        <div className="w-6/12 space-y-2">
+        <div className="w-6/12 space-y-3">
           <p className="text-3xl font-bold text-gray-600">
             Ukrain vs Russia War
           </p>
@@ -75,30 +75,30 @@ const Donation = () => (
               <div className=" rounded-lg">
                 <img
                   src="/images/war.jpg"
-                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                  className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
                 />
               </div>
               <div className=" -ml-3 rounded-lg">
                 <img
                   src="/images/war.jpg"
-                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                  className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
                 />
               </div>
               <div className=" -ml-3 rounded-lg">
                 <img
                   src="/images/war.jpg"
-                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                  className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
                 />
               </div>
               <div className=" -ml-3 rounded-lg">
                 <img
                   src="/images/war.jpg"
-                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                  className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
                 />
               </div>
-              <p className="text-gray-600 text-lg font-bold">+65 Donated</p>
+              <p className="text-gray-600 text-md font-bold">+65 Donated</p>
             </div>
-            <div className="bg-green-200 text-lg font-bold w-max text-green-800 px-4 py-2 rounded-full text-center">
+            <div className="bg-green-200 text-sm font-bold w-max text-green-800 px-2 py-1 rounded-full text-center">
               3 Days Left
             </div>
           </div>
