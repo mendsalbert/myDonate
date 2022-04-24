@@ -18,6 +18,10 @@ const DonateModal = (props: Props) => {
         <div className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-purple-300 text-gray-700 ">
           15 ETH
         </div>
+        <input
+          type="text"
+          className="w-full py-3 outline-none ring-2 rounded-lg "
+        />
       </div>
     </div>
   );
