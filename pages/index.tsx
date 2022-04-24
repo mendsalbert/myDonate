@@ -120,9 +120,9 @@ const IndexPage = () => (
             <CashIcon className="h-7" />
             <p className="text-lg">$1,000,000.00</p>
           </div>
-          <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
-            Donate Now
-          </div>
+        </div>
+        <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+          Donate Now
         </div>
       </div>
     </div>
