@@ -1,4 +1,9 @@
-import { SearchCircleIcon, SearchIcon } from "@heroicons/react/outline";
+import {
+  CashIcon,
+  ClockIcon,
+  SearchCircleIcon,
+  SearchIcon,
+} from "@heroicons/react/outline";
 import Link from "next/link";
 import Layout from "../components/Layout";
 
@@ -74,7 +79,16 @@ const IndexPage = () => (
           </div>
         </div>
         <div>
-          <p>right</p>
+          <p>Ukrain vs Russia War</p>
+          <p>Description</p>
+          <div className="flex flex-row items-center space-x-3">
+            <ClockIcon className="h-7" />
+            <p>3 Days Left</p>
+          </div>
+          <div>
+            <CashIcon className="h-7" />
+            <p>$1,000,000.00</p>
+          </div>
         </div>
       </div>
     </div>
