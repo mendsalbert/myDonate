@@ -42,7 +42,10 @@ const Donation = () => (
       <div className="flex flex-col">
         <div className="w-full">
           <div className="w-full rounded-lg">
-            <img src="/images/war.jpg" className=" rounded-lg object-cover" />
+            <img
+              src="/images/war.jpg"
+              className="w-full h-96 rounded-lg object-cover"
+            />
           </div>
         </div>
         <div className="space-y-4">
