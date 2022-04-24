@@ -67,7 +67,7 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p>
-      <div className="flex flex-row ">
+      <div className="flex flex-row space-x-6 ">
         <div className="6/12">
           <div className="w-full rounded-lg">
             <img src="/images/war.jpg" className=" rounded-lg object-cover" />
