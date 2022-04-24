@@ -18,11 +18,11 @@ const IndexPage = () => (
       </div>
     </div>
     <div className="flex mt-12 flex-row justify-between">
-      <p>
+      <p className="text-xl">
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
-      <div className="w-6/12  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-md to-blue-500">
+      <div className="w-6/12  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-lg to-blue-500">
         <p className="text-white font-bold py-3 text-xl">
           Start New Fundraising
         </p>
