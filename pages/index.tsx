@@ -41,6 +41,29 @@ const IndexPage = () => (
           </div>
           <p className="pt-2 text-xl">School</p>
         </div>
+        <div className="text-center">
+          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/education.svg" className="w-24" />
+            {/* <svg path="/images/education.svg" /> */}
+          </div>
+          <p className="pt-2 text-xl">School</p>
+        </div>
+
+        <div className="text-center">
+          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/education.svg" className="w-24" />
+            {/* <svg path="/images/education.svg" /> */}
+          </div>
+          <p className="pt-2 text-xl">School</p>
+        </div>
+
+        <div className="text-center">
+          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
+            <img src="/images/education.svg" className="w-24" />
+            {/* <svg path="/images/education.svg" /> */}
+          </div>
+          <p className="pt-2 text-xl">School</p>
+        </div>
       </div>
     </div>
   </div>
