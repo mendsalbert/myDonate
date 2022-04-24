@@ -34,8 +34,8 @@ const IndexPage = () => (
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500">Category</p>
       <div className="grid grid-cols-4 gap-7">
-        <div>
-          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-col w-full text-center">
+        <div className="text-center">
+          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/education.svg" className="w-24" />
           </div>
           <p>Name</p>
