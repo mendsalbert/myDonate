@@ -35,7 +35,7 @@ const DonateModal = (props: Props) => {
         // style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(350px, -36px);"
       >
         <ul
-          className="py-1 text-sm text-gray-700 bg-white shadow-xl"
+          className="py-3 my-3 text-sm text-gray-700 bg-white shadow-xl"
           aria-labelledby="dropdownDefault"
         >
           <li>
