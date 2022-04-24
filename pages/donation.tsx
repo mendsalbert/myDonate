@@ -98,7 +98,7 @@ const Donation = () => (
               </div>
               <p className="text-gray-600 text-lg font-bold">+65 Donated</p>
             </div>
-            <div className="bg-green-200 w-max text-green-800 px-4 py-2 rounded-full text-center">
+            <div className="bg-green-200 text-lg font-bold w-max text-green-800 px-4 py-2 rounded-full text-center">
               3 Days Left
             </div>
           </div>
