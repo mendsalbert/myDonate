@@ -101,7 +101,7 @@ const IndexPage = () => (
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
       <div
-        className="mb-7 w-full flex flex-row items-center space-x-4
+        className="mb-9 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
@@ -128,7 +128,7 @@ const IndexPage = () => (
         </div>
       </div>
       <div
-        className="mb-7 w-full flex flex-row items-center space-x-4
+        className="mb-9 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
@@ -155,7 +155,7 @@ const IndexPage = () => (
         </div>
       </div>
       <div
-        className="mb-7 w-full flex flex-row items-center space-x-4
+        className="mb-9 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
