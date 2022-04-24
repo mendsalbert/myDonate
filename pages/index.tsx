@@ -30,7 +30,7 @@ const IndexPage = () => (
           donation platform on the internet. Donate in cryptos let us build a
           better world
         </p>
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+        <div className="bg-gradient-to-r text-center w-max from-cyan-500 to-blue-500 px-6 py-3 rounded-full cursor-pointer text-white">
           Connet Wallet
         </div>
       </div>
