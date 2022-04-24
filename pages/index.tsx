@@ -105,8 +105,24 @@ const IndexPage = () => (
           <img src="/images/war.jpg" className=" rounded-lg object-cover" />
         </div>
 
-        <div className="grow bg-red-200">middle text</div>
-        <div>button</div>
+        <div className="grow bg-red-200">
+          <p className="text-3xl">Ukrain vs Russia War</p>
+          <p className="text-xl">
+            The most transparent donation platform on the internet. Donate in
+            cryptos
+          </p>
+          <div className="flex text-gray-600 flex-row items-center space-x-3">
+            <ClockIcon className="h-7" />
+            <p className="text-lg">3 Days Left</p>
+          </div>
+          <div className="flex text-gray-600 flex-row items-center space-x-3">
+            <CashIcon className="h-7" />
+            <p className="text-lg">$1,000,000.00</p>
+          </div>
+        </div>
+        <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+          Donate Now
+        </div>
       </div>
     </div>
   </div>
