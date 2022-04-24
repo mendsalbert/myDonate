@@ -17,8 +17,8 @@ const IndexPage = () => (
         Connet Wallet
       </div>
     </div>
-    <div className="flex mt-12 flex-row justify-between">
-      <p className="text-xl">
+    <div className="flex mt-16 flex-row justify-between">
+      <p className="text-2xl  w-5/12">
         The most transparent donation platform on the internet. Donate in
         cryptos
       </p>
