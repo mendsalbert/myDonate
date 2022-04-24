@@ -43,11 +43,11 @@ const Category = () => (
       <p className="font-bold text-xl text-gray-500 my-10">Category</p>
       <div className="grid grid-cols-4 gap-20">
         <div className="text-center">
-          <div className="rounded-lg shadow-xl bg-[#FF6363] px-6 py-12 justify-center flex flex-row w-full text-center">
+          <div className="rounded-lg shadow-xl bg-[#FF6363] ring-8 ring-gray-500 px-6 py-12 justify-center flex flex-row w-full text-center">
             <img src="/images/education.svg" className="w-16" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
-          <p className="pt-2 text-xl">School</p>
+          <p className="pt-2 text-xl">Education</p>
         </div>
         <div className="text-center">
           <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-12 justify-center flex flex-row w-full text-center">
