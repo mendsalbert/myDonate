@@ -184,8 +184,8 @@ const IndexPage = () => (
     </div>
     <div className="mt-28 text-center w-full flex flex-col justify-center items-center">
       <p className="text-lg text-gray-500 ">Connet with us</p>
-      <div>
-        <img src="/images/twitter.svg" className="w-10" />
+      <div className="flex flex-row">
+        <img src="/images/twitter.svg" className="w-7" />
         <img src="/images/discord.svg" className="w-10" />
         <img src="/images/instagram.svg" className="w-10" />
       </div>
