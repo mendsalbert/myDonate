@@ -63,8 +63,11 @@ const Donation = () => (
             <p className="text-lg">$1,000,000.00</p>
           </div>
 
-          <div className="w-full bg-gray-200 rounded-full h-4.5 ">
-            <div className="bg-blue-600 h-4.5 rounded-full w-[45%]"></div>
+          <div className="flex flex-row items-center space-x-3">
+            <div className="w-full bg-gray-200 rounded-full h-4 ">
+              <div className="bg-blue-600 h-4 rounded-full w-[45%]"></div>
+            </div>
+            <p className="text-gray-600 text-lg">45%</p>
           </div>
 
           <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
