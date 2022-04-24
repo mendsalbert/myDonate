@@ -39,8 +39,8 @@ const Donation = () => (
 
     <div className=" mt-32">
       {/* <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p> */}
-      <div className="flex flex-row w-6/12">
-        <div className="w-full mb-3">
+      <div className="flex flex-row  space-x-10 w-full">
+        <div className="w-8/12 mb-3">
           <div className="w-full rounded-lg">
             <img
               src="/images/war.jpg"
@@ -48,7 +48,7 @@ const Donation = () => (
             />
           </div>
         </div>
-        <div className="space-y-4">
+        <div className="w-6/12 space-y-2">
           <p className="text-3xl font-bold text-gray-600">
             Ukrain vs Russia War
           </p>
