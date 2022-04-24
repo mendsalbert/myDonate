@@ -100,7 +100,10 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
-      <div className=" w-full flex flex-row items-center space-x-3 justify-between ">
+      <div
+        className=" w-full flex flex-row items-center space-x-4
+       justify-between "
+      >
         <div className="w-3/12 rounded-lg">
           <img src="/images/war.jpg" className=" rounded-lg object-cover" />
         </div>
@@ -121,7 +124,7 @@ const IndexPage = () => (
           </div>
         </div>
         <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
-          Donate Now
+          Donate
         </div>
       </div>
     </div>
