@@ -29,11 +29,14 @@ const IndexPage = () => (
         donation platform on the internet. Donate in cryptos let us build a
         better world
       </p>
-      <div className=" grow py-14  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-xl to-blue-500">
+      {/* <div className=" grow py-14  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-xl to-blue-500">
         <p className="text-white py-3 text-xl">Start New Fundraising</p>
         <div className="bg-white  py-2   rounded-md cursor-pointer text-blue">
           Start Now
         </div>
+      </div> */}
+      <div>
+        <img src="jumbotron.svg" className="w-28" />
       </div>
     </div>
     <div className=" mt-16">
