@@ -85,7 +85,7 @@ const IndexPage = () => (
             <ClockIcon className="h-7" />
             <p>3 Days Left</p>
           </div>
-          <div>
+          <div className="flex flex-row items-center space-x-3">
             <CashIcon className="h-7" />
             <p>$1,000,000.00</p>
           </div>
