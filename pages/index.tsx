@@ -100,13 +100,12 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
-      <div className="flex flex-row space-x-6 ">
-        <div className="8/12">
-          <div className="w-full rounded-lg">
-            <img src="/images/war.jpg" className=" rounded-lg object-cover" />
-          </div>
+      <div className="flex flex-row items-center  ">
+        <div className="rounded-lg w-64">
+          <img src="/images/war.jpg" className=" rounded-lg object-cover" />
         </div>
-        <div className="space-y-4">
+
+        <div className="space-y-0 ">
           <p className="text-3xl">Ukrain vs Russia War</p>
           <p className="text-xl">
             The most transparent donation platform on the internet. Donate in
