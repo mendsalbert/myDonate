@@ -38,16 +38,16 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Category</p>
-      <div className="grid grid-cols-4 gap-16">
+      <div className="grid grid-cols-4 gap-20">
         <div className="text-center">
-          <div className="rounded-lg bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
+          <div className="rounded-lg shadow-xl bg-[#FF6363] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/education.svg" className="w-24" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
           <p className="pt-2 text-xl">School</p>
         </div>
         <div className="text-center">
-          <div className="rounded-lg bg-[#FFD93D] p-7 justify-center flex flex-row w-full text-center">
+          <div className="rounded-lg shadow-xl bg-[#FFD93D] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/hurrican.svg" className="w-24" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
@@ -55,7 +55,7 @@ const IndexPage = () => (
         </div>
 
         <div className="text-center">
-          <div className="rounded-lg bg-[#6BCB77] p-7 justify-center flex flex-row w-full text-center">
+          <div className="rounded-lg shadow-xl bg-[#6BCB77] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/health.svg" className="w-24" />
             {/* <svg path="/images/education.svg" /> */}
           </div>
@@ -63,7 +63,7 @@ const IndexPage = () => (
         </div>
 
         <div className="text-center">
-          <div className="rounded-lg bg-[#4D96FF] p-7 justify-center flex flex-row w-full text-center">
+          <div className="rounded-lg shadow-xl bg-[#4D96FF] p-7 justify-center flex flex-row w-full text-center">
             <img src="/images/education.svg" className="w-24" />
           </div>
           <p className="pt-2 text-xl">Famine</p>
@@ -101,7 +101,7 @@ const IndexPage = () => (
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
       <div
-        className="mb-5 w-full flex flex-row items-center space-x-4
+        className="mb-7 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
@@ -128,7 +128,7 @@ const IndexPage = () => (
         </div>
       </div>
       <div
-        className=" w-full flex flex-row items-center space-x-4
+        className="mb-7 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
@@ -155,7 +155,7 @@ const IndexPage = () => (
         </div>
       </div>
       <div
-        className=" w-full flex flex-row items-center space-x-4
+        className="mb-7 w-full flex flex-row items-center space-x-4
        justify-between "
       >
         <div className="w-3/12 rounded-lg">
