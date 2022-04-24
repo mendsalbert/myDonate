@@ -39,7 +39,7 @@ const Donation = () => (
 
     <div className=" mt-32">
       {/* <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p> */}
-      <div className="flex flex-row">
+      <div className="flex flex-row w-6/12">
         <div className="w-full mb-3">
           <div className="w-full rounded-lg">
             <img
