@@ -39,7 +39,7 @@ const Donation = () => (
 
     <div className=" mt-32">
       {/* <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p> */}
-      <div className="flex flex-col">
+      <div className="flex flex-row">
         <div className="w-full mb-3">
           <div className="w-full rounded-lg">
             <img
@@ -53,7 +53,7 @@ const Donation = () => (
             Ukrain vs Russia War
           </p>
           <p className="text-xl font-bold text-gray-600">Charity Target</p>
-          <p className="text-xl text-gray-600">$1,000 / $1,000,000 .00</p>
+          <p className="text-xl text-gray-600">$1,000 / $1,000,000.00</p>
           <div className="flex text-gray-600 flex-row items-center space-x-3">
             <ClockIcon className="h-7" />
             <p className="text-lg">3 Days Left</p>
@@ -70,31 +70,35 @@ const Donation = () => (
             <p className="text-gray-600 text-lg">45%</p>
           </div>
 
-          <div className="flex flex-row items-center">
-            <div className=" rounded-lg">
-              <img
-                src="/images/war.jpg"
-                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
-              />
+          <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row items-center">
+              <div className=" rounded-lg">
+                <img
+                  src="/images/war.jpg"
+                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                />
+              </div>
+              <div className=" -ml-3 rounded-lg">
+                <img
+                  src="/images/war.jpg"
+                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                />
+              </div>
+              <div className=" -ml-3 rounded-lg">
+                <img
+                  src="/images/war.jpg"
+                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                />
+              </div>
+              <div className=" -ml-3 rounded-lg">
+                <img
+                  src="/images/war.jpg"
+                  className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
+                />
+              </div>
+              <p>fads</p>
             </div>
-            <div className=" -ml-3 rounded-lg">
-              <img
-                src="/images/war.jpg"
-                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
-              />
-            </div>
-            <div className=" -ml-3 rounded-lg">
-              <img
-                src="/images/war.jpg"
-                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
-              />
-            </div>
-            <div className=" -ml-3 rounded-lg">
-              <img
-                src="/images/war.jpg"
-                className=" h-14 w-14 ring-4 ring-white rounded-full object-cover"
-              />
-            </div>
+            <div>fdsf</div>
           </div>
 
           <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
