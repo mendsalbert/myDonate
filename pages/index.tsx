@@ -186,6 +186,8 @@ const IndexPage = () => (
       <p className="text-lg text-gray-500 ">Connet with us</p>
       <div>
         <img src="/images/twitter.svg" className="w-10" />
+        <img src="/images/discord.svg" className="w-10" />
+        <img src="/images/instagram.svg" className="w-10" />
       </div>
     </div>
   </div>
