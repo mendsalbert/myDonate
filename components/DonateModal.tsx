@@ -20,7 +20,8 @@ const DonateModal = (props: Props) => {
         </div>
         <input
           type="text"
-          className="w-full py-3 outline-none ring-2 rounded-lg "
+          className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+          placeholder="Enter amount manually"
         />
       </div>
     </div>
