@@ -100,10 +100,13 @@ const IndexPage = () => (
     </div>
     <div className=" mt-16">
       <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
-      <div className="flex flex-row items-center space-x-3  ">
-        <p>image</p>
-        <p>middle text</p>
-        <p>button</p>
+      <div className=" w-full flex flex-row items-center space-x-3 justify-between ">
+        <div className="w-3/12 rounded-lg">
+          <img src="/images/war.jpg" className=" rounded-lg object-cover" />
+        </div>
+
+        <div className="grow bg-red-200">middle text</div>
+        <div>button</div>
       </div>
     </div>
   </div>
