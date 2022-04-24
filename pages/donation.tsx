@@ -38,7 +38,7 @@ const Donation = () => (
     </div>
 
     <div className=" mt-16">
-      <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p>
+      {/* <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p> */}
       <div className="flex flex-col">
         <div className="w-full">
           <div className="w-full rounded-lg">
