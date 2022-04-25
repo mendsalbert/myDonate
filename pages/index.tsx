@@ -7,6 +7,7 @@ import {
 import Link from "next/Link";
 import React, { useState } from "react";
 import DonateModal from "../components/DonateModal";
+import FundRaising from "../components/FundraisingModal";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 const IndexPage = () => {
@@ -35,7 +36,13 @@ const IndexPage = () => {
             donation platform on the internet. Donate in cryptos let us build a
             better world
           </p>
-          <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-max  px-6 py-3 rounded-full cursor-pointer text-white">
+          <div
+            onClick={() => {
+              setOpen(!open);
+              setComp(<FundRaising />);
+            }}
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-max  px-6 py-3 rounded-full cursor-pointer text-white"
+          >
             Start New Fundraising
           </div>
         </div>
