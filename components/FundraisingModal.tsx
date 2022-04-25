@@ -19,21 +19,27 @@ const FundRaising = (props: Props) => {
           className="w-full py-3 outline-none ring-2 rounded-lg p-3"
           placeholder="Enter description"
         />
-
-        <label className="pt-2">Select category</label>
-        <select className="w-full py-3 outline-none ring-2 rounded-lg p-3">
-          <option value="education"></option>
-          <option value="education">Education</option>
-          <option value="disaster">Disaster</option>
-          <option value="health">Health</option>
-          <option value="famine">Famine</option>
-        </select>
-
-        <input
-          type="date"
-          className="w-full py-3 outline-none ring-2 rounded-lg p-3"
-          placeholder="Enter amount manually"
-        />
+        <div>
+          <label className="mt-6">Select category</label>
+          <select
+            placeholder="Select description"
+            className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+          >
+            <option value="education"></option>
+            <option value="education">Education</option>
+            <option value="disaster">Disaster</option>
+            <option value="health">Health</option>
+            <option value="famine">Famine</option>
+          </select>
+        </div>
+        <div className="">
+          <label className="mt-6">End date</label>
+          <input
+            type="date"
+            className="w-full py-3 outline-none ring-2 rounded-lg p-3"
+            placeholder="Enter amount manually"
+          />
+        </div>
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
           Continue
         </div>
