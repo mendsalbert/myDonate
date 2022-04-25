@@ -44,11 +44,11 @@ const FundRaising = () => {
       DonationContractABI.abi,
       signer
     );
-
+    const date = new Date(formInput.endDate);
     let transaction = await contract.uploadDonation(
       fileUrl,
       formInput.description,
-      formInput.endDate,
+      Math.floor(date.getTime() / 1000),
       formInput.category,
       formInput.title,
       targetAmount
