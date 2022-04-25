@@ -73,7 +73,7 @@ contract Donation {
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
-        emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+        // emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
     }
 
     function addDonation(uint _id) public payable {
