@@ -5,14 +5,43 @@ import {
   SearchIcon,
 } from "@heroicons/react/outline";
 import Link from "next/Link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
 import FundRaising from "../components/FundraisingModal.js";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
+import { ethers, providers } from "ethers";
+import axios from "axios";
+import Web3Modal from "web3modal";
+import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import Web3 from "web3";
+
 const IndexPage = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
+  const [modal, setModal] = useState(false);
+  const [Donation, setDonation] = useState([]);
+  const [loadingState, setLoadingState] = useState("not-loaded");
+
+  useEffect(() => {
+    loadDonations();
+  }, []);
+
+  async function loadDonations() {
+    /* create a generic provider and query for unsold market items */
+    const provider = new ethers.providers.JsonRpcProvider();
+    // "https://rpc-mumbai.maticvigil.com/"
+    // ("https://rpc-mumbai.matic.today");
+
+    // setProvider(provider);
+    const contract = new ethers.Contract(
+      "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      DonationContractABI.abi,
+      provider
+    );
+    const data = await contract.idToDonationItem();
+    console.log(data);
+  }
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
