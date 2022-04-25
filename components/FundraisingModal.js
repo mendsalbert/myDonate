@@ -40,18 +40,18 @@ const FundRaising = () => {
       "ether"
     );
     let contract = new ethers.Contract(
-      DonationContractABI,
+      "0x5FbDB2315678afecb367f032d93F642f64180aa3",
       DonationContractABI.abi,
       signer
     );
 
-    let transaction = await contract.addDonation(
-      url,
+    let transaction = await contract.uploadDonation(
+      fileUrl,
       formInput.description,
       formInput.endDate,
       formInput.category,
       formInput.title,
-      formInput.targetAmount
+      targetAmount
     );
 
     await transaction.wait();
