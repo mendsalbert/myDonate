@@ -5,7 +5,6 @@ contract Donation {
 
     mapping(uint256 => DonationItem) private idToDonationItem;
     uint public donationCount = 0 ;
-    
     struct Doners {
       uint id;
       uint amount;
@@ -15,6 +14,7 @@ contract Donation {
     struct DonationItem {
       uint256 id;
       address payable owner;
+      uint donationAmount;
       mapping(uint => address) doners;
       uint donersCount;
       uint startDate;
@@ -30,6 +30,7 @@ contract Donation {
     event DonationItemCreated (
       uint256 indexed id,
       address  owner,
+      uint donationAmount,
       uint donersConut,
       uint startDate,
       uint endDate,
@@ -54,6 +55,7 @@ contract Donation {
         require(msg.sender != address(0x0));
         donationCount++;
         DonationItem storage donation = idToDonationItem[donationCount++];
+        donation.donationAmount = 0;
         donation.owner = payable(address(msg.sender));
         donation.donersCount = 0;
         donation.doners[0] = address(0x0);
@@ -65,7 +67,17 @@ contract Donation {
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
-        emit DonationItemCreated(donationCount, payable(address(msg.sender)),  0, _startDate, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+        emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, _startDate, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+    }
+
+    function addDonation(uint _id) public payable {
+        require(_id > 0 && _id <= donationCount);
+        DonationItem memory _donation = idToDonationItem[_id];
+        address payable _owner = _donation.owner;
+        _owner.transfer(msg.value);
+        _donation.am = _image.tipAmount + msg.value;
+        images[_id] = _image;
+        emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);
     }
 
 }
