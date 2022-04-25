@@ -19,7 +19,10 @@ const FundRaising = (props: Props) => {
           className="w-full py-3 outline-none ring-2 rounded-lg p-3"
           placeholder="Enter description"
         />
+
+        <label className="pt-2">Select category</label>
         <select className="w-full py-3 outline-none ring-2 rounded-lg p-3">
+          <option value="education"></option>
           <option value="education">Education</option>
           <option value="disaster">Disaster</option>
           <option value="health">Health</option>
