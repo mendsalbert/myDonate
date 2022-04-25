@@ -7,7 +7,7 @@ import {
 import Link from "next/Link";
 import React, { useState } from "react";
 import DonateModal from "../components/DonateModal";
-import FundRaising from "../components/FundraisingModal";
+import FundRaising from "../components/FundraisingModal.js";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 const IndexPage = () => {

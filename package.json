@@ -24,6 +24,7 @@
     "form-data": "^4.0.0",
     "hardhat": "^2.9.3",
     "install": "^0.13.0",
+    "ipfs-http-client": "^56.0.2",
     "next": "latest",
     "postcss": "^8.4.12",
     "react": "^17.0.2",

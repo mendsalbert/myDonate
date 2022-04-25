@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { create as ipfsHttpClient } from "ipfs-http-client";
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 
-type Props = {};
+const FundRaising = () => {
+  const [fileUrl, setFileUrl] = useState(null);
+  const [formInput, updateFormInput] = useState({
+    title: "",
+    description: "",
+    category: "",
+    targetAmount: "",
+    endDate: "",
+  });
 
-const FundRaising = (props: Props) => {
+  async function onChange(e) {
+    const file = e.target.files[0];
+    try {
+      const added = await client.add(file, {
+        progress: (prog) => console.log(`received: ${prog}`),
+      });
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      setFileUrl(url);
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+  }
   return (
     <div className="p-5 font-Montserrat overflow-auto">
       <p className="text-center text-gray-500 text-lg">
@@ -40,6 +63,8 @@ const FundRaising = (props: Props) => {
             placeholder="Enter amount manually"
           />
         </div>
+        <input type="file" name="Asset" className="my-4" onChange={onChange} />
+        {fileUrl && <img className="rounded mt-4" width="350" src={fileUrl} />}
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white">
           Continue
         </div>
