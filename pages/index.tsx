@@ -238,8 +238,34 @@ const IndexPage = () => {
         {images.map((donation, index) => {
           console.log(donation.image);
           const object = {
-            image: donation.image,
+            title: donation.image.title,
+            image: donation.image.hash,
             doners: donation.filterDoners,
+            endDate:
+              new Date(
+                Date.now() - donation.image.endDate.toString()
+              ).getDate() -
+                1 <
+              1
+                ? "Donation Ended"
+                : ` ${
+                    new Date(
+                      Date.now() - donation.image.endDate.toString()
+                    ).getDate() - 1
+                  } Days Left`,
+            donationAmount: (
+              Number(
+                ethers.utils.formatEther(
+                  donation.image.donationAmount.toString()
+                )
+              ) * ethprice
+            ).toLocaleString(),
+            targetAmount: (
+              Number(
+                ethers.utils.formatEther(donation.image.targetPrice.toString())
+              ) * ethprice
+            ).toLocaleString(),
+            // image: donation.image,
           };
           return (
             <Link

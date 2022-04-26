@@ -6,17 +6,21 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import { BigNumber, ethers, providers, utils } from "ethers";
-const Donation = ({ router: { query } }) => {
-  const donation = JSON.parse(query.object);
+const Donation = () => {
   const [ethprice, setethprice] = useState(1);
+  const router = useRouter();
+  const data = router.query as any;
+  let donation;
+  if (data.object) {
+    donation = JSON.parse(data.object);
+  }
+  // console.log(data.object);
   console.log(donation);
-  // const router = useRouter();
-  // const data = router.query as any;
   useEffect(() => {
     axios
       .get(
@@ -30,7 +34,8 @@ const Donation = ({ router: { query } }) => {
         // console.log(e.target.value);
       });
   }, []);
-  // console.log(data.image);
+  // console.log(donation.image[5]);
+  // console.log(ethers.utils.formatEther(donation.image[5].toString()));
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -74,23 +79,23 @@ const Donation = ({ router: { query } }) => {
           <div className="w-8/12 mb-3">
             <div className="w-full rounded-lg">
               <img
-                // src={data.image[8]}
+                src={donation.image}
                 className="w-full h-96 rounded-lg object-cover"
               />
             </div>
           </div>
           <div className="w-6/12 space-y-3">
-            {/* <p className="text-2xl font-bold text-gray-600">{data.image[7]}</p> */}
+            <p className="text-2xl font-bold text-gray-600">{donation.title}</p>
             <p className="text-xl font-bold text-gray-600">Charity Target</p>
-            <p className="text-xl text-gray-600"> $ ETH-USD</p>
-            <div className="flex text-gray-600 flex-row items-center space-x-3">
-              <ClockIcon className="h-7" />
-              <p className="text-lg">3 Days Left</p>
-            </div>
+
             <div className="flex text-gray-600 flex-row items-center space-x-3">
               <CashIcon className="h-7" />
-              <p className="text-lg">$1,000,000.00</p>
+              <p className="text-lg">${donation.targetAmount}</p>
             </div>
+            <p className="text-lg text-gray-600">
+              {" "}
+              $ {donation.donationAmount}/{donation.targetAmount} ETH-USD
+            </p>
 
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
