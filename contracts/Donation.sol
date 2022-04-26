@@ -65,12 +65,13 @@ contract Donation {
         DonationItem storage donation = idToDonationItem[donationCount];
         donation.donationAmount = 0;
         donation.owner = payable(address(msg.sender));
-        doners[donationCount++][donersCount++] = address(0x0);
+        doners[donationCount][donersCount++] = address(0x0);
         donation.startDate = block.timestamp;
         donation.endDate = _endDate;
         donation.targetPrice = _targetPrice;
         donation.category = _category;
         donation.title = _title;
+        donation.id = donationCount++;
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
