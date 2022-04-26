@@ -64,23 +64,25 @@ const IndexPage = () => {
       provider
     );
 
-    // if (true) {
-    const data = await contract.donationCount();
-    const lgt = await data.toString();
-    console.log(lgt);
-    for (let i = 1; i < lgt; i++) {
-      const image = await contract.idToDonationItem(i);
-      console.log(i);
-      setImages((prevState) => [...prevState, image]);
-      setready(true);
-      // setImages([image]);
-    }
-    // } else {
-    //   window.alert("Donation contract not deployed to detected network");
-    // }
-  }
+    if (contract) {
+      const data = await contract.donationCount();
+      const lgt = await data.toString();
+      console.log(lgt);
+      for (let i = 1; i < lgt; i++) {
+        const image = await contract.idToDonationItem(i);
+        const donners = await contract.doners(i + 1);
 
-  console.log(images[0]);
+        console.log(image);
+        setImages((prevState) => [...prevState, image]);
+
+        setready(true);
+        // setImages([image]);
+      }
+    } else {
+      window.alert("Donation contract not deployed to detected network");
+    }
+  }
+  // console.log(images);
 
   return (
     <div className="mx-40 my-6  font-Montserrat">
@@ -158,7 +160,7 @@ const IndexPage = () => {
         <p className="font-bold text-xl text-gray-500 my-10">
           Trending Category
         </p>
-        <div className="flex flex-row space-x-6 ">
+        {/* <div className="flex flex-row space-x-6 ">
           <div className="8/12">
             <div className="w-full rounded-lg">
               <img
@@ -191,7 +193,7 @@ const IndexPage = () => {
             <div className="flex text-gray-600 flex-row items-center space-x-1">
               <CashIcon className="h-7" />
               <p className="text-md">
-                {/* $
+                $
                 {(
                   Number(
                     ethers.utils.formatEther(
@@ -205,7 +207,7 @@ const IndexPage = () => {
                     ethers.utils.formatEther(images[0].targetPrice.toString())
                   ) * ethprice
                 ).toLocaleString()}{" "}
-                ETH-USD */}
+                ETH-USD
               </p>
             </div>
             <div
@@ -218,69 +220,72 @@ const IndexPage = () => {
               Donate Now
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
 
-        {images.map((donation) => (
-          <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
-            <div className="w-3/12 rounded-lg">
-              <img src={donation.hash} className=" rounded-lg object-cover" />
-            </div>
+        {images.map((donation) => {
+          return (
+            <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
+              <div className="w-3/12 rounded-lg">
+                <img src={donation.hash} className=" rounded-lg object-cover" />
+              </div>
 
-            <div className="grow ">
-              <p className="text-2xl">{donation.title}</p>
-              <p className="text-lg">{donation.description}</p>
-              <div className="flex text-gray-600 flex-row items-center space-x-2">
-                <ClockIcon className="h-5" />
-                <p className="text-lg">
-                  {new Date(
-                    Date.now() - donation.endDate.toString()
-                  ).getDate() -
-                    1 <
-                  1
-                    ? "Donation Ended"
-                    : ` ${
-                        new Date(
-                          Date.now() - donation.endDate.toString()
-                        ).getDate() - 1
-                      } Days Left`}{" "}
-                  {/* {donation.endDate.toString()} */}
-                </p>
+              <div className="grow ">
+                <p className="text-2xl">{donation.title}</p>
+                <p className="text-lg">{donation.description}</p>
+                <div className="flex text-gray-600 flex-row items-center space-x-2">
+                  <ClockIcon className="h-5" />
+                  <p className="text-lg">
+                    {new Date(
+                      Date.now() - donation.endDate.toString()
+                    ).getDate() -
+                      1 <
+                    1
+                      ? "Donation Ended"
+                      : ` ${
+                          new Date(
+                            Date.now() - donation.endDate.toString()
+                          ).getDate() - 1
+                        } Days Left`}{" "}
+                  </p>
+                </div>
+                <div className="flex text-gray-600 flex-row items-center space-x-2">
+                  <CashIcon className="h-5" />
+                  <p className="text-lg">
+                    $
+                    {(
+                      Number(
+                        ethers.utils.formatEther(
+                          donation.donationAmount.toString()
+                        )
+                      ) * ethprice
+                    ).toLocaleString()}
+                    /$
+                    {(
+                      Number(
+                        ethers.utils.formatEther(
+                          donation.targetPrice.toString()
+                        )
+                      ) * ethprice
+                    ).toLocaleString()}{" "}
+                    ETH-USD
+                  </p>
+                </div>
               </div>
-              <div className="flex text-gray-600 flex-row items-center space-x-2">
-                <CashIcon className="h-5" />
-                <p className="text-lg">
-                  $
-                  {(
-                    Number(
-                      ethers.utils.formatEther(
-                        donation.donationAmount.toString()
-                      )
-                    ) * ethprice
-                  ).toLocaleString()}
-                  /$
-                  {(
-                    Number(
-                      ethers.utils.formatEther(donation.targetPrice.toString())
-                    ) * ethprice
-                  ).toLocaleString()}{" "}
-                  ETH-USD
-                </p>
+              <div
+                onClick={() => {
+                  setOpen(!open);
+                  setComp(<DonateModal donationId={donation.id} />);
+                }}
+                className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
+              >
+                Donate
               </div>
             </div>
-            <div
-              onClick={() => {
-                setOpen(!open);
-                setComp(<DonateModal donationId={donation.id} />);
-              }}
-              className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
-            >
-              Donate
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="mt-28 text-center w-full py-4 flex flex-col justify-center items-center">
         <p className="text-lg text-gray-500 ">Connet with us</p>
