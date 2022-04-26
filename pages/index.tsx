@@ -218,8 +218,14 @@ const IndexPage = () => {
                         donation.donationAmount.toString()
                       )
                     ) * ethprice
+                  ).toLocaleString()}
+                  /$
+                  {(
+                    Number(
+                      ethers.utils.formatEther(donation.targetAmount.toString())
+                    ) * ethprice
                   ).toLocaleString()}{" "}
-                  ETH/USD
+                  ETH-USD
                 </p>
               </div>
             </div>
