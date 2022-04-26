@@ -38,6 +38,7 @@ const DonateModal = (props) => {
     // const transaction = await contract.createMarketSale(nft.tokenId);
     await transaction.wait();
     console.log("transaction complete");
+    alert("Donation sent succesfully");
     // loadNFTs();
   }
   return (
