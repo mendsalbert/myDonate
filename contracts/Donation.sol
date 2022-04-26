@@ -82,9 +82,11 @@ contract Donation {
     function addDonation(uint _id) public payable {
         console.log(_id);
         require(_id > 0 && _id <= donationCount);
-        doners[_id];
+        // doners[_id];
         DonationItem storage _donation = idToDonationItem[_id];
-        console.log([_donation.id][donersCount++]);
+        console.log(doners[_donation.id][donersCount++]);
+        console.log(_donation.id);
+        console.log(donersCount);
         require(_donation.completed == false);
         require(_donation.donationAmount <= _donation.targetPrice);
        
@@ -97,7 +99,7 @@ contract Donation {
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
         doners[_donation.id][donersCount++] = address(msg.sender);
-        console.log([_donation.id][donersCount++]);
+        // console.log([_donation.id][donersCount++]);
         console.log(_donation.id);
         console.log(donersCount);
         idToDonationItem[_id] = _donation;
