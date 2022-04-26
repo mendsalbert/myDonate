@@ -10,7 +10,8 @@ import DonateModal from "../components/DonateModal";
 import FundRaising from "../components/FundraisingModal.js";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
-import { ethers, providers } from "ethers";
+import { BigNumber, ethers, providers, utils } from "ethers";
+
 import axios from "axios";
 import Web3Modal from "web3modal";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
@@ -22,9 +23,21 @@ const IndexPage = () => {
   const [modal, setModal] = useState(false);
   const [images, setImages] = useState([]);
   const [Donation, setDonation] = useState([]);
+  const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
 
   useEffect(() => {
+    axios
+      .get(
+        "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
+      )
+      .then((res) => {
+        console.log(res.data);
+        setethprice(res.data.USD);
+      })
+      .catch((e) => {
+        console.log(e.target.value);
+      });
     loadDonations();
   }, []);
 
@@ -185,7 +198,13 @@ const IndexPage = () => {
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <CashIcon className="h-5" />
                 <p className="text-lg">
-                  {ethers.utils.formatEther(donation.targetPrice.toString())}
+                  $
+                  {(
+                    Number(
+                      ethers.utils.formatEther(donation.targetPrice.toString())
+                    ) * ethprice
+                  ).toLocaleString()}
+                  ETH/USD
                 </p>
               </div>
             </div>
