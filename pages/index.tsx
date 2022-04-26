@@ -20,6 +20,7 @@ const IndexPage = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [modal, setModal] = useState(false);
+  const [images, setImages] = useState([]);
   const [Donation, setDonation] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
 
@@ -35,21 +36,22 @@ const IndexPage = () => {
 
     // setProvider(provider);
     const contract = new ethers.Contract(
-      "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       DonationContractABI.abi,
       provider
     );
 
-    const data = await contract.donationCount();
-    const lgt = data.toString();
-    // console.log(data.toString());
+    if (contract) {
+      const data = await contract.donationCount();
+      const lgt = data.toString();
 
-    for (let i = 1; i <= lgt; i++) {
-      const image = await contract.idToDonationItem(i);
-      console.log(image.toString());
+      for (let i = 1; i <= lgt; i++) {
+        const image = await contract.idToDonationItem(i);
+        setImages((prevState) => [...prevState, image]);
+      }
+    } else {
+      window.alert("Donation contract not deployed to detected network");
     }
-    // console.log(ethers.utils.formatEther(data));
-    console.log(data);
   }
   return (
     <div className="mx-40 my-6  font-Montserrat">
