@@ -109,7 +109,7 @@ const Donation = () => {
               <div className="flex flex-row items-center">
                 {/* {donation.doners.map((doners) => ( */}
                 <div className=" rounded-lg">
-                  <HeartIcon className="h-7" fill="red" />
+                  <HeartIcon className="h-7 animate-pulse " fill="red" />
                   {/* <img
                       src="/images/war.jpg"
                       className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
