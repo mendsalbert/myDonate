@@ -16,12 +16,23 @@ const Donation = () => {
   const [ethprice, setethprice] = useState(1);
   const router = useRouter();
   const data = router.query as any;
-  let donation;
+  let donation = {
+    title: "",
+    image: "",
+    doners: [],
+    endDate: "",
+    donationAmount: "",
+    targetAmount: "",
+  };
   if (data.object) {
     donation = JSON.parse(data.object);
   }
   // console.log(data.object);
-  console.log(donation);
+  console.log(
+    Math.ceil(
+      parseInt(donation.donationAmount) / parseInt(donation.targetAmount)
+    )
+  );
   useEffect(() => {
     axios
       .get(
@@ -100,9 +111,22 @@ const Donation = () => {
 
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                <div className="bg-blue-600 h-2.5 rounded-full w-[45%]"></div>
+                <div
+                  className={`bg-blue-600 h-2.5 rounded-full w-[${Number(
+                    Math.ceil(
+                      parseInt(donation.donationAmount) /
+                        parseInt(donation.targetAmount)
+                    )
+                  )}%]`}
+                ></div>
               </div>
-              <p className="text-gray-600 text-lg">45%</p>
+              <p className="text-gray-600 text-lg">
+                {Math.ceil(
+                  parseInt(donation.donationAmount) /
+                    parseInt(donation.targetAmount)
+                )}
+                %
+              </p>
             </div>
 
             <div className="flex flex-row items-center justify-between">

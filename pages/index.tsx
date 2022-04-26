@@ -268,77 +268,84 @@ const IndexPage = () => {
             // image: donation.image,
           };
           return (
-            <Link
-              href={{
-                pathname: "/donation",
-                query: { object: JSON.stringify(object) }, // the data
-              }}
-            >
-              <div className=" cursor-default mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
-                <div className="w-3/12 rounded-lg">
+            <div className=" cursor-default mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
+              <div className="w-3/12 rounded-lg">
+                <Link
+                  href={{
+                    pathname: "/donation",
+                    query: { object: JSON.stringify(object) }, // the data
+                  }}
+                >
                   <img
                     src={donation.image.hash}
                     className=" rounded-lg object-cover"
                   />
-                </div>
+                </Link>
+              </div>
 
-                <div className="grow ">
-                  <p className="text-2xl">{donation.image.title}</p>
-                  <p className="text-lg">{donation.image.description}</p>
-                  <div className="flex text-gray-600 flex-row items-center space-x-2">
-                    <ClockIcon className="h-5" />
-                    <p className="text-lg">
-                      {new Date(
-                        Date.now() - donation.image.endDate.toString()
-                      ).getDate() -
-                        1 <
-                      1
-                        ? "Donation Ended"
-                        : ` ${
-                            new Date(
-                              Date.now() - donation.image.endDate.toString()
-                            ).getDate() - 1
-                          } Days Left`}{" "}
-                    </p>
-                  </div>
-                  <div className="flex text-gray-600 flex-row items-center space-x-2">
-                    <CashIcon className="h-5" />
-                    <p className="text-lg">
-                      $
-                      {(
-                        Number(
-                          ethers.utils.formatEther(
-                            donation.image.donationAmount.toString()
-                          )
-                        ) * ethprice
-                      ).toLocaleString()}
-                      /$
-                      {(
-                        Number(
-                          ethers.utils.formatEther(
-                            donation.image.targetPrice.toString()
-                          )
-                        ) * ethprice
-                      ).toLocaleString()}{" "}
-                      ETH-USD
-                    </p>
-                    <p>{donation.image.id.toString()}</p>
-                    <p>{donation.filterDoners.length}</p>
-                  </div>
-                </div>
-                <div
-                  onClick={() => {
-                    setOpen(!open);
-                    setComp(
-                      <DonateModal donationId={donation.image.id.toString()} />
-                    );
+              <div className="grow ">
+                <Link
+                  href={{
+                    pathname: "/donation",
+                    query: { object: JSON.stringify(object) }, // the data
                   }}
-                  className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
                 >
-                  Donate
+                  <p className="text-2xl">{donation.image.title}</p>
+                </Link>
+                <p className="text-lg">{donation.image.description}</p>
+                <div className="flex text-gray-600 flex-row items-center space-x-2">
+                  <ClockIcon className="h-5" />
+                  <p className="text-lg">
+                    {new Date(
+                      Date.now() - donation.image.endDate.toString()
+                    ).getDate() -
+                      1 <
+                    1
+                      ? "Donation Ended"
+                      : ` ${
+                          new Date(
+                            Date.now() - donation.image.endDate.toString()
+                          ).getDate() - 1
+                        } Days Left`}{" "}
+                  </p>
+                </div>
+                <div className="flex text-gray-600 flex-row items-center space-x-2">
+                  <CashIcon className="h-5" />
+                  <p className="text-lg">
+                    $
+                    {(
+                      Number(
+                        ethers.utils.formatEther(
+                          donation.image.donationAmount.toString()
+                        )
+                      ) * ethprice
+                    ).toLocaleString()}
+                    /$
+                    {(
+                      Number(
+                        ethers.utils.formatEther(
+                          donation.image.targetPrice.toString()
+                        )
+                      ) * ethprice
+                    ).toLocaleString()}{" "}
+                    ETH-USD
+                  </p>
+                  <p>{donation.image.id.toString()}</p>
+                  <p>{donation.filterDoners.length}</p>
                 </div>
               </div>
-            </Link>
+              <div
+                onClick={() => {
+                  setOpen(!open);
+                  setComp(
+                    <DonateModal donationId={donation.image.id.toString()} />
+                  );
+                }}
+                className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
+              >
+                Donate
+              </div>
+            </div>
           );
         })}
       </div>
