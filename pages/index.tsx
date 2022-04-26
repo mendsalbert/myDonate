@@ -184,7 +184,9 @@ const IndexPage = () => {
               </div>
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <CashIcon className="h-5" />
-                <p className="text-lg">{donation.donationAmount.toString()}</p>
+                <p className="text-lg">
+                  {ethers.utils.formatEther(donation.targetPrice.toString())}
+                </p>
               </div>
             </div>
             <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
