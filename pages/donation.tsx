@@ -6,12 +6,31 @@ import {
 } from "@heroicons/react/outline";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { useRouter } from "next/router";
+import { withRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Donation = () => {
-  const router = useRouter();
-  const data = router.query;
-  console.log(data);
+import { BigNumber, ethers, providers, utils } from "ethers";
+const Donation = ({ router: { query } }) => {
+  const donation = JSON.parse(query.object);
+  const [ethprice, setethprice] = useState(1);
+  console.log(donation);
+  // const router = useRouter();
+  // const data = router.query as any;
+  useEffect(() => {
+    axios
+      .get(
+        "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
+      )
+      .then((res) => {
+        // console.log(res.data);
+        setethprice(res.data.USD);
+      })
+      .catch((e) => {
+        // console.log(e.target.value);
+      });
+  }, []);
+  // console.log(data.image);
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -51,22 +70,19 @@ const Donation = () => {
       </div>
 
       <div className=" mt-32">
-        {/* <p className="font-bold text-xl text-gray-500 my-10">Trending Category</p> */}
         <div className="flex flex-row  space-x-10 w-full">
           <div className="w-8/12 mb-3">
             <div className="w-full rounded-lg">
               <img
-                src="/images/war.jpg"
+                // src={data.image[8]}
                 className="w-full h-96 rounded-lg object-cover"
               />
             </div>
           </div>
           <div className="w-6/12 space-y-3">
-            <p className="text-2xl font-bold text-gray-600">
-              {data.image[0].title}
-            </p>
+            {/* <p className="text-2xl font-bold text-gray-600">{data.image[7]}</p> */}
             <p className="text-xl font-bold text-gray-600">Charity Target</p>
-            <p className="text-xl text-gray-600">$1,000 / $1,000,000.00</p>
+            <p className="text-xl text-gray-600"> $ ETH-USD</p>
             <div className="flex text-gray-600 flex-row items-center space-x-3">
               <ClockIcon className="h-7" />
               <p className="text-lg">3 Days Left</p>
@@ -121,6 +137,7 @@ const Donation = () => {
             </div>
           </div>
         </div>
+        {/* ))} */}
       </div>
 
       <div className="mt-28 text-center w-full py-4 flex flex-col justify-center items-center">

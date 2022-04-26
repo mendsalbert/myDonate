@@ -237,12 +237,15 @@ const IndexPage = () => {
 
         {images.map((donation, index) => {
           console.log(donation.image);
-
+          const object = {
+            image: donation.image,
+            doners: donation.filterDoners,
+          };
           return (
             <Link
               href={{
                 pathname: "/donation",
-                query: { image: donation.image, doners: donation.filterDoners }, // the data
+                query: { object: JSON.stringify(object) }, // the data
               }}
             >
               <div className=" cursor-default mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
