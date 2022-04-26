@@ -193,7 +193,20 @@ const IndexPage = () => {
               <p className="text-lg">{donation.description}</p>
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <ClockIcon className="h-5" />
-                <p className="text-lg">3 Days Left</p>
+                <p className="text-lg">
+                  {new Date(
+                    Date.now() - donation.endDate.toString()
+                  ).getDate() -
+                    1 <
+                  1
+                    ? "Donation Ended"
+                    : ` ${
+                        new Date(
+                          Date.now() - donation.endDate.toString()
+                        ).getDate() - 1
+                      } Days Left`}{" "}
+                  {/* {donation.endDate.toString()} */}
+                </p>
               </div>
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <CashIcon className="h-5" />
@@ -203,7 +216,7 @@ const IndexPage = () => {
                     Number(
                       ethers.utils.formatEther(donation.targetPrice.toString())
                     ) * ethprice
-                  ).toLocaleString()}
+                  ).toLocaleString()}{" "}
                   ETH/USD
                 </p>
               </div>
