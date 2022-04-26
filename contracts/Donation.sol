@@ -93,6 +93,7 @@ contract Donation {
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
         doners[_donation.id] = msg.sender;
+        console.log(_donation.id);
         console.log(doners[_donation.id]);
         donersCount = donationCount;
         idToDonationItem[_id] = _donation;
