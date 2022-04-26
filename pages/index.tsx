@@ -63,7 +63,7 @@ const IndexPage = () => {
       const lgtDoners = await donersData.toString();
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        const doners = await contract.doners(1, 1);
+        // const doners = await contract.doners(1, 1);
         console.log(doners);
         // for (let k = 1; k < lgtDoners; k++) {
         //   const doners = await contract.doners(i - 1, k);
@@ -274,7 +274,7 @@ const IndexPage = () => {
               <div
                 onClick={() => {
                   setOpen(!open);
-                  setComp(<DonateModal donationId={donation.id} />);
+                  setComp(<DonateModal donationId={donation.id.toString()} />);
                 }}
                 className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
               >

@@ -5,6 +5,7 @@ contract Donation {
 
     mapping(uint256 => DonationItem) public idToDonationItem;
     mapping(uint256 => mapping( uint256 => address)) public doners;
+   
     uint public donersCount = 0;
     uint public donationCount = 0;
 
@@ -79,6 +80,8 @@ contract Donation {
     }
 
     function addDonation(uint _id) public payable {
+        console.log(_id);
+        console.log([_donation.id][donersCount++]);
         require(_id > 0 && _id <= donationCount);
         doners[_id];
         DonationItem storage _donation = idToDonationItem[_id];
@@ -93,7 +96,7 @@ contract Donation {
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
-        doners[_donation.id][donersCount++] = msg.sender;
+        doners[_donation.id][donersCount++] = address(msg.sender);
         console.log([_donation.id][donersCount++]);
         console.log(_donation.id);
         console.log(donersCount);
