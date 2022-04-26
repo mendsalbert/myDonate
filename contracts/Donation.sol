@@ -92,7 +92,7 @@ contract Donation {
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
-        doners[_donation.id] = address(msg.sender);
+        doners[_donation.id] = msg.sender;
         console.log(doners[1]);
         donersCount = donationCount;
         idToDonationItem[_id] = _donation;
