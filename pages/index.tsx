@@ -78,7 +78,7 @@ const IndexPage = () => {
       window.alert("Donation contract not deployed to detected network");
     }
   }
-  // console.log(doners);
+  console.log(images);
 
   return (
     <div className="mx-40 my-6  font-Montserrat">
@@ -268,7 +268,7 @@ const IndexPage = () => {
                     ).toLocaleString()}{" "}
                     ETH-USD
                   </p>
-                  <p>{doners[index]}</p>
+                  <p>{donation.id.toString()}</p>
                 </div>
               </div>
               <div

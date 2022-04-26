@@ -11,7 +11,7 @@ type Props = {
 const DonateModal = (props) => {
   const [amount, setamount] = useState("") as any;
   async function tipDonation(donationId) {
-    console.log(Number(donationId.toString() + 1));
+    console.log(Number(donationId.toString()));
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -30,7 +30,7 @@ const DonateModal = (props) => {
     // const gweiValue = ethers.utils.formatUnits(weiValue, "gwei");
 
     let transaction = await contract.addDonation(
-      Number(donationId.toString() + 1),
+      Number(donationId.toString()),
       {
         value: amount_,
       }
