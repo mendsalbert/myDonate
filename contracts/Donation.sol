@@ -90,8 +90,8 @@ contract Donation {
         address payable _owner = _donation.owner;
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
+        doners[donationCount] = address(msg.sender);
         donersCount = donationCount;
-        doners[donersCount] = address(msg.sender);
         idToDonationItem[_id] = _donation;
         // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);
     }

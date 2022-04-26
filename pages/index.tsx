@@ -21,17 +21,9 @@ const IndexPage = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([
-    // {
-    //   title: "",
-    //   hash: "",
-    //   description: "",
-    //   endDate: "" as any,
-    //   donationAmount: '',
-    //   targetPrice: "",
-    //   id: "",
-    // },
-  ]);
+  const [images, setImages] = useState([]);
+  const [doners, setdoners] = useState([]);
+
   const [Donation, setDonation] = useState([]);
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -70,11 +62,11 @@ const IndexPage = () => {
       console.log(lgt);
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        const donners = await contract.doners(i + 1);
+        const doners = await contract.doners(i + 1);
 
         console.log(image);
         setImages((prevState) => [...prevState, image]);
-
+        setdoners((prevState) => [...prevState, doners]);
         setready(true);
         // setImages([image]);
       }
@@ -82,7 +74,7 @@ const IndexPage = () => {
       window.alert("Donation contract not deployed to detected network");
     }
   }
-  // console.log(images);
+  console.log(doners);
 
   return (
     <div className="mx-40 my-6  font-Montserrat">
@@ -225,7 +217,7 @@ const IndexPage = () => {
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
 
-        {images.map((donation) => {
+        {images.map((donation, index) => {
           return (
             <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
               <div className="w-3/12 rounded-lg">
@@ -272,6 +264,7 @@ const IndexPage = () => {
                     ).toLocaleString()}{" "}
                     ETH-USD
                   </p>
+                  <p>{doners[index]}</p>
                 </div>
               </div>
               <div
