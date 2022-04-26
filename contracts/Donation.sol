@@ -61,7 +61,7 @@ contract Donation {
         require(msg.sender != address(0x0));
         donationCount++;
         donersCount++;
-        DonationItem storage donation = idToDonationItem[donationCount++];
+        DonationItem storage donation = idToDonationItem[donationCount];
         donation.donationAmount = 0;
         donation.owner = payable(address(msg.sender));
         doners[donationCount++] = address(0x0);

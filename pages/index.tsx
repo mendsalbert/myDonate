@@ -36,25 +36,28 @@ const IndexPage = () => {
 
     // setProvider(provider);
     const contract = new ethers.Contract(
-      "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       DonationContractABI.abi,
       provider
     );
 
-    if (true) {
-      const data = await contract.donationCount();
-      const lgt = data.toString();
-
-      for (let i = 1; i <= lgt; i++) {
-        const image = await contract.idToDonationItem(i);
-        setImages((prevState) => [...prevState, image]);
-      }
-    } else {
-      window.alert("Donation contract not deployed to detected network");
+    // if (true) {
+    const data = await contract.donationCount();
+    const lgt = await data.toString();
+    console.log(lgt);
+    for (let i = 1; i < lgt; i++) {
+      const image = await contract.idToDonationItem(i);
+      console.log(i);
+      setImages((prevState) => [...prevState, image]);
+      // setImages([image]);
     }
+    // } else {
+    //   window.alert("Donation contract not deployed to detected network");
+    // }
   }
 
   console.log(images);
+
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -169,22 +172,19 @@ const IndexPage = () => {
         {images.map((donation) => (
           <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
             <div className="w-3/12 rounded-lg">
-              <img src="/images/war.jpg" className=" rounded-lg object-cover" />
+              <img src={donation.hash} className=" rounded-lg object-cover" />
             </div>
 
             <div className="grow ">
-              <p className="text-2xl">Ukrain vs Russia War</p>
-              <p className="text-lg">
-                The most transparent donation platform on the internet. Donate
-                in cryptos
-              </p>
+              <p className="text-2xl">{donation.title}</p>
+              <p className="text-lg">{donation.description}</p>
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <ClockIcon className="h-5" />
                 <p className="text-lg">3 Days Left</p>
               </div>
               <div className="flex text-gray-600 flex-row items-center space-x-2">
                 <CashIcon className="h-5" />
-                <p className="text-lg">$1,000,000.00</p>
+                <p className="text-lg">{donation.donationAmount.toString()}</p>
               </div>
             </div>
             <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
