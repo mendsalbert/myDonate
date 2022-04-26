@@ -64,7 +64,7 @@ const IndexPage = () => {
         const image = await contract.idToDonationItem(i);
         const doners = await contract.doners(i + 1);
 
-        console.log(image);
+        console.log(doners);
         setImages((prevState) => [...prevState, image]);
         setdoners((prevState) => [...prevState, doners]);
         setready(true);
