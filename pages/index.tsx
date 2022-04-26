@@ -21,7 +21,7 @@ const IndexPage = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]) as any;
   const [doners, setdoners] = useState([]);
 
   const [Donation, setDonation] = useState([]);
@@ -61,28 +61,38 @@ const IndexPage = () => {
       const lgt = await data.toString();
       const donersData = await contract.donersCount();
       const lgtDoners = await donersData.toString();
-      console.log(lgtDoners);
-      let doners;
-      for (let i = 1; i < lgt; i++) {
+      console.log("*********************", lgt);
+      for (let i = 1; i <= lgt; i++) {
         const image = await contract.idToDonationItem(i);
         // const doners = await contract.doners(i, 3);
         // const doners2 = await contract.doners(i, 5);
         // console.log(doners, doners2);
+        let doners = [];
         for (let k = 1; k <= lgtDoners; k++) {
-          doners = await contract.doners(i, k);
+          // doners = await contract.doners(i, k);
+          doners.push(await contract.doners(i, k));
+          // console.log(doners);
         }
+        // console.log(doners);
+        let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
+        console.log(filterDoners);
+        // setdoners((prevState) => [...prevState, doners]);
 
-        setImages((prevState) => [...prevState, image]);
+        // let filteredImage = image.filter(
+        //   (v, i) => v.owner === "0x0000000000000000000000000000000000000000"
+        // );
+        // console.log(filteredImage.length);
+
+        setImages((prevState) => [...prevState, { image, filterDoners }]);
         // setdoners((prevState) => [...prevState, doners]);
         setready(true);
       }
-      console.log(doners);
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
   }
   console.log(images);
-
+  // console.log(doners);
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -225,27 +235,32 @@ const IndexPage = () => {
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
 
         {images.map((donation, index) => {
+          console.log(donation.image);
+
           return (
             <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
               <div className="w-3/12 rounded-lg">
-                <img src={donation.hash} className=" rounded-lg object-cover" />
+                <img
+                  src={donation.image.hash}
+                  className=" rounded-lg object-cover"
+                />
               </div>
 
               <div className="grow ">
-                <p className="text-2xl">{donation.title}</p>
-                <p className="text-lg">{donation.description}</p>
+                <p className="text-2xl">{donation.image.title}</p>
+                <p className="text-lg">{donation.image.description}</p>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
                   <p className="text-lg">
                     {new Date(
-                      Date.now() - donation.endDate.toString()
+                      Date.now() - donation.image.endDate.toString()
                     ).getDate() -
                       1 <
                     1
                       ? "Donation Ended"
                       : ` ${
                           new Date(
-                            Date.now() - donation.endDate.toString()
+                            Date.now() - donation.image.endDate.toString()
                           ).getDate() - 1
                         } Days Left`}{" "}
                   </p>
@@ -257,7 +272,7 @@ const IndexPage = () => {
                     {(
                       Number(
                         ethers.utils.formatEther(
-                          donation.donationAmount.toString()
+                          donation.image.donationAmount.toString()
                         )
                       ) * ethprice
                     ).toLocaleString()}
@@ -265,19 +280,21 @@ const IndexPage = () => {
                     {(
                       Number(
                         ethers.utils.formatEther(
-                          donation.targetPrice.toString()
+                          donation.image.targetPrice.toString()
                         )
                       ) * ethprice
                     ).toLocaleString()}{" "}
                     ETH-USD
                   </p>
-                  <p>{donation.id.toString()}</p>
+                  <p>{donation.image.id.toString()}</p>
                 </div>
               </div>
               <div
                 onClick={() => {
                   setOpen(!open);
-                  setComp(<DonateModal donationId={donation.id.toString()} />);
+                  setComp(
+                    <DonateModal donationId={donation.image.id.toString()} />
+                  );
                 }}
                 className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
               >

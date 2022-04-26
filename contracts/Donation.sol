@@ -71,7 +71,7 @@ contract Donation {
         donation.targetPrice = _targetPrice;
         donation.category = _category;
         donation.title = _title;
-        donation.id = donationCount++;
+        donation.id = donationCount;
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
