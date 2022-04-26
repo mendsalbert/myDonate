@@ -98,14 +98,26 @@ const IndexPage = () => {
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
         <img src="/images/logo.png" className="w-28 " />
-        <div className="flex grow flex-row items-center bg-[#E7DDDD] px-4 rounded-full">
+        {/* <div className="flex grow flex-row items-center bg-[#E7DDDD] px-4 rounded-full">
           <SearchIcon className="h-6 text-gray-500" />
           <input
             type="text"
             className=" py-3  w-full bg-[#E7DDDD] ring-0 focus:ring-0 outline-none focus:outline-none rounded-full px-4"
           />
-        </div>
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+        </div> */}
+        <div
+          onClick={async () => {
+            const accounts = await window.ethereum.request({
+              method: "eth_requestAccounts",
+            });
+            // setAccounts(accounts);
+            console.log(accounts);
+            const account = accounts[0];
+            console.log(account);
+            // dispatch(web3AccountLoaded(account));
+          }}
+          className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
+        >
           Connet Wallet
         </div>
       </div>
