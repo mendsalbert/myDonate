@@ -41,7 +41,7 @@ const IndexPage = () => {
       provider
     );
 
-    if (contract) {
+    if (true) {
       const data = await contract.donationCount();
       const lgt = data.toString();
 
@@ -53,6 +53,8 @@ const IndexPage = () => {
       window.alert("Donation contract not deployed to detected network");
     }
   }
+
+  console.log(images);
   return (
     <div className="mx-40 my-6  font-Montserrat">
       <div className="flex flex-row justify-between items-center space-x-32">
@@ -86,12 +88,7 @@ const IndexPage = () => {
             Start New Fundraising
           </div>
         </div>
-        {/* <div className=" grow py-14  bg-gradient-to-r p-8 from-cyan-500 text-center rounded-xl to-blue-500">
-          <p className="text-white py-3 text-xl">Start New Fundraising</p>
-          <div className="bg-white  py-2   rounded-md cursor-pointer text-blue">
-            Start Now
-          </div>
-        </div> */}
+
         <div className="">
           <img src="/images/jumbotron.svg" className="w-96" />
         </div>
@@ -168,87 +165,33 @@ const IndexPage = () => {
       </div>
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
-        <div
-          className="mb-9 w-full flex flex-row items-center space-x-4
-         justify-between "
-        >
-          <div className="w-3/12 rounded-lg">
-            <img src="/images/war.jpg" className=" rounded-lg object-cover" />
-          </div>
 
-          <div className="grow ">
-            <p className="text-2xl">Ukrain vs Russia War</p>
-            <p className="text-lg">
-              The most transparent donation platform on the internet. Donate in
-              cryptos
-            </p>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <ClockIcon className="h-5" />
-              <p className="text-lg">3 Days Left</p>
+        {images.map((donation) => (
+          <div className="mb-9 w-full flex flex-row items-center space-x-4 justify-between ">
+            <div className="w-3/12 rounded-lg">
+              <img src="/images/war.jpg" className=" rounded-lg object-cover" />
             </div>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <CashIcon className="h-5" />
-              <p className="text-lg">$1,000,000.00</p>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
-            Donate
-          </div>
-        </div>
-        <div
-          className="mb-9 w-full flex flex-row items-center space-x-4
-         justify-between "
-        >
-          <div className="w-3/12 rounded-lg">
-            <img src="/images/war.jpg" className=" rounded-lg object-cover" />
-          </div>
 
-          <div className="grow ">
-            <p className="text-2xl">Ukrain vs Russia War</p>
-            <p className="text-lg">
-              The most transparent donation platform on the internet. Donate in
-              cryptos
-            </p>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <ClockIcon className="h-5" />
-              <p className="text-lg">3 Days Left</p>
+            <div className="grow ">
+              <p className="text-2xl">Ukrain vs Russia War</p>
+              <p className="text-lg">
+                The most transparent donation platform on the internet. Donate
+                in cryptos
+              </p>
+              <div className="flex text-gray-600 flex-row items-center space-x-2">
+                <ClockIcon className="h-5" />
+                <p className="text-lg">3 Days Left</p>
+              </div>
+              <div className="flex text-gray-600 flex-row items-center space-x-2">
+                <CashIcon className="h-5" />
+                <p className="text-lg">$1,000,000.00</p>
+              </div>
             </div>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <CashIcon className="h-5" />
-              <p className="text-lg">$1,000,000.00</p>
-            </div>
-          </div>
-          <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
-            Donate
-          </div>
-        </div>
-        <div
-          className="mb-9 w-full flex flex-row items-center space-x-4
-         justify-between "
-        >
-          <div className="w-3/12 rounded-lg">
-            <img src="/images/war.jpg" className=" rounded-lg object-cover" />
-          </div>
-
-          <div className="grow ">
-            <p className="text-2xl">Ukrain vs Russia War</p>
-            <p className="text-lg">
-              The most transparent donation platform on the internet. Donate in
-              cryptos
-            </p>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <ClockIcon className="h-5" />
-              <p className="text-lg">3 Days Left</p>
-            </div>
-            <div className="flex text-gray-600 flex-row items-center space-x-2">
-              <CashIcon className="h-5" />
-              <p className="text-lg">$1,000,000.00</p>
+            <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+              Donate
             </div>
           </div>
-          <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
-            Donate
-          </div>
-        </div>
+        ))}
       </div>
       <div className="mt-28 text-center w-full py-4 flex flex-col justify-center items-center">
         <p className="text-lg text-gray-500 ">Connet with us</p>
