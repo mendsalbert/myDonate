@@ -39,7 +39,16 @@ const IndexPage = () => {
       DonationContractABI.abi,
       provider
     );
-    const data = await contract.idToDonationItem();
+
+    const data = await contract.donationCount();
+    const lgt = data.toString();
+    // console.log(data.toString());
+
+    for (let i = 1; i <= lgt; i++) {
+      const image = await contract.idToDonationItem(i);
+      console.log(image.toString());
+    }
+    // console.log(ethers.utils.formatEther(data));
     console.log(data);
   }
   return (
