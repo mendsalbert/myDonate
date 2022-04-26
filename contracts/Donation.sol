@@ -81,10 +81,10 @@ contract Donation {
 
     function addDonation(uint _id) public payable {
         console.log(_id);
-        console.log([_donation.id][donersCount++]);
         require(_id > 0 && _id <= donationCount);
         doners[_id];
         DonationItem storage _donation = idToDonationItem[_id];
+        console.log([_donation.id][donersCount++]);
         require(_donation.completed == false);
         require(_donation.donationAmount <= _donation.targetPrice);
        
