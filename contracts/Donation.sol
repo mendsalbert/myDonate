@@ -62,11 +62,10 @@ contract Donation {
         //make sure uploader address exist
         require(msg.sender != address(0x0));
         donationCount++;
-        donersCount++;
         DonationItem storage donation = idToDonationItem[donationCount];
         donation.donationAmount = 0;
         donation.owner = payable(address(msg.sender));
-        doners[donationCount][donersCount++] = address(0x0);
+        doners[donationCount][donersCount] = address(0x0);
         donation.startDate = block.timestamp;
         donation.endDate = _endDate;
         donation.targetPrice = _targetPrice;
@@ -98,7 +97,8 @@ contract Donation {
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
-        doners[_donation.id][donersCount++] = address(msg.sender);
+        donersCount++;
+        doners[_donation.id][donersCount] = address(msg.sender);
         // console.log([_donation.id][donersCount++]);
         console.log(_donation.id);
         console.log(donersCount);
