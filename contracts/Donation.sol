@@ -81,12 +81,12 @@ contract Donation {
         doners[_id];
         DonationItem storage _donation = idToDonationItem[_id];
         require(_donation.completed == false);
+        require(_donation.donationAmount <= _donation.targetPrice);
        
         //check date if it expired.
         if(_donation.donationAmount >= _donation.targetPrice){
             _donation.completed = true;
         }
-
         address payable _owner = _donation.owner;
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;

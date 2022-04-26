@@ -21,11 +21,21 @@ const IndexPage = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([
+    // {
+    //   title: "",
+    //   hash: "",
+    //   description: "",
+    //   endDate: "" as any,
+    //   donationAmount: '',
+    //   targetPrice: "",
+    //   id: "",
+    // },
+  ]);
   const [Donation, setDonation] = useState([]);
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
-
+  const [ready, setready] = useState(false);
   useEffect(() => {
     axios
       .get(
@@ -36,7 +46,7 @@ const IndexPage = () => {
         setethprice(res.data.USD);
       })
       .catch((e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
       });
     loadDonations();
   }, []);
@@ -62,6 +72,7 @@ const IndexPage = () => {
       const image = await contract.idToDonationItem(i);
       console.log(i);
       setImages((prevState) => [...prevState, image]);
+      setready(true);
       // setImages([image]);
     }
     // } else {
@@ -69,7 +80,7 @@ const IndexPage = () => {
     // }
   }
 
-  console.log(images);
+  console.log(images[0]);
 
   return (
     <div className="mx-40 my-6  font-Montserrat">
@@ -150,22 +161,52 @@ const IndexPage = () => {
         <div className="flex flex-row space-x-6 ">
           <div className="8/12">
             <div className="w-full rounded-lg">
-              <img src="/images/war.jpg" className=" rounded-lg object-cover" />
+              <img
+                src={ready ? images[0].hash : ""}
+                className=" rounded-lg object-cover"
+              />
             </div>
           </div>
           <div className="space-y-3">
-            <p className="text-2xl">Ukrain vs Russia War</p>
-            <p className="text-lg">
-              The most transparent donation platform on the internet. Donate in
-              cryptos
-            </p>
+            <p className="text-2xl">{ready ? images[0].title : ""}</p>
+            <p className="text-lg">{ready ? images[0].description : ""}</p>
             <div className="flex text-gray-600 flex-row items-center space-x-1">
               <ClockIcon className="h-7" />
-              <p className="text-md">3 Days Left</p>
+              <p className="text-md">
+                {ready
+                  ? new Date(
+                      Date.now() - images[0].endDate.toString()
+                    ).getDate() -
+                      1 <
+                    1
+                    ? "Donation Ended"
+                    : ` ${
+                        new Date(
+                          Date.now() - images[0].endDate.toString()
+                        ).getDate() - 1
+                      } Days Left`
+                  : ""}{" "}
+              </p>
             </div>
             <div className="flex text-gray-600 flex-row items-center space-x-1">
               <CashIcon className="h-7" />
-              <p className="text-md">$1,000,000.00</p>
+              <p className="text-md">
+                {/* $
+                {(
+                  Number(
+                    ethers.utils.formatEther(
+                      images[0].donationAmount.toString()
+                    )
+                  ) * ethprice
+                ).toLocaleString()}
+                /$
+                {(
+                  Number(
+                    ethers.utils.formatEther(images[0].targetPrice.toString())
+                  ) * ethprice
+                ).toLocaleString()}{" "}
+                ETH-USD */}
+              </p>
             </div>
             <div
               onClick={() => {
