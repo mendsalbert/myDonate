@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
-
+import "hardhat/console.sol";
 contract Donation {
 
     mapping(uint256 => DonationItem) public idToDonationItem;
-    mapping(uint => address) public doners;
+    mapping(uint256 => address) public doners;
     uint public donersCount = 0;
     uint public donationCount = 0;
 
@@ -91,7 +91,9 @@ contract Donation {
         address payable _owner = _donation.owner;
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
+        console.log(msg.sender);
         doners[_donation.id] = address(msg.sender);
+        console.log(doners[1]);
         donersCount = donationCount;
         idToDonationItem[_id] = _donation;
         // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);

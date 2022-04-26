@@ -11,7 +11,7 @@ import FundRaising from "../components/FundraisingModal.js";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 import { BigNumber, ethers, providers, utils } from "ethers";
-
+import { donationAddress } from "../config";
 import axios from "axios";
 import Web3Modal from "web3modal";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
@@ -34,7 +34,7 @@ const IndexPage = () => {
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setethprice(res.data.USD);
       })
       .catch((e) => {
@@ -51,7 +51,7 @@ const IndexPage = () => {
 
     // setProvider(provider);
     const contract = new ethers.Contract(
-      "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      donationAddress,
       DonationContractABI.abi,
       provider
     );
@@ -59,22 +59,22 @@ const IndexPage = () => {
     if (contract) {
       const data = await contract.donationCount();
       const lgt = await data.toString();
-      console.log(lgt);
 
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
         const doners = await contract.doners(i);
+
         console.log(doners);
+
         setImages((prevState) => [...prevState, image]);
         // setdoners((prevState) => [...prevState, doners]);
         setready(true);
-        // setImages([image]);
       }
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
   }
-  console.log(doners);
+  // console.log(doners);
 
   return (
     <div className="mx-40 my-6  font-Montserrat">

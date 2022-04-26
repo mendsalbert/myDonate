@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import { donationAddress } from "../config";
 const FundRaising = () => {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
@@ -40,7 +41,7 @@ const FundRaising = () => {
       "ether"
     );
     let contract = new ethers.Contract(
-      "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      donationAddress,
       DonationContractABI.abi,
       signer
     );

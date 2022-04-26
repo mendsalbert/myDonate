@@ -3,6 +3,7 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import { donationAddress } from "../config";
 type Props = {
   donationId;
 };
@@ -17,7 +18,7 @@ const DonateModal = (props) => {
     const signer = provider.getSigner();
     // console.log();
     let contract = new ethers.Contract(
-      "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      donationAddress,
       DonationContractABI.abi,
       signer
     );
