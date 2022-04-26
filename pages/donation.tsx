@@ -29,8 +29,9 @@ const Donation = () => {
   }
   // console.log(data.object);
   console.log(
-    Math.ceil(
-      parseInt(donation.donationAmount) / parseInt(donation.targetAmount)
+    Math.round(
+      (parseInt(donation.donationAmount) / parseInt(donation.targetAmount)) *
+        100
     )
   );
   useEffect(() => {
@@ -111,19 +112,13 @@ const Donation = () => {
 
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                <div
-                  className={`bg-blue-600 h-2.5 rounded-full w-[${Number(
-                    Math.ceil(
-                      parseInt(donation.donationAmount) /
-                        parseInt(donation.targetAmount)
-                    )
-                  )}%]`}
-                ></div>
+                <div className={`bg-blue-600 h-2.5 rounded-full w-[1%]`}></div>
               </div>
               <p className="text-gray-600 text-lg">
-                {Math.ceil(
-                  parseInt(donation.donationAmount) /
-                    parseInt(donation.targetAmount)
+                {Math.round(
+                  (parseInt(donation.donationAmount) /
+                    parseInt(donation.targetAmount)) *
+                    100
                 )}
                 %
               </p>

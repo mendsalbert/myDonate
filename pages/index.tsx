@@ -166,11 +166,11 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div className=" mt-16">
+      {/* <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">
           Trending Category
         </p>
-        {/* <div className="flex flex-row space-x-6 ">
+        <div className="flex flex-row space-x-6 ">
           <div className="8/12">
             <div className="w-full rounded-lg">
               <img
@@ -230,8 +230,8 @@ const IndexPage = () => {
               Donate Now
             </div>
           </div>
-        </div> */}
-      </div>
+        </div>
+      </div> */}
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
 
