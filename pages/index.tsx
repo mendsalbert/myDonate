@@ -62,20 +62,21 @@ const IndexPage = () => {
       const donersData = await contract.donersCount();
       const lgtDoners = await donersData.toString();
       console.log(lgtDoners);
+      let doners;
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
         // const doners = await contract.doners(i, 3);
         // const doners2 = await contract.doners(i, 5);
         // console.log(doners, doners2);
-        for (let k = 1; k < lgtDoners; k++) {
-          const doners = await contract.doners(i, k);
-          console.log(doners);
+        for (let k = 1; k <= lgtDoners; k++) {
+          doners = await contract.doners(i, k);
         }
 
         setImages((prevState) => [...prevState, image]);
         // setdoners((prevState) => [...prevState, doners]);
         setready(true);
       }
+      console.log(doners);
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
