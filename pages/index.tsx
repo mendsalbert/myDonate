@@ -222,7 +222,7 @@ const IndexPage = () => {
                   /$
                   {(
                     Number(
-                      ethers.utils.formatEther(donation.targetAmount.toString())
+                      ethers.utils.formatEther(donation.targetPrice.toString())
                     ) * ethprice
                   ).toLocaleString()}{" "}
                   ETH-USD
