@@ -106,12 +106,6 @@ const Donation = () => {
 
             <div className="flex flex-row items-center justify-between">
               <div className="flex flex-row items-center">
-                <div className=" rounded-lg">
-                  <img
-                    src="/images/war.jpg"
-                    className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
-                  />
-                </div>
                 <div className=" -ml-3 rounded-lg">
                   <img
                     src="/images/war.jpg"
@@ -133,7 +127,7 @@ const Donation = () => {
                 <p className="text-gray-600 text-md font-bold">+65 Donated</p>
               </div>
               <div className="bg-green-200 text-sm font-bold w-max text-green-800 px-2 py-1 rounded-full text-center">
-                3 Days Left
+                {donation.endDate}
               </div>
             </div>
 
