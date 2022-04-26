@@ -93,8 +93,9 @@ contract Donation {
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
         doners[_donation.id][donersCount++] = msg.sender;
-      
-        donersCount = donationCount;
+        console.log([_donation.id][donersCount++]);
+        console.log(_donation.id);
+        console.log(donersCount);
         idToDonationItem[_id] = _donation;
         // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);
     }

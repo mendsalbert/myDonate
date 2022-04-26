@@ -63,10 +63,12 @@ const IndexPage = () => {
       const lgtDoners = await donersData.toString();
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        for (let k = 1; k < lgtDoners; k++) {
-          const doners = await contract.doners(i, k);
-          console.log(doners);
-        }
+        const doners = await contract.doners(1, 1);
+        console.log(doners);
+        // for (let k = 1; k < lgtDoners; k++) {
+        //   const doners = await contract.doners(i - 1, k);
+        //   console.log(doners);
+        // }
 
         setImages((prevState) => [...prevState, image]);
         // setdoners((prevState) => [...prevState, doners]);
