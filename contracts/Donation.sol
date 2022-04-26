@@ -4,7 +4,7 @@ import "hardhat/console.sol";
 contract Donation {
 
     mapping(uint256 => DonationItem) public idToDonationItem;
-    mapping(uint256 => address) public doners;
+    mapping(uint256 => mapping( uint256 => address)) public doners;
     uint public donersCount = 0;
     uint public donationCount = 0;
 
@@ -65,7 +65,7 @@ contract Donation {
         DonationItem storage donation = idToDonationItem[donationCount];
         donation.donationAmount = 0;
         donation.owner = payable(address(msg.sender));
-        doners[donationCount++] = address(0x0);
+        doners[donationCount][donersCount] = address(0x0);
         donation.startDate = block.timestamp;
         donation.endDate = _endDate;
         donation.targetPrice = _targetPrice;
@@ -92,9 +92,8 @@ contract Donation {
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
         console.log(msg.sender);
-        doners[_donation.id] = msg.sender;
-        console.log(_donation.id);
-        console.log(doners[_donation.id]);
+        doners[_donation.id][donersCount++] = msg.sender;
+      
         donersCount = donationCount;
         idToDonationItem[_id] = _donation;
         // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);

@@ -62,7 +62,7 @@ const IndexPage = () => {
 
       for (let i = 1; i < lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        const doners = await contract.doners(2);
+        const doners = await contract.doners(i - 1);
 
         console.log(doners);
 
