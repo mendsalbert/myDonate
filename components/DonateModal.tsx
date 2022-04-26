@@ -8,18 +8,13 @@ type Props = {
 };
 
 const DonateModal = (props) => {
-  const [amount, setamount] = useState(1) as any;
+  const [amount, setamount] = useState("") as any;
   async function tipDonation(donationId) {
-    const web3Modal = new Web3Modal({
-      cacheProvider: true,
-      providerOptions: {},
-    });
-
-    const web3Provider = await web3Modal.connect();
-    const ethersProvider = new ethers.providers.Web3Provider(web3Provider);
-    // const ethersSigner = ethersProvider.getSigner()
-
-    const signer = ethersProvider.getSigner();
+    console.log(Number(donationId.toString() + 1));
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
     // console.log();
     let contract = new ethers.Contract(
       "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
@@ -33,9 +28,12 @@ const DonateModal = (props) => {
     // const price = ethers.utils.formatUnits(nft.price, "Ether");
     // const gweiValue = ethers.utils.formatUnits(weiValue, "gwei");
 
-    let transaction = await contract.addDonation(donationId, {
-      value: amount_,
-    });
+    let transaction = await contract.addDonation(
+      Number(donationId.toString() + 1),
+      {
+        value: amount_,
+      }
+    );
 
     // const transaction = await contract.createMarketSale(nft.tokenId);
     await transaction.wait();
