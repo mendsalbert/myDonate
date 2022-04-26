@@ -63,7 +63,7 @@ const Donation = () => {
           </div>
           <div className="w-6/12 space-y-3">
             <p className="text-2xl font-bold text-gray-600">
-              Ukrain vs Russia War
+              {data.image[0].title}
             </p>
             <p className="text-xl font-bold text-gray-600">Charity Target</p>
             <p className="text-xl text-gray-600">$1,000 / $1,000,000.00</p>
