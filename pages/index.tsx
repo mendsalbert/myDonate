@@ -214,14 +214,22 @@ const IndexPage = () => {
                   $
                   {(
                     Number(
-                      ethers.utils.formatEther(donation.targetPrice.toString())
+                      ethers.utils.formatEther(
+                        donation.donationAmount.toString()
+                      )
                     ) * ethprice
                   ).toLocaleString()}{" "}
                   ETH/USD
                 </p>
               </div>
             </div>
-            <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+            <div
+              onClick={() => {
+                setOpen(!open);
+                setComp(<DonateModal donationId={donation.id} />);
+              }}
+              className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
+            >
               Donate
             </div>
           </div>
