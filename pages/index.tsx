@@ -29,19 +29,16 @@ const IndexPage = () => {
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [ready, setready] = useState(false);
-  const [connected, setconnected] = useState(false);
+
   useEffect(() => {
     axios
       .get(
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
       )
       .then((res) => {
-        // console.log(res.data);
         setethprice(res.data.USD);
       })
-      .catch((e) => {
-        // console.log(e.target.value);
-      });
+      .catch((e) => {});
     loadDonations();
   }, []);
 
@@ -63,38 +60,27 @@ const IndexPage = () => {
       const lgt = await data.toString();
       const donersData = await contract.donersCount();
       const lgtDoners = await donersData.toString();
-      console.log("*********************", lgt);
+
       for (let i = 1; i <= lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        // const doners = await contract.doners(i, 3);
-        // const doners2 = await contract.doners(i, 5);
-        // console.log(doners, doners2);
+
         let doners = [];
         for (let k = 1; k <= lgtDoners; k++) {
-          // doners = await contract.doners(i, k);
           doners.push(await contract.doners(i, k));
-          // console.log(doners);
         }
-        // console.log(doners);
+
         let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
         console.log(filterDoners);
-        // setdoners((prevState) => [...prevState, doners]);
-
-        // let filteredImage = image.filter(
-        //   (v, i) => v.owner === "0x0000000000000000000000000000000000000000"
-        // );
-        // console.log(filteredImage.length);
 
         setImages((prevState) => [...prevState, { image, filterDoners }]);
-        // setdoners((prevState) => [...prevState, doners]);
+
         setready(true);
       }
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
   }
-  console.log(images);
-  // console.log(doners);
+
   return (
     <Layout>
       <div className=" mt-16">
