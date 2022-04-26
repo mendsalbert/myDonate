@@ -29,6 +29,7 @@ const IndexPage = () => {
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [ready, setready] = useState(false);
+  const [connected, setconnected] = useState(false);
   useEffect(() => {
     axios
       .get(
@@ -107,18 +108,28 @@ const IndexPage = () => {
         </div> */}
         <div
           onClick={async () => {
-            const accounts = await window.ethereum.request({
-              method: "eth_requestAccounts",
-            });
-            // setAccounts(accounts);
-            console.log(accounts);
-            const account = accounts[0];
-            console.log(account);
-            // dispatch(web3AccountLoaded(account));
+            // const accounts = await window.ethereum.request({
+            //   method: "eth_requestAccounts",
+            // });
+            // // setAccounts(accounts);
+            // // console.log(accounts);
+            // const account = accounts[0];
+            // console.log(account);
+            // // dispatch(web3AccountLoaded(account));
+
+            const provider = new ethers.providers.Web3Provider(
+              window.ethereum,
+              "any"
+            );
+            // Prompt user for account connections
+            await provider.send("eth_requestAccounts", []);
+            const signer = provider.getSigner();
+            console.log("Account:", await signer.getAddress());
+            setconnected(true);
           }}
           className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
         >
-          Connet Wallet
+          {connected ? "Wallet Connected" : "Connet Wallet"}
         </div>
       </div>
       <div className="flex mt-16 flex-row space-x-4 justify-between">
