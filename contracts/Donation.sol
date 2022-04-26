@@ -17,6 +17,7 @@ contract Donation {
     struct DonationItem {
       uint256 id;
       address payable owner;
+    //   mapping(uint=>address) doners;
       uint donationAmount;
       uint startDate;
       uint endDate;
@@ -90,7 +91,7 @@ contract Donation {
         address payable _owner = _donation.owner;
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
-        doners[donationCount] = address(msg.sender);
+        doners[_donation.id] = address(msg.sender);
         donersCount = donationCount;
         idToDonationItem[_id] = _donation;
         // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);
