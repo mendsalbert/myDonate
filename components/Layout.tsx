@@ -105,7 +105,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className=" mx-7 md:mx-40 my-6  font-Montserrat">
+      <div className=" mx-4 md:mx-40 my-6  font-Montserrat">
         <div className="flex flex-row justify-between items-center space-x-6 md:space-x-32">
           <img src="/images/logo.png" className="w-16 md:w-28 " />
 

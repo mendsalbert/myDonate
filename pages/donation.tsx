@@ -52,8 +52,8 @@ const Donation = () => {
   return (
     <Layout>
       <div className=" mt-32">
-        <div className="flex flex-row  space-x-10 w-full">
-          <div className="w-8/12 mb-3">
+        <div className="flex flex-col md:flex-row space-x-0 md:space-x-10 w-full">
+          <div className="md:w-8/12 w-full mb-3">
             <div className="w-full rounded-lg">
               <img
                 src={donation.image}
@@ -61,7 +61,7 @@ const Donation = () => {
               />
             </div>
           </div>
-          <div className="w-6/12 space-y-3">
+          <div className="w-full md:w-6/12 space-y-3">
             <p className="text-2xl font-bold text-gray-600">{donation.title}</p>
             <p className="text-xl font-bold text-gray-600">Charity Target</p>
 
@@ -88,23 +88,17 @@ const Donation = () => {
               </p>
             </div>
 
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-row items-center">
-                {/* {donation.doners.map((doners) => ( */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between">
+              <div className="flex mb-2 md:mb-0 flex-row items-center">
                 <div className=" rounded-lg">
                   <HeartIcon className="h-7 animate-pulse " fill="red" />
-                  {/* <img
-                      src="/images/war.jpg"
-                      className=" h-8 w-8 ring-4 ring-white rounded-full object-cover"
-                    /> */}
                 </div>
-                {/* ))} */}
 
                 <p className="text-gray-600 text-md font-bold">
                   +{donation.doners.length} Donated
                 </p>
               </div>
-              <div className="bg-green-200 text-sm font-bold w-max text-green-800 px-2 py-1 rounded-full text-center">
+              <div className="bg-green-200 w-full text-sm font-bold md:w-max text-green-800 px-2 py-1 rounded-full text-center">
                 {donation.endDate}
               </div>
             </div>

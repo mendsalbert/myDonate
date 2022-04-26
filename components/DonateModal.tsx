@@ -10,7 +10,7 @@ type Props = {
 
 const DonateModal = (props) => {
   const [amount, setamount] = useState("") as any;
-  async function tipDonation(donationId) {
+  async function tipDonation(donationId, value = amount) {
     console.log(donationId);
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
@@ -24,7 +24,7 @@ const DonateModal = (props) => {
     );
 
     /* user will be prompted to pay the asking proces to complete the transaction */
-    const amount_ = ethers.utils.parseUnits(amount, "ether");
+    const amount_ = ethers.utils.parseUnits(value, "ether");
     // const price = window.web3.utils.toWei(nft.price.toString(), "Ether");
     // const price = ethers.utils.formatUnits(nft.price, "Ether");
     // const gweiValue = ethers.utils.formatUnits(weiValue, "gwei");
@@ -41,18 +41,33 @@ const DonateModal = (props) => {
     // loadNFTs();
   }
   return (
-    <div className="p-5 font-Montserrat overflow-auto">
+    <div className="md:p-5 p-1  font-Montserrat overflow-auto">
       <p className="text-center text-gray-500 text-lg">
         How much you wanna donate?
       </p>
       <div className="py-3 space-y-3">
-        <div className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-green-300 text-gray-700 ">
+        <div
+          onClick={() => {
+            tipDonation(props.donationId, "5");
+          }}
+          className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-green-300 text-gray-700 "
+        >
           5 ETH
         </div>
-        <div className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-blue-300 text-gray-700 ">
+        <div
+          onClick={() => {
+            tipDonation(props.donationId, "10");
+          }}
+          className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-blue-300 text-gray-700 "
+        >
           10 ETH
         </div>
-        <div className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-purple-300 text-gray-700 ">
+        <div
+          onClick={() => {
+            tipDonation(props.donationId, "15");
+          }}
+          className="text-center cursor-pointer border-[1px] border-opacity-30 text-lg border-gray-600 rounded-lg w-full py-2 bg-purple-300 text-gray-700 "
+        >
           15 ETH
         </div>
         <input

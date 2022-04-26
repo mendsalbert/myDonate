@@ -181,8 +181,6 @@ const IndexPage = () => {
                     ).toLocaleString()}{" "}
                     ETH-USD
                   </p>
-                  <p>{donation.image.id.toString()}</p>
-                  <p>{donation.filterDoners.length}</p>
                 </div>
               </div>
               <div
