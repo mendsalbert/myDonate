@@ -1,22 +1,16 @@
-import {
-  CashIcon,
-  ClockIcon,
-  SearchCircleIcon,
-  SearchIcon,
-} from "@heroicons/react/outline";
+import { CashIcon, ClockIcon } from "@heroicons/react/outline";
 
 import Link from "next/Link";
 import React, { useState, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
-import FundRaising from "../components/FundraisingModal.js";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 import { BigNumber, ethers, providers, utils } from "ethers";
 import { donationAddress } from "../config";
 import axios from "axios";
-import Web3Modal from "web3modal";
+
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
-import Web3 from "web3";
+
 import { useRouter } from "next/router";
 
 const Category = () => {

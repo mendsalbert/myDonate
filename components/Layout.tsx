@@ -145,6 +145,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
                 pathname: "/category",
                 query: { category: "education" }, // the data
               }}
+              scroll={false}
             >
               <div className="text-center">
                 <div
