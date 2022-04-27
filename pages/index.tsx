@@ -5,7 +5,7 @@ import {
   SearchIcon,
 } from "@heroicons/react/outline";
 
-import Link from "next/Link";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
 import FundRaising from "../components/FundraisingModal.js";
