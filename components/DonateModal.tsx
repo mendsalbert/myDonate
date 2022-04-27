@@ -39,6 +39,7 @@ const DonateModal = (props) => {
     await transaction.wait();
     console.log("transaction complete");
     alert("Donation sent succesfully");
+    window.location.href = "/";
     // loadNFTs();
   }
   return (

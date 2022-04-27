@@ -60,6 +60,7 @@ const FundRaising = () => {
     // router.push("/nft");
     console.log("uploaded successfully");
     alert("Donation uploaded succesfully");
+    window.location.href = "/";
   }
 
   return (
