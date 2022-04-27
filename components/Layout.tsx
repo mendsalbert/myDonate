@@ -68,35 +68,30 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
       const lgt = await data.toString();
       const donersData = await contract.donersCount();
       const lgtDoners = await donersData.toString();
-      console.log("*********************", lgt);
+
       for (let i = 1; i <= lgt; i++) {
         const image = await contract.idToDonationItem(i);
-        // const doners = await contract.doners(i, 3);
-        // const doners2 = await contract.doners(i, 5);
-        // console.log(doners, doners2);
+
         let doners = [];
         for (let k = 1; k <= lgtDoners; k++) {
-          // doners = await contract.doners(i, k);
           doners.push(await contract.doners(i, k));
-          // console.log(doners);
         }
-        // console.log(doners);
+
         let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
         console.log(filterDoners);
-        // setdoners((prevState) => [...prevState, doners]);
-
-        // let filteredImage = image.filter(
-        //   (v, i) => v.owner === "0x0000000000000000000000000000000000000000"
-        // );
-        // console.log(filteredImage.length);
 
         setImages((prevState) => [...prevState, { image, filterDoners }]);
-        // setdoners((prevState) => [...prevState, doners]);
         setready(true);
       }
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
+
+    let filterEducation = images.filter((v, i) => {
+      console.log(v.image.category);
+      return v.image.category === "education";
+    });
+    console.log(filterEducation);
   }
   return (
     <div>
@@ -159,7 +154,14 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
                 <img src="/images/education.svg" className="w-16" />
                 {/* <svg path="/images/education.svg" /> */}
               </div>
-              <p className="pt-2 text-xl">School</p>
+              <Link
+                href={{
+                  pathname: "/category",
+                  // query: { object: JSON.stringify(object) }, // the data
+                }}
+              >
+                <p className="pt-2 text-xl">Education</p>
+              </Link>
             </div>
             <div className="text-center">
               <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12  justify-center flex flex-row w-full text-center">
