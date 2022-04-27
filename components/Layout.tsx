@@ -78,20 +78,12 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
         }
 
         let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
-        console.log(filterDoners);
-
         setImages((prevState) => [...prevState, { image, filterDoners }]);
         setready(true);
       }
     } else {
       window.alert("Donation contract not deployed to detected network");
     }
-
-    let filterEducation = images.filter((v, i) => {
-      console.log(v.image.category);
-      return v.image.category === "education";
-    });
-    console.log(filterEducation);
   }
   return (
     <div>
@@ -157,7 +149,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               <Link
                 href={{
                   pathname: "/category",
-                  // query: { object: JSON.stringify(object) }, // the data
+                  query: { object: JSON.stringify(images) }, // the data
                 }}
               >
                 <p className="pt-2 text-xl">Education</p>

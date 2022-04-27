@@ -87,7 +87,7 @@ const IndexPage = () => {
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
 
         {images.map((donation, index) => {
-          console.log(donation.image);
+          // console.log(donation.image);
           const object = {
             title: donation.image.title,
             image: donation.image.hash,
