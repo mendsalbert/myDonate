@@ -76,7 +76,6 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
         for (let k = 1; k <= lgtDoners; k++) {
           doners.push(await contract.doners(i, k));
         }
-
         let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
         setImages((prevState) => [...prevState, { image, filterDoners }]);
         setready(true);
@@ -149,7 +148,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               <Link
                 href={{
                   pathname: "/category",
-                  query: { object: JSON.stringify(images) }, // the data
+                  // query: { object: JSON.stringify(object) }, // the data
                 }}
               >
                 <p className="pt-2 text-xl">Education</p>

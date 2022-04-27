@@ -33,11 +33,6 @@ const Category = () => {
 
   const router = useRouter();
   const data = router.query as any;
-  let donation;
-  if (data.object) {
-    donation = JSON.parse(data.object);
-  }
-  console.log(donation);
 
   useEffect(() => {
     axios
@@ -89,6 +84,12 @@ const Category = () => {
       window.alert("Donation contract not deployed to detected network");
     }
   }
+
+  let filterEducation = images.filter((v, i) => {
+    // console.log(v.image.category);
+    return v.image.category === "education";
+  });
+  console.log(filterEducation);
 
   return (
     <Layout>
