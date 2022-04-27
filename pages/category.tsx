@@ -79,6 +79,14 @@ const Category = () => {
     }
   }
 
+  const numDaysBetween = function (d1, d2) {
+    var today = d2.getTime() / 1000;
+    // console.log("today", today);
+    var diff = Math.abs(d1 - d2.getTime() / 1000);
+    // console.log("diff", diff / (60 * 60 * 24));
+    return diff / (60 * 60 * 24);
+  };
+
   const filterData = (type) => {
     return images.filter((v, i) => {
       return v.image.category === type;
@@ -102,17 +110,21 @@ const Category = () => {
             image: donation.image.hash,
             doners: donation.filterDoners,
             endDate:
-              new Date(
-                Date.now() - donation.image.endDate.toString()
-              ).getDate() -
-                1 <
-              1
+              Math.round(
+                numDaysBetween(
+                  Number(donation.image.endDate.toString()),
+
+                  new Date()
+                )
+              ) < 1
                 ? "Donation Ended"
-                : ` ${
-                    new Date(
-                      Date.now() - donation.image.endDate.toString()
-                    ).getDate() - 1
-                  } Days Left`,
+                : Math.round(
+                    numDaysBetween(
+                      Number(donation.image.endDate.toString()),
+
+                      new Date()
+                    )
+                  ) + " Days Left",
             donationAmount: (
               Number(
                 ethers.utils.formatEther(
@@ -156,17 +168,21 @@ const Category = () => {
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
                   <p className="text-lg">
-                    {new Date(
-                      Date.now() - donation.image.endDate.toString()
-                    ).getDate() -
-                      1 <
-                    1
+                    {Math.round(
+                      numDaysBetween(
+                        Number(donation.image.endDate.toString()),
+
+                        new Date()
+                      )
+                    ) < 1
                       ? "Donation Ended"
-                      : ` ${
-                          new Date(
-                            Date.now() - donation.image.endDate.toString()
-                          ).getDate() - 1
-                        } Days Left`}{" "}
+                      : Math.round(
+                          numDaysBetween(
+                            Number(donation.image.endDate.toString()),
+
+                            new Date()
+                          )
+                        ) + " Days Left"}
                   </p>
                 </div>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">

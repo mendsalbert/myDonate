@@ -101,17 +101,21 @@ const IndexPage = () => {
             image: donation.image.hash,
             doners: donation.filterDoners,
             endDate:
-              new Date(
-                Date.now() - donation.image.endDate.toString()
-              ).getDate() -
-                1 <
-              1
+              Math.round(
+                numDaysBetween(
+                  Number(donation.image.endDate.toString()),
+
+                  new Date()
+                )
+              ) < 1
                 ? "Donation Ended"
-                : ` ${
-                    new Date(
-                      Date.now() - donation.image.endDate.toString()
-                    ).getDate() - 1
-                  } Days Left`,
+                : Math.round(
+                    numDaysBetween(
+                      Number(donation.image.endDate.toString()),
+
+                      new Date()
+                    )
+                  ) + " Days Left",
             donationAmount: (
               Number(
                 ethers.utils.formatEther(
@@ -152,10 +156,7 @@ const IndexPage = () => {
                   <p className="text-2xl">{donation.image.title}</p>
                 </Link>
                 <p className="text-lg">{donation.image.description}</p>
-                <p className="text-lg font-bold">{donation.image.category}</p>
-                <p className="text-lg font-bold">
-                  {donation.image.endDate.toString()}
-                </p>
+
                 <p>{Date.now()}</p>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
@@ -175,17 +176,6 @@ const IndexPage = () => {
                             new Date()
                           )
                         ) + " Days Left"}
-                    {/* {new Date(
-                      Date.now() - donation.image.endDate.toString()
-                    ).getDate() -
-                      1 <
-                    1
-                      ? "Donation Ended"
-                      : ` ${
-                          new Date(
-                            Date.now() - donation.image.endDate.toString()
-                          ).getDate() - 1
-                        } Days Left`}{" "} */}
                   </p>
                 </div>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">

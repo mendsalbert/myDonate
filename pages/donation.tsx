@@ -91,7 +91,7 @@ const Donation = () => {
                 </div>
 
                 <p className="text-gray-600 text-md font-bold">
-                  +{donation.doners.length - 1} Donated
+                  +{Number(donation.doners.length)} Donated
                 </p>
               </div>
               <div className="bg-green-200 w-full text-sm font-bold md:w-max text-green-800 px-2 py-1 rounded-full text-center">
