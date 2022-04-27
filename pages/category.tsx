@@ -1,7 +1,7 @@
 import { CashIcon, ClockIcon } from "@heroicons/react/outline";
 
 import Link from "next/Link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
@@ -97,7 +97,7 @@ const Category = () => {
         {filteredCategory.map((donation, index) => {
           // console.log(donation.image);
           const object = {
-            id: donation.image.id,
+            id: donation.image.id.toString(),
             title: donation.image.title,
             image: donation.image.hash,
             doners: donation.filterDoners,

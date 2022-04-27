@@ -64,9 +64,7 @@ const FundRaising = () => {
 
   return (
     <div className="p-5 font-Montserrat overflow-auto">
-      <p className="text-center text-gray-500 text-lg">
-        How much you wanna donate?
-      </p>
+      <p className="text-center text-gray-500 text-lg">Add a donation</p>
       <div className="py-3 space-y-3">
         <input
           type="text"
