@@ -1,10 +1,5 @@
+import { useRouter } from "next/router";
 import React, { ReactNode, useState, useEffect } from "react";
-import {
-  CashIcon,
-  ClockIcon,
-  SearchCircleIcon,
-  SearchIcon,
-} from "@heroicons/react/outline";
 
 import Link from "next/Link";
 import Head from "next/head";
@@ -35,6 +30,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [ready, setready] = useState(false);
   const [connected, setconnected] = useState(false);
+
+  const router = useRouter();
+  const data = router.query as any;
+
+  console.log(data.category);
   useEffect(() => {
     axios
       .get(
@@ -147,7 +147,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               }}
             >
               <div className="text-center">
-                <div className="rounded-lg shadow-xl bg-[#FF6363] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                <div
+                  className={` ${
+                    data.category === "education" ? "ring-8 ring-gray-600" : ""
+                  } rounded-lg shadow-xl bg-[#FF6363] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
+                >
                   <img src="/images/education.svg" className="w-16" />
                   {/* <svg path="/images/education.svg" /> */}
                 </div>
@@ -162,7 +166,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               }}
             >
               <div className="text-center">
-                <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12  justify-center flex flex-row w-full text-center">
+                <div
+                  className={` ${
+                    data.category === "disaster" ? "ring-8 ring-gray-600" : ""
+                  } rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
+                >
                   <img src="/images/hurrican.svg" className="w-16" />
                   {/* <svg path="/images/education.svg" /> */}
                 </div>
@@ -176,7 +184,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               }}
             >
               <div className="text-center">
-                <div className="rounded-lg shadow-xl bg-[#6BCB77] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                <div
+                  className={` ${
+                    data.category === "health" ? "ring-8 ring-gray-600" : ""
+                  } rounded-lg shadow-xl bg-[#6BCB77] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
+                >
                   <img src="/images/health.svg" className="w-16" />
                   {/* <svg path="/images/education.svg" /> */}
                 </div>
@@ -190,7 +202,11 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
               }}
             >
               <div className="text-center">
-                <div className="rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                <div
+                  className={` ${
+                    data.category === "health" ? "ring-8 ring-gray-600" : ""
+                  } rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
+                >
                   <img src="/images/education.svg" className="w-16" />
                 </div>
                 <p className="pt-2 text-xl">Famine</p>

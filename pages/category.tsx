@@ -100,7 +100,7 @@ const Category = () => {
           All donations in {data.category}
         </p>
 
-        {images.map((donation, index) => {
+        {filteredCategory.map((donation, index) => {
           // console.log(donation.image);
           const object = {
             title: donation.image.title,
