@@ -4,7 +4,7 @@ import {
   SearchCircleIcon,
   SearchIcon,
 } from "@heroicons/react/outline";
-import Link from "next/link";
+
 import Layout from "../components/Layout.jsx";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";

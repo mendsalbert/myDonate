@@ -1,6 +1,6 @@
 import { CashIcon, ClockIcon } from "@heroicons/react/outline";
 
-import Link from "next/Link";
+import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
 import Layout from "../components/Layout.jsx";
