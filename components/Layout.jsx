@@ -104,6 +104,10 @@ const Layout = ({ children, title = "myDonate" }) => {
 
           <div
             onClick={async () => {
+              if (typeof window.ethereum == "undefined") {
+                alert("MetaMask is installed!");
+              }
+
               const provider = new ethers.providers.Web3Provider(
                 window.ethereum,
                 "any"

@@ -11,12 +11,15 @@ type Props = {
 const DonateModal = (props) => {
   const [amount, setamount] = useState("") as any;
   async function tipDonation(donationId, value = amount) {
+    if (typeof window.ethereum == "undefined") {
+      alert("MetaMask is installed!");
+    }
     console.log(donationId);
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-    // console.log();
+
     let contract = new ethers.Contract(
       donationAddress,
       DonationContractABI.abi,
@@ -25,10 +28,6 @@ const DonateModal = (props) => {
 
     /* user will be prompted to pay the asking proces to complete the transaction */
     const amount_ = ethers.utils.parseUnits(value, "ether");
-    // const price = window.web3.utils.toWei(nft.price.toString(), "Ether");
-    // const price = ethers.utils.formatUnits(nft.price, "Ether");
-    // const gweiValue = ethers.utils.formatUnits(weiValue, "gwei");
-
     console.log(donationId);
     let transaction = await contract.addDonation(donationId, {
       value: amount_,

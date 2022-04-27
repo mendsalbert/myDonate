@@ -29,7 +29,10 @@ const FundRaising = () => {
     }
   }
 
-  async function listNFTForSale() {
+  async function addFund() {
+    if (typeof window.ethereum == "undefined") {
+      alert("MetaMask is installed!");
+    }
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -132,7 +135,7 @@ const FundRaising = () => {
         />
         {fileUrl && <img className="rounded mt-4" width="350" src={fileUrl} />}
         <div
-          onClick={listNFTForSale}
+          onClick={addFund}
           className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 rounded-lg text-center cursor-pointer text-white"
         >
           Continue
