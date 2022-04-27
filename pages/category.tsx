@@ -98,6 +98,7 @@ const Category = () => {
 
   let filteredCategory = filterData(data.category);
   console.log(filteredCategory);
+
   return (
     <Layout>
       <div className=" mt-16">

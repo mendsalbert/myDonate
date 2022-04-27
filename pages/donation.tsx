@@ -8,10 +8,10 @@ import {
 import Layout from "../components/Layout.jsx";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { HeartIcon } from "@heroicons/react/solid";
 
-import { BigNumber, ethers, providers, utils } from "ethers";
+import { HeartIcon } from "@heroicons/react/solid";
+import ProgressBar from "@ramonak/react-progress-bar";
+
 import DonateModal from "../components/DonateModal";
 import Modal from "../components/Modal";
 const Donation = () => {
@@ -72,7 +72,14 @@ const Donation = () => {
 
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                <div className={`bg-blue-600 h-2.5 rounded-full w-[45%]`}></div>
+                <ProgressBar
+                  completed={Math.round(
+                    (parseInt(donation.donationAmount) /
+                      parseInt(donation.targetAmount)) *
+                      100
+                  )}
+                />
+                {/* <div className={`bg-blue-600 h-2.5 rounded-full w-[%]`}></div> */}
               </div>
               <p className="text-gray-600 text-lg">
                 {Math.round(
