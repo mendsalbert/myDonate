@@ -39,6 +39,12 @@ const Donation = () => {
     )
   );
 
+  let percentage = Math.ceil(
+    (parseInt(donation.donationAmount) / parseInt(donation.targetAmount)) * 100
+  );
+
+  console.log(percentage);
+
   return (
     <Layout>
       <div className=" mt-32">
@@ -67,11 +73,7 @@ const Donation = () => {
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
                 <div
-                  className={`bg-blue-600 h-2.5 rounded-full w-[${Math.ceil(
-                    (parseInt(donation.donationAmount) /
-                      parseInt(donation.targetAmount)) *
-                      100
-                  )}%]`}
+                  className={`bg-blue-600 h-2.5 rounded-full w-[${0}%]`}
                 ></div>
               </div>
               <p className="text-gray-600 text-lg">

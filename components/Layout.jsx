@@ -27,15 +27,12 @@ const Layout = ({ children, title = "myDonate" }) => {
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
   const [ready, setready] = useState(false);
-  const [connected, setconnected] = useState(false);
+  const [connected, setconnected] = useState("");
 
   const router = useRouter();
   const data = router.query;
 
-  let account;
-  // console.log(data.category);
   useEffect(() => {
-    account = localStorage.getItem("account");
     axios
       .get(
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
@@ -116,13 +113,14 @@ const Layout = ({ children, title = "myDonate" }) => {
               await provider.send("eth_requestAccounts", []);
               const signer = provider.getSigner();
               const account = await signer.getAddress();
+              setconnected(account);
               console.log("Account:", await signer.getAddress());
-              localStorage.setItem("account", account);
+              // localStorage.setItem("account", account);
               // setconnected(true);
             }}
             className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
           >
-            {localStorage.getItem("account") ? "Connected" : "Connet Wallet"}
+            {connected ? "Connected" : "Connet Wallet"}
           </div>
         </div>
         <div className="flex mt-16 flex-col-reverse  md:flex-row space-x-0 md:space-x-4 md:justify-between">
