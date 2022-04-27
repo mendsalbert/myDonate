@@ -1,9 +1,8 @@
 /* hardhat.config.js */
 require("@nomiclabs/hardhat-waffle");
 const fs = require("fs");
-// const privateKey = fs.readFileSync("secret.txt").toString();
-const privateKey =
-  "5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a";
+const privateKey = fs.readFileSync("secret.txt").toString();
+
 const projectId = "8b7ba5517c414450a93ec7334975a7fe";
 module.exports = {
   defaultNetwork: "hardhat",
@@ -20,6 +19,13 @@ module.exports = {
     mainet: {
       url: `https://palm-mainnet.infura.io/v3/${projectId}`,
       // accounts: [privateKey],
+    },
+    kovan: {
+      url: "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c",
+      // accounts: [privateKey],
+      gas: 2100000,
+      gasPrice: 8000000000,
+      network_id: 42,
     },
   },
   solidity: {
