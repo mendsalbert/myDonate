@@ -85,11 +85,14 @@ const Category = () => {
     }
   }
 
-  let filterEducation = images.filter((v, i) => {
-    // console.log(v.image.category);
-    return v.image.category === "education";
-  });
-  console.log(filterEducation);
+  const filterData = (type) => {
+    images.filter((v, i) => {
+      // console.log(v.image.category);
+      return v.image.category === type;
+    });
+  };
+
+  console.log(filterData("education"));
 
   return (
     <Layout>
