@@ -96,7 +96,9 @@ const Category = () => {
   return (
     <Layout>
       <div className=" mt-16">
-        <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
+        <p className="font-bold text-xl text-gray-500 my-10">
+          All donations in {data.category}
+        </p>
 
         {images.map((donation, index) => {
           // console.log(donation.image);
