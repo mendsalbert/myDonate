@@ -66,7 +66,13 @@ const Donation = () => {
 
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                <div className={`bg-blue-600 h-2.5 rounded-full w-[1%]`}></div>
+                <div
+                  className={`bg-blue-600 h-2.5 rounded-full w-[${Math.round(
+                    (parseInt(donation.donationAmount) /
+                      parseInt(donation.targetAmount)) *
+                      100
+                  )}%]`}
+                ></div>
               </div>
               <p className="text-gray-600 text-lg">
                 {Math.round(
@@ -85,7 +91,7 @@ const Donation = () => {
                 </div>
 
                 <p className="text-gray-600 text-md font-bold">
-                  +{donation.doners.length} Donated
+                  +{donation.doners.length - 1} Donated
                 </p>
               </div>
               <div className="bg-green-200 w-full text-sm font-bold md:w-max text-green-800 px-2 py-1 rounded-full text-center">
