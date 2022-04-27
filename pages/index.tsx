@@ -85,7 +85,7 @@ const IndexPage = () => {
     var today = d2.getTime() / 1000;
     console.log("today", today);
     var diff = Math.abs(d1 - d2.getTime() / 1000);
-    console.log("diff", diff);
+    console.log("diff", diff / (60 * 60 * 24));
     return diff / (60 * 60 * 24);
   };
   return (
@@ -160,9 +160,12 @@ const IndexPage = () => {
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
                   <p className="text-lg">
-                    {numDaysBetween(
-                      Date.now(),
-                      donation.image.endDate.toString()
+                    {Math.round(
+                      numDaysBetween(
+                        Number(donation.image.endDate.toString()),
+
+                        new Date()
+                      )
                     )}
                     {/* {new Date(
                       Date.now() - donation.image.endDate.toString()
