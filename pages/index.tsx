@@ -9,7 +9,7 @@ import Link from "next/Link";
 import React, { useState, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
 import FundRaising from "../components/FundraisingModal.js";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout.jsx";
 import Modal from "../components/Modal";
 import { BigNumber, ethers, providers, utils } from "ethers";
 import { donationAddress } from "../config";
@@ -157,7 +157,6 @@ const IndexPage = () => {
                 </Link>
                 <p className="text-lg">{donation.image.description}</p>
 
-                <p>{Date.now()}</p>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
                   <p className="text-lg">

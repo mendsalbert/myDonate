@@ -5,7 +5,7 @@ import {
   SearchIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout.jsx";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -67,7 +67,7 @@ const Donation = () => {
             <div className="flex flex-row items-center space-x-3">
               <div className="w-full bg-gray-200 rounded-full h-2.5 ">
                 <div
-                  className={`bg-blue-600 h-2.5 rounded-full w-[${Math.round(
+                  className={`bg-blue-600 h-2.5 rounded-full w-[${Math.ceil(
                     (parseInt(donation.donationAmount) /
                       parseInt(donation.targetAmount)) *
                       100
