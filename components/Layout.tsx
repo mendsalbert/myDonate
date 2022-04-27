@@ -155,28 +155,47 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
                 <p className="pt-2 text-xl">Education</p>
               </div>
             </Link>
-            <div className="text-center">
-              <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12  justify-center flex flex-row w-full text-center">
-                <img src="/images/hurrican.svg" className="w-16" />
-                {/* <svg path="/images/education.svg" /> */}
+            <Link
+              href={{
+                pathname: "/category",
+                query: { category: "disaster" }, // the data
+              }}
+            >
+              <div className="text-center">
+                <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12  justify-center flex flex-row w-full text-center">
+                  <img src="/images/hurrican.svg" className="w-16" />
+                  {/* <svg path="/images/education.svg" /> */}
+                </div>
+                <p className="pt-2 text-xl">Disaster</p>
               </div>
-              <p className="pt-2 text-xl">Disaster</p>
-            </div>
-
-            <div className="text-center">
-              <div className="rounded-lg shadow-xl bg-[#6BCB77] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
-                <img src="/images/health.svg" className="w-16" />
-                {/* <svg path="/images/education.svg" /> */}
+            </Link>
+            <Link
+              href={{
+                pathname: "/category",
+                query: { category: "health" }, // the data
+              }}
+            >
+              <div className="text-center">
+                <div className="rounded-lg shadow-xl bg-[#6BCB77] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                  <img src="/images/health.svg" className="w-16" />
+                  {/* <svg path="/images/education.svg" /> */}
+                </div>
+                <p className="pt-2 text-xl">Health</p>
               </div>
-              <p className="pt-2 text-xl">Health</p>
-            </div>
-
-            <div className="text-center">
-              <div className="rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
-                <img src="/images/education.svg" className="w-16" />
+            </Link>
+            <Link
+              href={{
+                pathname: "/category",
+                query: { category: "famine" }, // the data
+              }}
+            >
+              <div className="text-center">
+                <div className="rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                  <img src="/images/education.svg" className="w-16" />
+                </div>
+                <p className="pt-2 text-xl">Famine</p>
               </div>
-              <p className="pt-2 text-xl">Famine</p>
-            </div>
+            </Link>
           </div>
         </div>
         {children}

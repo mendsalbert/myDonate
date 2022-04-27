@@ -91,7 +91,7 @@ const Category = () => {
     });
   };
 
-  let filteredCategory = filterData("famine");
+  let filteredCategory = filterData(data.category);
   console.log(filteredCategory);
   return (
     <Layout>
