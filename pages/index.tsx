@@ -54,8 +54,10 @@ const IndexPage = () => {
       DonationContractABI.abi,
       provider
     );
+    const { chainId } = await provider.getNetwork();
+    console.log(chainId); // 42
 
-    if (contract) {
+    if (chainId) {
       const data = await contract.donationCount();
       const lgt = await data.toString();
       const donersData = await contract.donersCount();

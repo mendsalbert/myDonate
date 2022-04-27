@@ -22,10 +22,10 @@ module.exports = {
     },
     kovan: {
       url: "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c",
-      // accounts: [privateKey],
+      accounts: [privateKey],
       gas: 2100000,
       gasPrice: 8000000000,
-      network_id: 42,
+      // network_id: 42,
     },
   },
   solidity: {

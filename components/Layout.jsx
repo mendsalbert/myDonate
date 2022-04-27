@@ -32,7 +32,7 @@ const Layout = ({ children, title = "myDonate" }) => {
   const router = useRouter();
   const data = router.query;
 
-  console.log(data.category);
+  // console.log(data.category);
   useEffect(() => {
     axios
       .get(
@@ -62,7 +62,10 @@ const Layout = ({ children, title = "myDonate" }) => {
       provider
     );
 
-    if (contract) {
+    const { chainId } = await provider.getNetwork();
+    console.log(chainId); // 42
+
+    if (chainId) {
       const data = await contract.donationCount();
       const lgt = await data.toString();
       const donersData = await contract.donersCount();
