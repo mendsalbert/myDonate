@@ -163,8 +163,9 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
             <Link
               href={{
                 pathname: "/category",
-                query: { category: "disaster" }, // the data
+                query: { category: "disaster" },
               }}
+              scroll={false} // the data
             >
               <div className="text-center">
                 <div
@@ -183,6 +184,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
                 pathname: "/category",
                 query: { category: "health" }, // the data
               }}
+              scroll={false}
             >
               <div className="text-center">
                 <div
@@ -201,11 +203,12 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
                 pathname: "/category",
                 query: { category: "famine" }, // the data
               }}
+              scroll={false}
             >
               <div className="text-center">
                 <div
                   className={` ${
-                    data.category === "health" ? "ring-8 ring-gray-600" : ""
+                    data.category === "famine" ? "ring-8 ring-gray-600" : ""
                   } rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
                 >
                   <img src="/images/education.svg" className="w-16" />

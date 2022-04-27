@@ -12,11 +12,15 @@ import axios from "axios";
 import { HeartIcon } from "@heroicons/react/solid";
 
 import { BigNumber, ethers, providers, utils } from "ethers";
+import DonateModal from "../components/DonateModal";
+import Modal from "../components/Modal";
 const Donation = () => {
-  const [ethprice, setethprice] = useState(1);
+  const [open, setOpen] = useState(false);
+  const [comp, setComp] = useState("") as any;
   const router = useRouter();
   const data = router.query as any;
   let donation = {
+    id: "",
     title: "",
     image: "",
     doners: [],
@@ -27,28 +31,14 @@ const Donation = () => {
   if (data.object) {
     donation = JSON.parse(data.object);
   }
-  // console.log(data.object);
+
   console.log(
     Math.round(
       (parseInt(donation.donationAmount) / parseInt(donation.targetAmount)) *
         100
     )
   );
-  useEffect(() => {
-    axios
-      .get(
-        "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
-      )
-      .then((res) => {
-        // console.log(res.data);
-        setethprice(res.data.USD);
-      })
-      .catch((e) => {
-        // console.log(e.target.value);
-      });
-  }, []);
-  // console.log(donation.image[5]);
-  // console.log(ethers.utils.formatEther(donation.image[5].toString()));
+
   return (
     <Layout>
       <div className=" mt-32">
@@ -103,12 +93,22 @@ const Donation = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white">
+            <div
+              onClick={() => {
+                console.log(donation.id);
+                setOpen(!open);
+                setComp(<DonateModal donationId={donation.id} />);
+              }}
+              className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
+            >
               Donate Now
             </div>
           </div>
         </div>
       </div>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        {comp}
+      </Modal>
     </Layout>
   );
 };

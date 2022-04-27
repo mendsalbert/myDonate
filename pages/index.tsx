@@ -89,6 +89,7 @@ const IndexPage = () => {
         {images.map((donation, index) => {
           // console.log(donation.image);
           const object = {
+            id: donation.image.id,
             title: donation.image.title,
             image: donation.image.hash,
             doners: donation.filterDoners,
