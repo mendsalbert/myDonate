@@ -81,6 +81,13 @@ const IndexPage = () => {
     }
   }
 
+  const numDaysBetween = function (d1, d2) {
+    var today = d2.getTime() / 1000;
+    console.log("today", today);
+    var diff = Math.abs(d1 - d2.getTime() / 1000);
+    console.log("diff", diff);
+    return diff / (60 * 60 * 24);
+  };
   return (
     <Layout>
       <div className=" mt-16">
@@ -153,7 +160,11 @@ const IndexPage = () => {
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
                   <ClockIcon className="h-5" />
                   <p className="text-lg">
-                    {new Date(
+                    {numDaysBetween(
+                      Date.now(),
+                      donation.image.endDate.toString()
+                    )}
+                    {/* {new Date(
                       Date.now() - donation.image.endDate.toString()
                     ).getDate() -
                       1 <
@@ -163,7 +174,7 @@ const IndexPage = () => {
                           new Date(
                             Date.now() - donation.image.endDate.toString()
                           ).getDate() - 1
-                        } Days Left`}{" "}
+                        } Days Left`}{" "} */}
                   </p>
                 </div>
                 <div className="flex text-gray-600 flex-row items-center space-x-2">
