@@ -65,10 +65,11 @@ const FundRaising = () => {
 
   return (
     <div className="p-5 font-Montserrat overflow-auto">
-      <p className="text-center text-gray-500 text-lg">Add a donation</p>
+      <p className="text-center text-gray-500 text-lg">Add a donation(ETH)</p>
       <div className="py-3 space-y-3">
         <input
           type="text"
+          required={true}
           onChange={(e) =>
             updateFormInput({ ...formInput, title: e.target.value })
           }
@@ -77,6 +78,7 @@ const FundRaising = () => {
         />
         <input
           type="text"
+          required={true}
           onChange={(e) =>
             updateFormInput({ ...formInput, description: e.target.value })
           }
@@ -89,12 +91,14 @@ const FundRaising = () => {
             updateFormInput({ ...formInput, targetAmount: e.target.value })
           }
           className="w-full py-3 outline-none ring-2 rounded-lg p-3"
-          placeholder="Targeted Amount"
+          placeholder="Targeted Amount (ETH)"
+          required={true}
         />
         <div>
           <label className="mt-6">Select category</label>
           <select
             placeholder="Select description"
+            required={true}
             onChange={(e) =>
               updateFormInput({ ...formInput, category: e.target.value })
             }
@@ -110,6 +114,7 @@ const FundRaising = () => {
         <div className="">
           <label className="mt-6">End date</label>
           <input
+            required={true}
             type="date"
             onChange={(e) =>
               updateFormInput({ ...formInput, endDate: e.target.value })
@@ -118,7 +123,13 @@ const FundRaising = () => {
             placeholder="Enter amount manually"
           />
         </div>
-        <input type="file" name="Asset" className="my-4" onChange={onChange} />
+        <input
+          required={true}
+          type="file"
+          name="Asset"
+          className="my-4"
+          onChange={onChange}
+        />
         {fileUrl && <img className="rounded mt-4" width="350" src={fileUrl} />}
         <div
           onClick={listNFTForSale}

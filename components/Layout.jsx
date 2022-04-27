@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import { BigNumber, ethers, providers, utils } from "ethers";
 import { donationAddress } from "../config";
 import axios from "axios";
-import Web3Modal from "web3modal";
+import Web3Modal, { local } from "web3modal";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
 import Web3 from "web3";
 // type Props = {
@@ -32,8 +32,10 @@ const Layout = ({ children, title = "myDonate" }) => {
   const router = useRouter();
   const data = router.query;
 
+  let account;
   // console.log(data.category);
   useEffect(() => {
+    account = localStorage.getItem("account");
     axios
       .get(
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
@@ -88,6 +90,7 @@ const Layout = ({ children, title = "myDonate" }) => {
       window.alert("Donation contract not deployed to detected network");
     }
   }
+
   return (
     <div>
       <Head>
@@ -108,12 +111,14 @@ const Layout = ({ children, title = "myDonate" }) => {
               // Prompt user for account connections
               await provider.send("eth_requestAccounts", []);
               const signer = provider.getSigner();
+              const account = await signer.getAddress();
               console.log("Account:", await signer.getAddress());
-              setconnected(true);
+              localStorage.setItem("account", account);
+              // setconnected(true);
             }}
             className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
           >
-            {connected ? " Connected" : "Connet Wallet"}
+            {localStorage.getItem("account") ? "Connected" : "Connet Wallet"}
           </div>
         </div>
         <div className="flex mt-16 flex-col-reverse  md:flex-row space-x-0 md:space-x-4 md:justify-between">
@@ -215,7 +220,7 @@ const Layout = ({ children, title = "myDonate" }) => {
                     data.category === "famine" ? "ring-8 ring-gray-600" : ""
                   } rounded-lg shadow-xl bg-[#4D96FF] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
                 >
-                  <img src="/images/education.svg" className="w-16" />
+                  <img src="/images/food.svg" className="w-16" />
                 </div>
                 <p className="pt-2 text-xl">Famine</p>
               </div>
