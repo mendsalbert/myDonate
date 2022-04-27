@@ -140,20 +140,21 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
         <div className=" mt-16">
           <p className="font-bold text-xl text-gray-500 my-10">Category</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-20">
-            <div className="text-center">
-              <div className="rounded-lg shadow-xl bg-[#FF6363] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
-                <img src="/images/education.svg" className="w-16" />
-                {/* <svg path="/images/education.svg" /> */}
-              </div>
-              <Link
-                href={{
-                  pathname: "/category",
-                  // query: { object: JSON.stringify(object) }, // the data
-                }}
-              >
+            <Link
+              href={{
+                pathname: "/category",
+                query: { category: "education" }, // the data
+              }}
+            >
+              <div className="text-center">
+                <div className="rounded-lg shadow-xl bg-[#FF6363] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center">
+                  <img src="/images/education.svg" className="w-16" />
+                  {/* <svg path="/images/education.svg" /> */}
+                </div>
+
                 <p className="pt-2 text-xl">Education</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
             <div className="text-center">
               <div className="rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12  justify-center flex flex-row w-full text-center">
                 <img src="/images/hurrican.svg" className="w-16" />

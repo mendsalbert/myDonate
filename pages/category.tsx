@@ -33,7 +33,7 @@ const Category = () => {
 
   const router = useRouter();
   const data = router.query as any;
-
+  console.log(data.category);
   useEffect(() => {
     axios
       .get(
@@ -86,14 +86,13 @@ const Category = () => {
   }
 
   const filterData = (type) => {
-    images.filter((v, i) => {
-      // console.log(v.image.category);
+    return images.filter((v, i) => {
       return v.image.category === type;
     });
   };
 
-  console.log(filterData("education"));
-
+  let filteredCategory = filterData("famine");
+  console.log(filteredCategory);
   return (
     <Layout>
       <div className=" mt-16">
