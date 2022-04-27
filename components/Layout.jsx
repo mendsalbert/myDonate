@@ -50,7 +50,9 @@ const Layout = ({ children, title = "myDonate" }) => {
 
   async function loadDonations() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
+    );
     // "https://rpc-mumbai.maticvigil.com/"
     // "https://rpc-mumbai.maticvigil.com/"
     // ("https://rpc-mumbai.matic.today");
