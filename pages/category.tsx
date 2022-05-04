@@ -1,9 +1,9 @@
 import { CashIcon, ClockIcon } from "@heroicons/react/outline";
 
 import Link from "next/link";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import DonateModal from "../components/DonateModal";
-import Layout from "../components/Layout";
+import Layout, { web3Context } from "../components/Layout";
 import Modal from "../components/Modal";
 import { BigNumber, ethers, providers, utils } from "ethers";
 import { donationAddress } from "../config";
@@ -13,13 +13,13 @@ import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.js
 
 import { useRouter } from "next/router";
 
-const Category = () => {
+const Content = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [modal, setModal] = useState(false);
   const [images, setImages] = useState([]) as any;
   const [doners, setdoners] = useState([]);
-
+  const [provider, web3Provider, address, chainId] = useContext(web3Context);
   const [Donation, setDonation] = useState([]);
   const [ethprice, setethprice] = useState(1);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -100,7 +100,7 @@ const Category = () => {
   console.log(filteredCategory);
 
   return (
-    <Layout>
+    <>
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">
           All donations in {data.category}
@@ -216,7 +216,10 @@ const Category = () => {
                 onClick={() => {
                   setOpen(!open);
                   setComp(
-                    <DonateModal donationId={donation.image.id.toString()} />
+                    <DonateModal
+                      provider={web3Provider}
+                      donationId={donation.image.id.toString()}
+                    />
                   );
                 }}
                 className="w-full md:w-max bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
@@ -231,6 +234,13 @@ const Category = () => {
       <Modal open={open} onClose={() => setOpen(false)}>
         {comp}
       </Modal>
+    </>
+  );
+};
+const Category = () => {
+  return (
+    <Layout>
+      <Content />
     </Layout>
   );
 };
