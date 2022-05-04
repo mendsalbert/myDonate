@@ -5,7 +5,7 @@ import Web3Modal from "web3modal";
 const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
 import { donationAddress } from "../config";
-const FundRaising = () => {
+const FundRaising = (props) => {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({
     title: "",
@@ -36,7 +36,7 @@ const FundRaising = () => {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
+    const signer = props.provider.getSigner();
 
     /* next, create the item */
     const targetAmount = ethers.utils.parseUnits(

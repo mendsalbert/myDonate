@@ -125,8 +125,6 @@ function reducer(state: StateType, action: ActionType): StateType {
 }
 
 export const web3Context = createContext([initialState]);
-// let web3Context;
-// const { Provider, Consumer } = React.createContext(initialState);
 
 const Layout = ({ children, title = "myDonate" }) => {
   const [open, setOpen] = useState(false);
@@ -149,11 +147,7 @@ const Layout = ({ children, title = "myDonate" }) => {
     const provider = new ethers.providers.JsonRpcProvider(
       "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
     );
-    // "https://rpc-mumbai.maticvigil.com/"
-    // "https://rpc-mumbai.maticvigil.com/"
-    // ("https://rpc-mumbai.matic.today");
 
-    // setProvider(provider);
     const contract = new ethers.Contract(
       donationAddress,
       DonationContractABI.abi,
@@ -383,7 +377,7 @@ const Layout = ({ children, title = "myDonate" }) => {
             <div
               onClick={() => {
                 setOpen(!open);
-                setComp(<FundRaising />);
+                setComp(<FundRaising provider={web3Provider} />);
               }}
               className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white"
             >
