@@ -37,3 +37,11 @@ export function ellipseAddress(address = "", width = 10): string {
   }
   return `${address.slice(0, width)}...${address.slice(-width)}`;
 }
+
+export function numDaysBetween(d1, d2) {
+  var today = d2.getTime() / 1000;
+  // console.log("today", today);
+  var diff = Math.abs(d1 - d2.getTime() / 1000);
+  // console.log("diff", diff / (60 * 60 * 24));
+  return diff / (60 * 60 * 24);
+}

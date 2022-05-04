@@ -1,35 +1,22 @@
-import {
-  CashIcon,
-  ClockIcon,
-  SearchCircleIcon,
-  SearchIcon,
-} from "@heroicons/react/outline";
+import { CashIcon, ClockIcon } from "@heroicons/react/outline";
 
 import Link from "next/link";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import DonateModal from "../components/DonateModal";
-import FundRaising from "../components/FundraisingModal.js";
 import Layout, { web3Context } from "../components/Layout";
 import Modal from "../components/Modal";
-import { BigNumber, ethers, providers, utils } from "ethers";
-import { donationAddress } from "../config";
-import axios from "axios";
-import Web3Modal from "web3modal";
-import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
-import Web3 from "web3";
+import { ethers } from "ethers";
+import { numDaysBetween } from "../lib/utilities";
+
 const Content = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const [provider, web3Provider, address, chainId, images, ethprice] =
     useContext(web3Context);
 
-  const numDaysBetween = function (d1, d2) {
-    var today = d2.getTime() / 1000;
-    // console.log("today", today);
-    var diff = Math.abs(d1 - d2.getTime() / 1000);
-    // console.log("diff", diff / (60 * 60 * 24));
-    return diff / (60 * 60 * 24);
-  };
+  // const numDaysBetween = function (d1, d2) {
+
+  // };
 
   if (images.length <= 0) {
     return (
