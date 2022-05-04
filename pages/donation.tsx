@@ -4,16 +4,17 @@ import {
   SearchCircleIcon,
   SearchIcon,
 } from "@heroicons/react/outline";
-import Layout from "../components/Layout";
+import Layout, { web3Context } from "../components/Layout";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { HeartIcon } from "@heroicons/react/solid";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 import DonateModal from "../components/DonateModal";
 import Modal from "../components/Modal";
-const Donation = () => {
+const Content = () => {
+  const [provider, web3Provider, address, chainId] = useContext(web3Context);
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
   const router = useRouter();
@@ -43,9 +44,8 @@ const Donation = () => {
   );
 
   console.log(percentage);
-
   return (
-    <Layout>
+    <>
       <div className=" mt-32">
         <div className="flex flex-col md:flex-row space-x-0 md:space-x-10 w-full">
           <div className="md:w-8/12 w-full mb-3">
@@ -101,7 +101,12 @@ const Donation = () => {
               onClick={() => {
                 console.log(donation.id);
                 setOpen(!open);
-                setComp(<DonateModal donationId={donation.id} />);
+                setComp(
+                  <DonateModal
+                    provider={web3Provider}
+                    donationId={donation.id}
+                  />
+                );
               }}
               className="bg-gradient-to-r text-center from-cyan-500 to-blue-500 px-6 py-3 rounded-md cursor-pointer text-white"
             >
@@ -113,6 +118,13 @@ const Donation = () => {
       <Modal open={open} onClose={() => setOpen(false)}>
         {comp}
       </Modal>
+    </>
+  );
+};
+const Donation = () => {
+  return (
+    <Layout>
+      <Content />
     </Layout>
   );
 };
