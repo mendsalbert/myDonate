@@ -1,16 +1,9 @@
-import {
-  CashIcon,
-  ClockIcon,
-  SearchCircleIcon,
-  SearchIcon,
-} from "@heroicons/react/outline";
+import { CashIcon } from "@heroicons/react/outline";
 import Layout, { web3Context } from "../components/Layout";
 import { useRouter } from "next/router";
-import React, { useState, useEffect, useContext } from "react";
-
+import React, { useState, useContext } from "react";
 import { HeartIcon } from "@heroicons/react/solid";
 import ProgressBar from "@ramonak/react-progress-bar";
-
 import DonateModal from "../components/DonateModal";
 import Modal from "../components/Modal";
 const Content = () => {
@@ -31,13 +24,6 @@ const Content = () => {
   if (data.object) {
     donation = JSON.parse(data.object);
   }
-
-  console.log(
-    Math.round(
-      (parseInt(donation.donationAmount) / parseInt(donation.targetAmount)) *
-        100
-    )
-  );
 
   return (
     <>
@@ -73,7 +59,6 @@ const Content = () => {
                       100
                   )}
                 />
-                {/* <div className={`bg-blue-600 h-2.5 rounded-full w-[%]`}></div> */}
               </div>
             </div>
 
