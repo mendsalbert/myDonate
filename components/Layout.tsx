@@ -148,7 +148,6 @@ const Layout = ({ children, title = "myDonate" }) => {
     );
 
     const { chainId } = await provider.getNetwork();
-    console.log(chainId); // 42
 
     if (chainId) {
       const data = await contract.donationCount();
@@ -247,7 +246,6 @@ const Layout = ({ children, title = "myDonate" }) => {
       };
 
       const handleDisconnect = (error: { code: number; message: string }) => {
-        // eslint-disable-next-line no-console
         console.log("disconnect", error);
         disconnect();
       };

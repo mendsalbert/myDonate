@@ -79,7 +79,6 @@ const Content = () => {
 
             <div
               onClick={() => {
-                console.log(donation.id);
                 setOpen(!open);
                 setComp(
                   <DonateModal

@@ -59,7 +59,6 @@ const FundRaising = (props) => {
 
     await transaction.wait();
 
-    console.log("uploaded successfully");
     alert("Donation uploaded succesfully");
     window.location.href = "/";
   }
