@@ -56,7 +56,6 @@ const Content = () => {
                 ethers.utils.formatEther(donation.image.targetPrice.toString())
               ) * ethprice
             ).toLocaleString(),
-            // image: donation.image,
           };
 
           return (
@@ -148,7 +147,6 @@ const Content = () => {
           );
         })}
       </div>
-
       <Modal open={open} onClose={() => setOpen(false)}>
         {comp}
       </Modal>
