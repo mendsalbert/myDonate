@@ -19,6 +19,7 @@ import WalletLink from "walletlink";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
+import Footer from "./Footer";
 
 const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
@@ -402,7 +403,7 @@ const Layout = ({ children, title = "myDonate" }) => {
                 pathname: "/category",
                 query: { category: "disaster" },
               }}
-              scroll={false} // the data
+              scroll={false}
             >
               <div className="text-center">
                 <div
@@ -411,7 +412,6 @@ const Layout = ({ children, title = "myDonate" }) => {
                   } rounded-lg shadow-xl bg-[#FFD93D] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
                 >
                   <img src="/images/hurrican.svg" className="w-16" />
-                  {/* <svg path="/images/education.svg" /> */}
                 </div>
                 <p className="pt-2 text-xl">Disaster</p>
               </div>
@@ -462,18 +462,7 @@ const Layout = ({ children, title = "myDonate" }) => {
           {children}
         </web3Context.Provider>
       </div>
-
-      <footer>
-        <div className="mt-28 text-center w-full py-4 flex flex-col justify-center items-center">
-          <p className="text-lg text-gray-500 ">Connet with us</p>
-          <div className="flex flex-row space-x-4 cursor-pointer">
-            <img src="/images/twitter.svg" className="w-7" />
-            <img src="/images/discord.svg" className="w-10" />
-            <img src="/images/instagram.svg" className="w-7" />
-          </div>
-        </div>
-      </footer>
-
+      <Footer />
       <Modal open={open} onClose={() => setOpen(false)}>
         {comp}
       </Modal>
