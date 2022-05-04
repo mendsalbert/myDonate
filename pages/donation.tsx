@@ -39,11 +39,6 @@ const Content = () => {
     )
   );
 
-  let percentage = Math.ceil(
-    (parseInt(donation.donationAmount) / parseInt(donation.targetAmount)) * 100
-  );
-
-  console.log(percentage);
   return (
     <>
       <div className=" mt-32">
