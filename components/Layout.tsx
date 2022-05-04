@@ -282,55 +282,6 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.png" className="w-16 md:w-28 " />
           </Link>
 
-          {/* <div>
-            <p className="mb-1">Network:</p>
-            <p>{chainData?.name}</p>
-          </div>
-          <div>
-            <p className="mb-1">Address:</p>
-            <p>{ellipseAddress(address)}</p>
-          </div> */}
-          {/* <div
-            onClick={async () => {
-              console.log("connect wallet");
-              if (typeof window.ethereum == "undefined") {
-                alert("MetaMask is installed!");
-              }
-
-              const providerOptions = {
-                walletconnect: {
-                  package: WalletConnectProvider, // required
-                  options: {
-                    infuraId: "27e484dcd9e3efcfd25a83a78777cdf1", // required
-                  },
-                },
-              };
-              const web3Modal = new Web3Modal({
-                network: "mainnet", // optional
-                cacheProvider: true, // optional
-                providerOptions, // required
-              });
-
-              const instance = await web3Modal.connect();
-
-              const provider = new ethers.providers.Web3Provider(
-                instance
-                // window.ethereum,
-                // "any"
-              );
-
-              // console.log(await provider.wc);
-              await provider.send("eth_requestAccounts", []);
-              const signer = provider.getSigner();
-              const account = await signer.getAddress();
-              setconnected(account);
-              console.log("Account:", await signer.getAddress());
-            }}
-            className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
-          >
-            {connected ? "Connected" : "Connet Wallet"}
-          </div> */}
-
           {web3Provider ? (
             <div
               className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
