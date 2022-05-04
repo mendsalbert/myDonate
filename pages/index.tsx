@@ -20,70 +20,7 @@ import Web3 from "web3";
 const Content = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
-  const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([]) as any;
-  const [doners, setdoners] = useState([]);
-
-  const [Donation, setDonation] = useState([]);
-  const [ethprice, setethprice] = useState(1);
-  const [loadingState, setLoadingState] = useState("not-loaded");
-  const [ready, setready] = useState(false);
-  const [provider, web3Provider, address, chainId] = useContext(web3Context);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
-      )
-      .then((res) => {
-        setethprice(res.data.USD);
-      })
-      .catch((e) => {});
-    loadDonations();
-  }, []);
-
-  async function loadDonations() {
-    /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider(
-      "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
-    );
-    // "https://rpc-mumbai.maticvigil.com/"
-    // ("https://rpc-mumbai.matic.today");
-
-    // setProvider(provider);
-    const contract = new ethers.Contract(
-      donationAddress,
-      DonationContractABI.abi,
-      provider
-    );
-    const { chainId } = await provider.getNetwork();
-    console.log(chainId); // 42
-
-    if (chainId) {
-      const data = await contract.donationCount();
-      const lgt = await data.toString();
-      const donersData = await contract.donersCount();
-      const lgtDoners = await donersData.toString();
-
-      for (let i = 1; i <= lgt; i++) {
-        const image = await contract.idToDonationItem(i);
-
-        let doners = [];
-        for (let k = 1; k <= lgtDoners; k++) {
-          doners.push(await contract.doners(i, k));
-        }
-
-        let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
-        console.log(filterDoners);
-
-        setImages((prevState) => [...prevState, { image, filterDoners }]);
-
-        setready(true);
-      }
-    } else {
-      window.alert("Donation contract not deployed to detected network");
-    }
-  }
+  const [web3Provider, images, ethprice] = useContext(web3Context);
 
   const numDaysBetween = function (d1, d2) {
     var today = d2.getTime() / 1000;

@@ -124,7 +124,7 @@ function reducer(state: StateType, action: ActionType): StateType {
   }
 }
 
-export const web3Context = createContext([initialState]);
+export const web3Context = createContext([]);
 
 const Layout = ({ children, title = "myDonate" }) => {
   const [open, setOpen] = useState(false);
@@ -246,7 +246,6 @@ const Layout = ({ children, title = "myDonate" }) => {
   useEffect(() => {
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
-        // eslint-disable-next-line no-console
         console.log("accountsChanged", accounts);
         dispatch({
           type: "SET_ADDRESS",
@@ -254,7 +253,6 @@ const Layout = ({ children, title = "myDonate" }) => {
         });
       };
 
-      // https://docs.ethers.io/v5/concepts/best-practices/#best-practices--network-changes
       const handleChainChanged = (_hexChainId: string) => {
         window.location.reload();
       };
@@ -472,7 +470,7 @@ const Layout = ({ children, title = "myDonate" }) => {
         </div>
 
         <web3Context.Provider
-          value={[provider, web3Provider, address, chainId]}
+          value={[provider, web3Provider, address, chainId, images, ethprice]}
         >
           {children}
         </web3Context.Provider>
