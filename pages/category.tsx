@@ -1,15 +1,10 @@
 import { CashIcon, ClockIcon } from "@heroicons/react/outline";
-
 import Link from "next/link";
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import DonateModal from "../components/DonateModal";
 import Layout, { web3Context } from "../components/Layout";
 import Modal from "../components/Modal";
-import { BigNumber, ethers, providers, utils } from "ethers";
-import { donationAddress } from "../config";
-import axios from "axios";
-
-import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
+import { ethers } from "ethers";
 
 import { useRouter } from "next/router";
 import { numDaysBetween } from "../lib/utilities";
