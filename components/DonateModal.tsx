@@ -14,11 +14,13 @@ const DonateModal = (props) => {
     if (typeof window.ethereum == "undefined") {
       alert("MetaMask is installed!");
     }
-    console.log(donationId);
+    console.log(props.provider);
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-    const signer = provider.getSigner();
+    console.log(provider);
+    // const signer = provider.getSigner();
+    const signer = props.provider.getSigner();
 
     let contract = new ethers.Contract(
       donationAddress,
