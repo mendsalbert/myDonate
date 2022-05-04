@@ -14,10 +14,6 @@ const Content = () => {
   const [provider, web3Provider, address, chainId, images, ethprice] =
     useContext(web3Context);
 
-  // const numDaysBetween = function (d1, d2) {
-
-  // };
-
   if (images.length <= 0) {
     return (
       <div className="md:mt-10 flex flex-col justify-center items-center">
