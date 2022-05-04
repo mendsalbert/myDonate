@@ -404,7 +404,6 @@ const Layout = ({ children, title = "myDonate" }) => {
                   } rounded-lg shadow-xl bg-[#FF6363] px-6 py-6 md:py-12 justify-center flex flex-row w-full text-center`}
                 >
                   <img src="/images/education.svg" className="w-16" />
-                  {/* <svg path="/images/education.svg" /> */}
                 </div>
 
                 <p className="pt-2 text-xl">Education</p>
