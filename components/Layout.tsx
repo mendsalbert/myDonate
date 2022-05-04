@@ -281,14 +281,14 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.png" className="w-16 md:w-28 " />
           </Link>
 
-          <div>
+          {/* <div>
             <p className="mb-1">Network:</p>
             <p>{chainData?.name}</p>
           </div>
           <div>
             <p className="mb-1">Address:</p>
             <p>{ellipseAddress(address)}</p>
-          </div>
+          </div> */}
           {/* <div
             onClick={async () => {
               console.log("connect wallet");
