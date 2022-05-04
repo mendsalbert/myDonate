@@ -20,7 +20,8 @@ import Web3 from "web3";
 const Content = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
-  const [web3Provider, images, ethprice] = useContext(web3Context);
+  const [provider, web3Provider, address, chainId, images, ethprice] =
+    useContext(web3Context);
 
   const numDaysBetween = function (d1, d2) {
     var today = d2.getTime() / 1000;
