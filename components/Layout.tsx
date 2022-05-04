@@ -12,12 +12,11 @@ import Head from "next/head";
 import FundRaising from "./FundraisingModal.js";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Modal from "./Modal";
-import { BigNumber, ethers, providers, utils } from "ethers";
+import { ethers, providers } from "ethers";
 import { donationAddress } from "../config";
 import axios from "axios";
 import WalletLink from "walletlink";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
-import Web3 from "web3";
 import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
 
@@ -125,19 +124,12 @@ function reducer(state: StateType, action: ActionType): StateType {
 }
 
 export const web3Context = createContext([]);
-
 const Layout = ({ children, title = "myDonate" }) => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
-  const [modal, setModal] = useState(false);
   const [images, setImages] = useState([]);
-  const [doners, setdoners] = useState([]);
-
-  const [Donation, setDonation] = useState([]);
   const [ethprice, setethprice] = useState(1);
-  const [loadingState, setLoadingState] = useState("not-loaded");
   const [ready, setready] = useState(false);
-  const [connected, setconnected] = useState("");
 
   const router = useRouter();
   const data = router.query;
@@ -182,7 +174,6 @@ const Layout = ({ children, title = "myDonate" }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { provider, web3Provider, address, chainId } = state;
 
-  // console.log(state);
   const connect = useCallback(async function () {
     // This is the initial `provider` that is returned when
     // using web3Modal to connect. Can be MetaMask or WalletConnect.
@@ -227,12 +218,9 @@ const Layout = ({ children, title = "myDonate" }) => {
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
       )
       .then((res) => {
-        // console.log(res.data);
         setethprice(res.data.USD);
       })
-      .catch((e) => {
-        // console.log(e.target.value);
-      });
+      .catch((e) => {});
     loadDonations();
 
     if (web3Modal.cachedProvider) {
