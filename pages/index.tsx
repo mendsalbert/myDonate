@@ -21,7 +21,6 @@ const Content = () => {
     <>
       <div className=" mt-16">
         <p className="font-bold text-xl text-gray-500 my-10">Donations</p>
-
         {images.map((donation, index) => {
           const object = {
             id: donation.image.id,
