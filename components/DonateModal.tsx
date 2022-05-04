@@ -14,11 +14,10 @@ const DonateModal = (props) => {
     if (typeof window.ethereum == "undefined") {
       alert("MetaMask is installed!");
     }
-    console.log(props.provider);
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-    console.log(provider);
+
     // const signer = provider.getSigner();
     const signer = props.provider.getSigner();
 
@@ -30,15 +29,11 @@ const DonateModal = (props) => {
 
     /* user will be prompted to pay the asking proces to complete the transaction */
     const amount_ = ethers.utils.parseUnits(value, "ether");
-    console.log(donationId);
     let transaction = await contract.addDonation(donationId, {
       value: amount_,
     });
 
-    console.log(transaction);
-    // const transaction = await contract.createMarketSale(nft.tokenId);
     await transaction.wait();
-    console.log("transaction complete");
     alert("Donation sent succesfully");
     window.location.href = "/";
     // loadNFTs();

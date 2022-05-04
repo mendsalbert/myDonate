@@ -22,7 +22,6 @@ const FundRaising = (props) => {
         progress: (prog) => console.log(`received: ${prog}`),
       });
       const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      console.log(url);
       setFileUrl(url);
     } catch (error) {
       console.log("Error uploading file: ", error);
@@ -60,7 +59,6 @@ const FundRaising = (props) => {
 
     await transaction.wait();
 
-    // router.push("/nft");
     console.log("uploaded successfully");
     alert("Donation uploaded succesfully");
     window.location.href = "/";
