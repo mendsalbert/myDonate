@@ -12,83 +12,15 @@ import axios from "axios";
 import DonationContractABI from "../artifacts/contracts/Donation.sol/Donation.json";
 
 import { useRouter } from "next/router";
+import { numDaysBetween } from "../lib/utilities";
 
 const Content = () => {
   const [open, setOpen] = useState(false);
   const [comp, setComp] = useState("") as any;
-  const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([]) as any;
-  const [doners, setdoners] = useState([]);
-  const [provider, web3Provider, address, chainId] = useContext(web3Context);
-  const [Donation, setDonation] = useState([]);
-  const [ethprice, setethprice] = useState(1);
-  const [loadingState, setLoadingState] = useState("not-loaded");
-  const [ready, setready] = useState(false);
-
+  const [provider, web3Provider, address, chainId, images, ethprice] =
+    useContext(web3Context);
   const router = useRouter();
   const data = router.query as any;
-  console.log(data.category);
-  useEffect(() => {
-    axios
-      .get(
-        "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
-      )
-      .then((res) => {
-        setethprice(res.data.USD);
-      })
-      .catch((e) => {});
-    loadDonations();
-  }, []);
-
-  async function loadDonations() {
-    /* create a generic provider and query for unsold market items */
-    // const provider = new ethers.providers.JsonRpcProvider();
-    const provider = new ethers.providers.JsonRpcProvider(
-      "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
-    );
-    // "https://rpc-mumbai.maticvigil.com/"
-    // ("https://rpc-mumbai.matic.today");
-
-    // setProvider(provider);
-    const contract = new ethers.Contract(
-      donationAddress,
-      DonationContractABI.abi,
-      provider
-    );
-
-    if (contract) {
-      const data = await contract.donationCount();
-      const lgt = await data.toString();
-      const donersData = await contract.donersCount();
-      const lgtDoners = await donersData.toString();
-
-      for (let i = 1; i <= lgt; i++) {
-        const image = await contract.idToDonationItem(i);
-
-        let doners = [];
-        for (let k = 1; k <= lgtDoners; k++) {
-          doners.push(await contract.doners(i, k));
-        }
-
-        let filterDoners = doners.filter((v, i) => doners.indexOf(v) === i);
-        console.log(filterDoners);
-
-        setImages((prevState) => [...prevState, { image, filterDoners }]);
-
-        setready(true);
-      }
-    } else {
-      window.alert("Donation contract not deployed to detected network");
-    }
-  }
-
-  const numDaysBetween = function (d1, d2) {
-    var today = d2.getTime() / 1000;
-    // console.log("today", today);
-    var diff = Math.abs(d1 - d2.getTime() / 1000);
-    // console.log("diff", diff / (60 * 60 * 24));
-    return diff / (60 * 60 * 24);
-  };
 
   const filterData = (type) => {
     return images.filter((v, i) => {
@@ -97,7 +29,6 @@ const Content = () => {
   };
 
   let filteredCategory = filterData(data.category);
-  console.log(filteredCategory);
 
   return (
     <>
@@ -107,7 +38,6 @@ const Content = () => {
         </p>
 
         {filteredCategory.map((donation, index) => {
-          // console.log(donation.image);
           const object = {
             id: donation.image.id.toString(),
             title: donation.image.title,
