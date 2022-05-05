@@ -4,7 +4,7 @@ import "hardhat/console.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "@openzeppelin/contracts/utils/math/SafeCast.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-
+import "@chainlink/contracts/src/v0.8/interfaces/FeedRegistryInterface.sol";
 
 contract Donation {
 
@@ -12,7 +12,7 @@ contract Donation {
     using SafeMath for uint256;
 
     AggregatorV3Interface internal eth_usd_price_feed;
-    
+    // FeedRegistryInterface internal registry;
     mapping(uint256 => DonationItem) public idToDonationItem;
     mapping(uint256 => mapping( uint256 => address)) public doners;
    
@@ -20,10 +20,10 @@ contract Donation {
     uint public donationCount = 0;
 
     constructor(){
+      //  registry = FeedRegistryInterface(0xd441F0B98BcF34749391A3879A94caA95ffDB74D);
      eth_usd_price_feed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
     }
 
-   
     struct Doners {
       uint id;
       uint amount;
@@ -65,16 +65,28 @@ contract Donation {
       uint donationAmount
     );
 
-
      //get EthUsd
-    function getEthUsd() public view returns (uint) {
+    function getEthUsd() public  view returns (uint) {
         (
             , int price, , , 
         ) = eth_usd_price_feed.latestRoundData();
         return price.toUint256();
      }
 
-    //convert USD to eth
+    function getLatestPrice() public view returns (int) {
+        (
+            uint80 roundID, 
+            int price,
+            uint startedAt,
+            uint timeStamp,
+            uint80 answeredInRound
+        ) = eth_usd_price_feed.latestRoundData();
+        // If the round is not complete yet, timestamp is 0
+        require(timeStamp > 0, "Round not complete");
+        return price;
+    }
+
+    //convert eth to USD
     function convertEthUsd(uint _amountInUsd) public view returns (uint) {
         uint EthUsd = getEthUsd();
         return _amountInUsd.mul(10 ** 16).div(EthUsd);

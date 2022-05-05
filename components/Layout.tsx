@@ -137,20 +137,28 @@ const Layout = ({ children, title = "myDonate" }) => {
 
   async function loadDonations() {
     /* create a generic provider and query for unsold market items */
+    // const provider = new ethers.providers.JsonRpcProvider();
     const provider = new ethers.providers.JsonRpcProvider(
       "https://kovan.infura.io/v3/745fcbe1f649402c9063fa946fdbb84c"
     );
+    //
 
     const contract = new ethers.Contract(
       donationAddress,
       DonationContractABI.abi,
       provider
     );
-
     const { chainId } = await provider.getNetwork();
 
     if (chainId) {
       const data = await contract.donationCount();
+
+      const getUsd = await contract.getEthUsd();
+      let number = Number(getUsd.toString()) as any;
+      let ethUSDPrice = ethers.utils.formatUnits(number, 8) as any;
+
+      setethprice(ethUSDPrice);
+
       const lgt = await data.toString();
       const donersData = await contract.donersCount();
       const lgtDoners = await donersData.toString();
@@ -218,7 +226,7 @@ const Layout = ({ children, title = "myDonate" }) => {
         "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=ETH,USD,EUR"
       )
       .then((res) => {
-        setethprice(res.data.USD);
+        // setethprice(res.data.USD);
       })
       .catch((e) => {});
     loadDonations();
