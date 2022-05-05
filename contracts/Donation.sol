@@ -106,7 +106,7 @@ contract Donation {
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
-        emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+        // emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
     }
 
     //add a donation
@@ -127,7 +127,7 @@ contract Donation {
         donersCount++;
         doners[_donation.id][donersCount] = address(msg.sender);
         idToDonationItem[_id] = _donation;
-        emit DonationTiped(_id, msg.sender, msg.value);
+        // emit DonationTiped(_id, msg.sender, msg.value);
     }
 
     
