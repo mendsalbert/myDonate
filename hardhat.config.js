@@ -2,15 +2,8 @@
 require("@nomiclabs/hardhat-waffle");
 const fs = require("fs");
 const privateKey = fs.readFileSync("secret.txt").toString();
-import WalletConnectProvider from "@walletconnect/web3-provider";
-
 const projectId = "8b7ba5517c414450a93ec7334975a7fe";
 
-const provider = new WalletConnectProvider({
-  infuraId: "745fcbe1f649402c9063fa946fdbb84c",
-});
-
-await provider.enable();
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
