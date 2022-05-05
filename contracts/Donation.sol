@@ -1,14 +1,29 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import "hardhat/console.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+
+
 contract Donation {
 
+    using SafeCast for int256;
+    using SafeMath for uint256;
+
+    AggregatorV3Interface internal eth_usd_price_feed;
+    
     mapping(uint256 => DonationItem) public idToDonationItem;
     mapping(uint256 => mapping( uint256 => address)) public doners;
    
     uint public donersCount = 0;
     uint public donationCount = 0;
 
+    constructor(){
+     eth_usd_price_feed = AggregatorV3Interface(0x9326BFA02ADD2366b30bacB125260Af641031331);
+    }
+
+   
     struct Doners {
       uint id;
       uint amount;
@@ -18,7 +33,6 @@ contract Donation {
     struct DonationItem {
       uint256 id;
       address payable owner;
-    //   mapping(uint=>address) doners;
       uint donationAmount;
       uint startDate;
       uint endDate;
@@ -46,8 +60,25 @@ contract Donation {
     );
 
     event DonationTiped (
-      
+      uint256 indexed id,
+      address  sender,
+      uint donationAmount
     );
+
+
+     //get EthUsd
+    function getEthUsd() public view returns (uint) {
+        (
+            , int price, , , 
+        ) = eth_usd_price_feed.latestRoundData();
+        return price.toUint256();
+     }
+
+    //convert USD to eth
+    function convertEthUsd(uint _amountInUsd) public view returns (uint) {
+        uint EthUsd = getEthUsd();
+        return _amountInUsd.mul(10 ** 16).div(EthUsd);
+     }
 
     //create a new donation
     function uploadDonation(string memory _imageHash, string memory _description, uint _endDate, string memory _category, string memory _title, uint _targetPrice) public {
@@ -75,17 +106,13 @@ contract Donation {
         donation.hash = _imageHash;
         donation.description = _description;
         donation.completed = false;
-        // emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
+        emit DonationItemCreated(donationCount, payable(address(msg.sender)), 0, 0, block.timestamp, _endDate, _targetPrice, _category, _title, _imageHash, _description, false);
     }
 
+    //add a donation
     function addDonation(uint _id) public payable {
-        console.log(_id);
         require(_id > 0 && _id <= donationCount);
-        // doners[_id];
         DonationItem storage _donation = idToDonationItem[_id];
-        console.log(doners[_donation.id][donersCount++]);
-        console.log(_donation.id);
-        console.log(donersCount);
         require(_donation.completed == false);
         require(_donation.donationAmount <= _donation.targetPrice);
        
@@ -93,17 +120,16 @@ contract Donation {
         if(_donation.donationAmount >= _donation.targetPrice){
             _donation.completed = true;
         }
+
         address payable _owner = _donation.owner;
         _owner.transfer(msg.value);
         _donation.donationAmount = _donation.donationAmount + msg.value;
-        console.log(msg.sender);
         donersCount++;
         doners[_donation.id][donersCount] = address(msg.sender);
-        // console.log([_donation.id][donersCount++]);
-        console.log(_donation.id);
-        console.log(donersCount);
         idToDonationItem[_id] = _donation;
-        // emit ImageTip(_id, _image.hash, _image.description, _image.tipAmount, _author);
+        emit DonationTiped(_id, msg.sender, msg.value);
     }
+
+    
 
 }
