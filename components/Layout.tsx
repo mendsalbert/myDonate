@@ -321,6 +321,10 @@ const Layout = ({ children, title = "myDonate" }) => {
             <div
               onClick={() => {
                 setOpen(!open);
+                if (!web3Provider) {
+                  alert("Please connect to a wallet");
+                  return;
+                }
                 setComp(<FundRaising provider={web3Provider} />);
               }}
               className="  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-5 text-center w-full md:w-max  px-6 py-3 rounded-full cursor-pointer text-white"

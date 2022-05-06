@@ -80,6 +80,10 @@ const Content = () => {
             <div
               onClick={() => {
                 setOpen(!open);
+                if (!web3Provider) {
+                  alert("Please connect to a wallet");
+                  return;
+                }
                 setComp(
                   <DonateModal
                     provider={web3Provider}

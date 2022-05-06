@@ -30,7 +30,9 @@ const FundRaising = (props) => {
 
   async function addFund() {
     if (typeof window.ethereum == "undefined") {
-      alert("MetaMask is installed!");
+      alert("MetaMask is not installed!");
+    } else if (!props.provider) {
+      alert("Please connet to a wallet!");
     }
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
