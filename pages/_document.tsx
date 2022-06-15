@@ -19,7 +19,7 @@ export default function Document() {
           src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
         ></script>
         <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <link rel="icon" type="image/png" href="/images/logo.png" />
+        <link rel="icon" type="image/png" href="/images/logo.svg" />
       </Head>
       <body>
         <Main />

@@ -310,7 +310,7 @@ const Layout = ({ children, title = "myDonate" }) => {
 
           <div className="bg-[#F2F2F2] p-5 rounded-b-full flex flex-row justify-evenly w-full">
             <span>
-              <ion-icon name="heart-half-outline large"></ion-icon>
+              <ion-icon name="heart-half-outline" size="large"></ion-icon>
             </span>
             <span>
               <ion-icon name="home-outline"></ion-icon>
