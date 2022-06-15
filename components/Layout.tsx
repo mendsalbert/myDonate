@@ -21,6 +21,18 @@ import Web3Modal from "web3modal";
 import { ellipseAddress, getChainData } from "../lib/utilities";
 import Footer from "./Footer";
 
+// import * as React from "react";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "ion-icon": React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      >;
+    }
+  }
+}
 const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
 const providerOptions = {
@@ -288,7 +300,7 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-full   w-full">
+          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-full w-full">
             <ion-icon name="heart-half-outline"></ion-icon>
           </div>
           {web3Provider ? (
