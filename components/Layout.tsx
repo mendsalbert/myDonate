@@ -316,7 +316,7 @@ const Layout = ({ children, title = "myDonate" }) => {
                 Transparent
               </span>{" "}
               donation platform on the internet. Donate in cryptos let us build
-              a better world hgg
+              a better world
             </p>
             <div
               onClick={() => {
