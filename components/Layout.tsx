@@ -282,13 +282,13 @@ const Layout = ({ children, title = "myDonate" }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <div className=" mx-4 md:mx-40 my-6  font-Montserrat">
+      <div className=" mx-4 md:mx-40 my-0 font-Montserrat">
         <div className="flex flex-row justify-between items-center space-x-6 md:space-x-32">
           <Link href="/">
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-2xl  w-full">
+          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-full   w-full">
             ppppppp
           </div>
           {web3Provider ? (
