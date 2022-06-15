@@ -308,9 +308,21 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-full w-full">
+          <div className="bg-[#F2F2F2] p-5 rounded-b-full flex flex-row justify-evenly w-full">
             <span>
               <ion-icon name="heart-half-outline"></ion-icon>
+            </span>
+            <span>
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span>
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+            <span>
+              <ion-icon name="settings-outline"></ion-icon>
+            </span>
+            <span>
+              <ion-icon name="search-outline"></ion-icon>
             </span>
           </div>
           {web3Provider ? (
