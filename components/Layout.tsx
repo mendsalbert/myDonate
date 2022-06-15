@@ -313,10 +313,10 @@ const Layout = ({ children, title = "myDonate" }) => {
             <p className="md:text-2xl mt-2 md:mt-3 text-xl text-gray-600 md:leading-[3rem] leading-[2rem]  ">
               The most{" "}
               <span className="text-blue-600 italic font-bold">
-                Transparentss
+                Transparent
               </span>{" "}
               donation platform on the internet. Donate in cryptos let us build
-              a better world
+              a better world hgg
             </p>
             <div
               onClick={() => {
