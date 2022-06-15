@@ -23,16 +23,24 @@ import Footer from "./Footer";
 
 // import * as React from "react";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "ion-icon": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-  }
-}
+// declare global {
+//   namespace JSX {
+//     interface IntrinsicElements {
+//       "ion-icon": React.DetailedHTMLProps<
+//         React.HTMLAttributes<HTMLElement>,
+//         HTMLElement
+//       >;
+//     }
+//   }
+// }
+
+// declare global {
+//   namespace JSX {
+//     interface IntrinisicElements {
+//       "ion-icon": { name: string };
+//     }
+//   }
+// }
 const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad";
 
 const providerOptions = {
