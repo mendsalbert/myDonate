@@ -288,7 +288,9 @@ const Layout = ({ children, title = "myDonate" }) => {
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
 
-          <div className="bg-[#F2F2F2] h-50 w-full">ppppppp</div>
+          <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-2xl  w-full">
+            ppppppp
+          </div>
           {web3Provider ? (
             <div
               className=" bg-gradient-to-r from-cyan-500 to-blue-500 px-4 md:px-6  md:py-3 py-2 rounded-md cursor-pointer text-white"
