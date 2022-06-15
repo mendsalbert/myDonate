@@ -289,7 +289,7 @@ const Layout = ({ children, title = "myDonate" }) => {
           </Link>
 
           <div className="bg-[#F2F2F2] h-50 p-5 rounded-b-full   w-full">
-            ppppppp
+            <ion-icon name="heart-half-outline"></ion-icon>
           </div>
           {web3Provider ? (
             <div
