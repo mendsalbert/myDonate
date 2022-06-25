@@ -303,7 +303,7 @@ const Layout = ({ children, title = "myDonate" }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className=" mx-4 md:mx-40 my-0 font-Montserrat">
-        <div className="flex flex-row justify-between items-center space-x-6 md:space-x-32">
+        <div className="flex flex-row justify-between mt-4 items-center space-x-6 md:space-x-32">
           <Link href="/">
             <img src="/images/logo.svg" className="w-14 md:w-14 " />
           </Link>
